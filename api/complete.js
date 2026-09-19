@@ -46,17 +46,21 @@ module.exports = async function completeGitHubAuthentication(request, response) 
   const { code, state, error } = request.query || {};
   const cookies = parseCookies(request.headers.cookie);
   const expectedState = cookies.dupliclean_cms_state;
+  const codeVerifier = cookies.dupliclean_cms_verifier;
   const clientId = process.env.OAUTH_CLIENT_ID;
   const clientSecret = process.env.OAUTH_CLIENT_SECRET;
   const callbackUrl = process.env.COMPLETE_URL;
 
   response.setHeader(
     'Set-Cookie',
-    'dupliclean_cms_state=; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=0',
+    [
+      'dupliclean_cms_state=; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=0',
+      'dupliclean_cms_verifier=; Path=/api; HttpOnly; Secure; SameSite=Lax; Max-Age=0',
+    ],
   );
   response.setHeader('Content-Type', 'text/html; charset=utf-8');
 
-  if (error || !code || !state || !expectedState || state !== expectedState) {
+  if (error || !code || !state || !expectedState || !codeVerifier || state !== expectedState) {
     response.status(400).send(authorizationPage({ status: 'error', content: 'Autorisation refusée ou session expirée.' }));
     return;
   }
@@ -79,6 +83,7 @@ module.exports = async function completeGitHubAuthentication(request, response) 
         client_secret: clientSecret,
         code,
         redirect_uri: callbackUrl,
+        code_verifier: codeVerifier,
       }),
     });
     const token = await tokenResponse.json();
