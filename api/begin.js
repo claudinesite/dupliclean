@@ -13,7 +13,7 @@ module.exports = function beginGitHubAuthentication(request, response) {
   const authorizeUrl = new URL('https://github.com/login/oauth/authorize');
   authorizeUrl.searchParams.set('client_id', clientId);
   authorizeUrl.searchParams.set('redirect_uri', callbackUrl);
-  authorizeUrl.searchParams.set('scope', 'repo,user');
+  authorizeUrl.searchParams.set('scope', 'public_repo');
   authorizeUrl.searchParams.set('state', state);
 
   response.setHeader(
