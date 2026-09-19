@@ -119,6 +119,7 @@ function documentTemplate(name, title, markdown) {
   <title>${title} — DupliClean</title>
   <link rel="stylesheet" href="/typography.css">
   <link rel="stylesheet" href="/grain.css">
+  <link rel="stylesheet" href="/footer-orbit.css">
   <link rel="stylesheet" href="/legal.css">
 </head>
 <body id="top">
@@ -136,9 +137,10 @@ function documentTemplate(name, title, markdown) {
       <aside class="contents"><div class="contents-inner"><p class="eyebrow">DANS CE DOCUMENT</p><nav class="languages" aria-label="Langues"><a href="#français">Français ↓</a><a href="#english">English ↓</a></nav><details open><summary>Sommaire · Français</summary><nav aria-label="Sommaire français">${toc.filter(t => t.language === 'fr').map(t => `<a href="#${t.anchor}">${t.label}</a>`).join('')}</nav></details><details><summary>Contents · English</summary><nav aria-label="English contents">${toc.filter(t => t.language === 'en').map(t => `<a href="#${t.anchor}">${t.label}</a>`).join('')}</nav></details><a class="to-top" href="#top">Retour en haut ↑</a></div></aside>
       <article id="document" class="legal-prose" aria-label="${title}">${content}</article>
     </div>
-    <section class="legal-outro"><p class="eyebrow">TROUVEZ. SUPPRIMEZ. RESPIREZ.</p><h2>Un appareil plus léger.<br><span>Un quotidien plus fluide.</span></h2><a href="/" class="outro-link">Découvrir DupliClean <span aria-hidden="true">↗</span></a></section>
+    <section class="legal-outro download" id="telecharger"><p class="eyebrow"><span aria-hidden="true">✳︎</span> TROUVEZ. SUPPRIMEZ. RESPIREZ.</p><h2>Un appareil plus léger,<br><span>un quotidien plus fluide.</span></h2><p class="outro-description">Libérez votre espace simplement.</p><a href="/#telecharger" class="outro-link"><span class="play-symbol" aria-hidden="true">▷</span><span><small>Disponible sur</small>Google Play</span><span aria-hidden="true">↗</span></a><p class="outro-availability">Disponible uniquement sur Android, via Google Play.</p><p class="outro-languages">Français · English · Italiano · Español · Deutsch · Português</p></section>
   </main>
   <footer class="legal-footer frame"><a class="legal-brand" href="/">Dupli<span>Clean.</span></a><span>© ${new Date().getFullYear()} DupliClean</span><a href="#top">Retour en haut ↑</a></footer>
+<script src="/footer-orbit.js"></script>
 </body>
 </html>`;
 }
