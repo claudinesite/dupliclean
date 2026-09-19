@@ -1,5 +1,12 @@
 /* Large outlined sectors inspired by the Rollups reference, in DupliClean copper. */
 (() => {
+  const developerLink = document.querySelector('a[href="mailto:claudeaboki@gmail.com"]');
+  if (developerLink) {
+    developerLink.href = 'https://claudeportofolio.vercel.app/#contact';
+    developerLink.target = '_blank';
+    developerLink.rel = 'noopener noreferrer';
+  }
+
   const section = document.querySelector('#telecharger');
   if (!section) return;
   const point = (radius, angle) => {
