@@ -6,11 +6,11 @@ backend:
   branch: main
   base_url: https://dupliclean.vercel.app
   auth_endpoint: api/begin
-  site_domain: dupliclean.vercel.app
+  site_domain: dupliclean.ca
 
-site_url: https://dupliclean.vercel.app
-display_url: https://dupliclean.vercel.app
-logo_url: https://dupliclean.vercel.app/assets/dupliclean-phone-hand-transparent.png
+site_url: https://dupliclean.ca
+display_url: https://dupliclean.ca
+logo_url: https://dupliclean.ca/assets/dupliclean-phone-hand-transparent.png
 publish_mode: simple
 media_folder: dist/assets/uploads
 public_folder: /assets/uploads

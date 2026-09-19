@@ -9,7 +9,7 @@ function parseCookies(cookieHeader = '') {
 }
 
 function authorizationPage({ status, content }) {
-  const origins = (process.env.ORIGIN || 'https://dupliclean.vercel.app')
+  const origins = (process.env.ORIGIN || 'https://dupliclean.ca,https://dupliclean.vercel.app')
     .split(',')
     .map((origin) => origin.trim())
     .filter(Boolean);
