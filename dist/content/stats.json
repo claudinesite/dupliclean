@@ -1,0 +1,16 @@
+{
+  "items": [
+    {
+      "value": "3 sources",
+      "label": "Téléphone, OneDrive et Google Drive"
+    },
+    {
+      "value": "Votre choix",
+      "label": "Vous validez chaque suppression"
+    },
+    {
+      "value": "Sans compte",
+      "label": "Aucun compte DupliClean à créer"
+    }
+  ]
+}

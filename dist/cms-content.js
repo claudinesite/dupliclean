@@ -147,11 +147,16 @@
     if (footer) setText('.site-footer > p', footer.tagline);
   }
 
-  fetch('/content/site.json', { cache: 'no-store' })
-    .then((response) => {
-      if (!response.ok) throw new Error(`Contenu indisponible (${response.status})`);
-      return response.json();
-    })
-    .then(applyContent)
+  const sections = ['hero', 'stats', 'benefits', 'steps', 'sources', 'data', 'faq', 'download', 'footer'];
+
+  Promise.all(sections.map((section) =>
+    fetch(`/content/${section}.json`, { cache: 'no-store' })
+      .then((response) => {
+        if (!response.ok) throw new Error(`${section}.json indisponible (${response.status})`);
+        return response.json();
+      })
+      .then((value) => [section, section === 'stats' ? value.items : value]),
+  ))
+    .then((entries) => applyContent(Object.fromEntries(entries)))
     .catch((error) => console.warn('[DupliClean CMS]', error.message));
 })();

@@ -1,0 +1,31 @@
+{
+  "titleLead": "Moins de doublons,",
+  "titleAccent": "plus de place pour ce qui compte !",
+  "resultsTitleLead": "Vos résultats.",
+  "resultsTitleEnd": "Vos décisions.",
+  "resultsDescription": "Ouvrez une catégorie pour examiner les fichiers détectés et choisir ce que vous souhaitez retirer. À la fin du scan, rien n’a encore été supprimé.",
+  "items": [
+    {
+      "title": "Doublons exacts",
+      "summary": "Repérez les fichiers dont le contenu est identique.",
+      "explanation": "DupliClean compare des informations comme la taille et les empreintes des fichiers, calculées sur Android ou fournies par le service cloud."
+    },
+    {
+      "title": "Photos similaires",
+      "summary": "Retrouvez les photos qui se ressemblent visuellement.",
+      "explanation": "La comparaison s’appuie sur des miniatures. La similarité reste une estimation : vérifiez les résultats avant de choisir les photos à supprimer."
+    },
+    {
+      "title": "Fichiers volumineux et captures d’écran",
+      "summary": "Identifiez les fichiers qui méritent un peu de tri.",
+      "explanation": "Selon la source et la fonctionnalité utilisée, DupliClean repère les fichiers volumineux et les captures d’écran, et estime l’espace récupérable."
+    },
+    {
+      "title": "Vos données restent entre vos mains",
+      "summary": "Vous choisissez les fichiers et confirmez leur suppression.",
+      "explanation": "Les fichiers locaux ne sont pas envoyés sur un serveur du développeur pour l’analyse. Aucune copie permanente des fichiers ou résultats n’y est conservée."
+    }
+  ],
+  "choiceTitle": "DupliClean ne supprime pas automatiquement vos fichiers.",
+  "choiceDescription": "C’est vous qui décidez quoi supprimer !"
+}

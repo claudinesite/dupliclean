@@ -1,0 +1,20 @@
+{
+  "kicker": "✳   VOS FICHIERS, OÙ QU’ILS SOIENT",
+  "titleLead": "Plusieurs sources.",
+  "titleAccent": "Un appareil mieux organisé.",
+  "description": "Aucun compte DupliClean distinct à créer. Utilisez les médias autorisés sur Android ou vos comptes Microsoft et Google existants. Les fonctions disponibles dépendent de la source et des autorisations.",
+  "items": [
+    {
+      "title": "Votre téléphone",
+      "description": "Photos et vidéos autorisées · Analyse locale"
+    },
+    {
+      "title": "OneDrive",
+      "description": "Connexion et fichiers gérés par Microsoft"
+    },
+    {
+      "title": "Google Drive",
+      "description": "Connexion et fichiers gérés par Google"
+    }
+  ]
+}

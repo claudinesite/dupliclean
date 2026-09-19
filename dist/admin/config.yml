@@ -16,144 +16,158 @@ media_folder: dist/assets/uploads
 public_folder: /assets/uploads
 
 collections:
-  - name: site
-    label: Site DupliClean
+  - name: content
+    label: Modifier le site
+    label_singular: Section
+    description: Choisissez une section, modifiez son texte, puis cliquez sur Publier.
+    editor:
+      preview: false
     files:
-      - name: landing
-        label: Page d’accueil
-        file: dist/content/site.json
+      - name: hero
+        label: 01 · Accueil et boutons
+        file: dist/content/hero.json
         format: json
         fields:
-          - label: Hero
-            name: hero
-            widget: object
-            collapsed: false
-            fields:
-              - { label: Accroche — début, name: eyebrowLead, widget: string }
-              - { label: Accroche — fin, name: eyebrowEnd, widget: string }
-              - { label: Titre — début, name: titleLead, widget: string }
-              - { label: Titre — partie colorée, name: titleAccent, widget: string }
-              - { label: Titre — seconde ligne, name: titleEnd, widget: string }
-              - { label: Sous-titre, name: subtitle, widget: string }
-              - { label: Bouton principal, name: primaryButton, widget: string }
-              - { label: Bouton secondaire, name: secondaryButton, widget: string }
-              - { label: Texte de présentation — début, name: aboutLead, widget: string }
-              - { label: Texte de présentation — suite, name: aboutBody, widget: text }
+          - { label: Accroche — début, name: eyebrowLead, widget: string, hint: Première phrase au-dessus du grand titre. }
+          - { label: Accroche — fin, name: eyebrowEnd, widget: string, hint: Deuxième phrase de l’accroche. }
+          - { label: Grand titre — début, name: titleLead, widget: string }
+          - { label: Grand titre — partie colorée, name: titleAccent, widget: string }
+          - { label: Grand titre — seconde ligne, name: titleEnd, widget: string }
+          - { label: Slogan sous le titre, name: subtitle, widget: string }
+          - { label: Bouton principal, name: primaryButton, widget: string, hint: Ce bouton mène au téléchargement. }
+          - { label: Bouton secondaire, name: secondaryButton, widget: string, hint: Ce bouton mène aux étapes de fonctionnement. }
+          - { label: Présentation — texte en gras, name: aboutLead, widget: string }
+          - { label: Présentation — suite, name: aboutBody, widget: text }
 
-          - label: Chiffres clés
-            name: stats
+      - name: stats
+        label: 02 · Chiffres clés
+        file: dist/content/stats.json
+        format: json
+        fields:
+          - label: Les 3 chiffres clés
+            name: items
             widget: list
             min: 3
             max: 3
             summary: "{{fields.value}} — {{fields.label}}"
+            hint: Ces trois éléments apparaissent juste sous la présentation de DupliClean.
             fields:
-              - { label: Valeur, name: value, widget: string }
+              - { label: Valeur ou titre court, name: value, widget: string }
               - { label: Explication, name: label, widget: string }
 
-          - label: Avantages
-            name: benefits
-            widget: object
+      - name: benefits
+        label: 03 · Avantages et résultats
+        file: dist/content/benefits.json
+        format: json
+        fields:
+          - { label: Grand titre — début, name: titleLead, widget: string }
+          - { label: Grand titre — partie colorée, name: titleAccent, widget: string }
+          - { label: Bloc résultats — première ligne, name: resultsTitleLead, widget: string }
+          - { label: Bloc résultats — seconde ligne, name: resultsTitleEnd, widget: string }
+          - { label: Bloc résultats — description, name: resultsDescription, widget: text }
+          - label: Les 4 avantages
+            name: items
+            widget: list
+            min: 4
+            max: 4
+            summary: "{{fields.title}}"
             fields:
-              - { label: Titre — début, name: titleLead, widget: string }
-              - { label: Titre — partie colorée, name: titleAccent, widget: string }
-              - { label: Résultats — première ligne, name: resultsTitleLead, widget: string }
-              - { label: Résultats — seconde ligne, name: resultsTitleEnd, widget: string }
-              - { label: Description des résultats, name: resultsDescription, widget: text }
-              - label: Cartes avantages
-                name: items
-                widget: list
-                min: 4
-                max: 4
-                summary: "{{fields.title}}"
-                fields:
-                  - { label: Titre, name: title, widget: string }
-                  - { label: Résumé, name: summary, widget: string }
-                  - { label: Explication, name: explanation, widget: text }
-              - { label: Avertissement — titre, name: choiceTitle, widget: string }
-              - { label: Avertissement — texte, name: choiceDescription, widget: string }
+              - { label: Titre, name: title, widget: string }
+              - { label: Résumé court, name: summary, widget: string }
+              - { label: Explication détaillée, name: explanation, widget: text }
+          - { label: Message de sécurité — titre, name: choiceTitle, widget: string }
+          - { label: Message de sécurité — texte, name: choiceDescription, widget: string }
 
-          - label: Comment ça marche
-            name: steps
-            widget: object
+      - name: steps
+        label: 04 · Comment ça marche
+        file: dist/content/steps.json
+        format: json
+        fields:
+          - { label: Petit titre, name: kicker, widget: string }
+          - { label: Grand titre — début, name: titleLead, widget: string }
+          - { label: Grand titre — partie colorée, name: titleAccent, widget: string }
+          - { label: Introduction, name: intro, widget: text }
+          - label: Les 3 étapes
+            name: items
+            widget: list
+            min: 3
+            max: 3
+            summary: "{{fields.title}}"
+            hint: Gardez l’ordre choisir la source, lancer le scan, examiner et confirmer.
             fields:
-              - { label: Petit titre, name: kicker, widget: string }
-              - { label: Titre — début, name: titleLead, widget: string }
-              - { label: Titre — partie colorée, name: titleAccent, widget: string }
-              - { label: Introduction, name: intro, widget: text }
-              - label: Étapes
-                name: items
-                widget: list
-                min: 3
-                max: 3
-                summary: "{{fields.title}}"
-                fields:
-                  - { label: Titre, name: title, widget: string }
-                  - { label: Description, name: description, widget: text }
-
-          - label: Sources
-            name: sources
-            widget: object
-            fields:
-              - { label: Petit titre, name: kicker, widget: string }
-              - { label: Titre — début, name: titleLead, widget: string }
-              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Titre de l’étape, name: title, widget: string }
               - { label: Description, name: description, widget: text }
-              - label: Liste des sources
-                name: items
-                widget: list
-                min: 3
-                max: 3
-                summary: "{{fields.title}}"
-                fields:
-                  - { label: Nom, name: title, widget: string }
-                  - { label: Description, name: description, widget: string }
 
-          - label: Données personnelles
-            name: data
-            widget: object
+      - name: sources
+        label: 05 · Sources de fichiers
+        file: dist/content/sources.json
+        format: json
+        fields:
+          - { label: Petit titre, name: kicker, widget: string }
+          - { label: Grand titre — début, name: titleLead, widget: string }
+          - { label: Grand titre — partie colorée, name: titleAccent, widget: string }
+          - { label: Description générale, name: description, widget: text }
+          - label: Téléphone, OneDrive et Google Drive
+            name: items
+            widget: list
+            min: 3
+            max: 3
+            summary: "{{fields.title}}"
             fields:
-              - { label: Petit titre, name: kicker, widget: string }
-              - { label: Titre — début, name: titleLead, widget: string }
-              - { label: Titre — partie colorée, name: titleAccent, widget: string }
-              - { label: Introduction, name: intro, widget: text }
-              - label: Actions
-                name: items
-                widget: list
-                min: 3
-                max: 3
-                summary: "{{fields.title}}"
-                fields:
-                  - { label: Titre, name: title, widget: string }
-                  - { label: Description, name: description, widget: text }
-
-          - label: Questions fréquentes
-            name: faq
-            widget: object
-            fields:
-              - { label: Petit titre, name: kicker, widget: string }
-              - { label: Titre — début, name: titleLead, widget: string }
-              - { label: Titre — partie colorée, name: titleAccent, widget: string }
-              - label: Questions
-                name: items
-                widget: list
-                min: 1
-                summary: "{{fields.question}}"
-                fields:
-                  - { label: Question, name: question, widget: string }
-                  - { label: Réponse, name: answer, widget: text }
-
-          - label: Téléchargement
-            name: download
-            widget: object
-            fields:
-              - { label: Petit titre, name: kicker, widget: string }
-              - { label: Titre — début, name: titleLead, widget: string }
-              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Nom de la source, name: title, widget: string }
               - { label: Description, name: description, widget: string }
-              - { label: Disponibilité, name: availability, widget: string }
 
-          - label: Pied de page
-            name: footer
-            widget: object
+      - name: data
+        label: 06 · Données et confidentialité
+        file: dist/content/data.json
+        format: json
+        fields:
+          - { label: Petit titre, name: kicker, widget: string }
+          - { label: Grand titre — début, name: titleLead, widget: string }
+          - { label: Grand titre — partie colorée, name: titleAccent, widget: string }
+          - { label: Introduction, name: intro, widget: text }
+          - label: Les 3 actions expliquées
+            name: items
+            widget: list
+            min: 3
+            max: 3
+            summary: "{{fields.title}}"
             fields:
-              - { label: Slogan, name: tagline, widget: string }
+              - { label: Titre, name: title, widget: string }
+              - { label: Description, name: description, widget: text }
+
+      - name: faq
+        label: 07 · Questions fréquentes
+        file: dist/content/faq.json
+        format: json
+        fields:
+          - { label: Petit titre, name: kicker, widget: string }
+          - { label: Grand titre — début, name: titleLead, widget: string }
+          - { label: Grand titre — partie colorée, name: titleAccent, widget: string }
+          - label: Questions et réponses
+            name: items
+            widget: list
+            min: 1
+            summary: "{{fields.question}}"
+            hint: Ouvrez une question pour modifier sa réponse. Vous pouvez aussi en ajouter une.
+            fields:
+              - { label: Question, name: question, widget: string }
+              - { label: Réponse, name: answer, widget: text }
+
+      - name: download
+        label: 08 · Téléchargement
+        file: dist/content/download.json
+        format: json
+        fields:
+          - { label: Petit titre, name: kicker, widget: string }
+          - { label: Grand titre — début, name: titleLead, widget: string }
+          - { label: Grand titre — partie colorée, name: titleAccent, widget: string }
+          - { label: Phrase d’appel, name: description, widget: string }
+          - { label: Disponibilité de l’application, name: availability, widget: string }
+
+      - name: footer
+        label: 09 · Pied de page
+        file: dist/content/footer.json
+        format: json
+        fields:
+          - { label: Slogan du pied de page, name: tagline, widget: string }

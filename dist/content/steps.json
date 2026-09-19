@@ -1,0 +1,20 @@
+{
+  "kicker": "✳   COMMENT ÇA MARCHE",
+  "titleLead": "Une source. Un scan.",
+  "titleAccent": "Plusieurs résultats utiles.",
+  "intro": "DupliClean ne recherche pas seulement les doublons : le même scan vous aide à repérer plusieurs catégories de fichiers à examiner.",
+  "items": [
+    {
+      "title": "Choisissez la source.",
+      "description": "Sélectionnez les fichiers autorisés sur votre appareil Android, votre compte OneDrive ou votre compte Google Drive."
+    },
+    {
+      "title": "Lancez un seul scan.",
+      "description": "Selon la source et les autorisations accordées, DupliClean recherche les doublons exacts, les photos visuellement similaires, les fichiers volumineux et les captures d’écran."
+    },
+    {
+      "title": "Examinez puis confirmez.",
+      "description": "Ouvrez chaque catégorie, vérifiez les fichiers proposés et choisissez ceux à conserver ou à supprimer. Rien n’est supprimé automatiquement."
+    }
+  ]
+}
