@@ -5,8 +5,4 @@ menuButton.addEventListener('click',()=>{const open=menu.hidden;menu.hidden=!ope
 menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
 document.addEventListener('click',e=>{if(!e.target.closest('.nav-brand-group'))closeMenu();});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){closeMenu();menuButton.focus();}});
-const demo=document.querySelector('#demo-dialog');
-document.querySelector('#open-demo').addEventListener('click',()=>demo.showModal());
-document.querySelector('.demo-close').addEventListener('click',()=>demo.close());
-demo.addEventListener('click',e=>{if(e.target===demo){const r=demo.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)demo.close();}});
 import('./cms-content.js').catch(error=>console.warn('[DupliClean CMS]',error.message));

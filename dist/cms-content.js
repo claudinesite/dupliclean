@@ -52,7 +52,7 @@
       setHeroHeading(hero);
       setText('.reference-subtitle', hero.subtitle);
       setText('.reference-hero-actions a', hero.primaryButton);
-      setText('.reference-hero-actions button', hero.secondaryButton);
+      setText('.reference-hero-actions .secondary', hero.secondaryButton);
 
       const about = select('.reference-bottom-copy p');
       if (about) {
