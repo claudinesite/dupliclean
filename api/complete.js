@@ -29,13 +29,29 @@ function authorizationPage({ status, content }) {
         var allowedOrigins = ${JSON.stringify(origins)};
         var message = ${JSON.stringify(message)};
         if (!window.opener) return;
+
+        function deliverAuthorization() {
+          allowedOrigins.forEach(function (origin) {
+            window.opener.postMessage(message, origin);
+          });
+        }
+
         function receiveMessage(event) {
           if (!allowedOrigins.includes(event.origin)) return;
           window.removeEventListener('message', receiveMessage, false);
           window.opener.postMessage(message, event.origin);
         }
+
         window.addEventListener('message', receiveMessage, false);
         window.opener.postMessage('authorizing:github', '*');
+
+        // Decap normally answers the authorizing message before receiving the
+        // token. Sending the result directly as well avoids a race between the
+        // custom domain opener and the Vercel-hosted OAuth callback.
+        deliverAuthorization();
+        window.setTimeout(deliverAuthorization, 300);
+        window.setTimeout(deliverAuthorization, 900);
+        ${status === 'success' ? "window.setTimeout(function () { window.close(); }, 1500);" : ''}
       })();
     </script>
   </body>
