@@ -9,10 +9,13 @@ function parseCookies(cookieHeader = '') {
 }
 
 function authorizationPage({ status, content }) {
-  const origins = (process.env.ORIGIN || 'https://dupliclean.ca,https://dupliclean.vercel.app')
-    .split(',')
+  const origins = [
+    ...(process.env.ORIGIN || '').split(','),
+    'https://dupliclean.ca',
+    'https://dupliclean.vercel.app',
+  ]
     .map((origin) => origin.trim())
-    .filter(Boolean);
+    .filter((origin, index, allOrigins) => origin && allOrigins.indexOf(origin) === index);
   const message = `authorization:github:${status}:${content}`;
 
   return `<!doctype html>
