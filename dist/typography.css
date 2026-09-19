@@ -1,0 +1,47 @@
+/* Font families and weights identified in Athleats' public stylesheet. */
+@font-face{font-family:'At Hauss';src:url('https://cdn.prod.website-files.com/65f19a9692547737f04915a5/65f19d99154a772cc975000b_AtHauss-Regular.woff') format('woff');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'At Hauss';src:url('https://cdn.prod.website-files.com/65f19a9692547737f04915a5/65f19d997ca6034192655dff_AtHauss-Medium.woff') format('woff');font-weight:500 800;font-style:normal;font-display:swap}
+@font-face{font-family:'Perfectly Nineties';src:url('https://cdn.prod.website-files.com/65f19a9692547737f04915a5/691b695a85a89a168dd93378_perfectlynineties-regular.otf') format('opentype');font-weight:400;font-style:normal;font-display:swap}
+:root{--reference-font:'At Hauss',Arial,sans-serif;--display-font:'Perfectly Nineties',Georgia,serif}
+body,button,input,.brand{font-family:var(--reference-font)}
+h1,h2,h3,.reference-intro h1,.reference-about h2{font-family:var(--display-font);font-weight:400;letter-spacing:0}
+.reference-intro h1{font-size:clamp(48px,7.6dvh,72px);line-height:1.02;letter-spacing:-.6px;margin-top:20px}
+.reference-eyebrow{font-size:14px;line-height:1.4}
+.reference-subtitle{font-size:17px;line-height:1.4;margin-top:16px}
+.reference-cta,.reference-cta.secondary{font-size:14px;min-width:135px;padding:0 20px;height:44px}
+.reference-nav{height:46px}
+.reference-brand{font-size:19px}
+.reference-nav-actions a{font-size:15px;height:46px}
+.nav-brand-group{height:46px;width:232px}.reference-logo{width:30px;height:30px}.reference-logo svg{width:24px;height:24px}.reference-menu-button{height:40px;width:40px}
+#reference-menu{min-width:280px;padding:12px}
+#reference-menu a{font-size:16px;padding:16px}
+.reference-bottom-copy>span{font-size:12px;margin-bottom:16px}
+.reference-bottom-copy p{font-size:clamp(22px,1.9vw,28px);line-height:1.12;letter-spacing:-.5px}
+.reference-about-label{font-size:12px}
+.reference-about h2{font-size:clamp(36px,3.7vw,54px);line-height:1.12;max-width:1120px}
+.reference-stats strong{font-family:var(--display-font);font-size:44px;letter-spacing:0;font-weight:400}
+.reference-stats span{font-size:17px}
+.chart-top{font-size:12px}.chart-top small{font-size:10px}.chart-top>span{font-size:8px}
+.reference-chart>strong{font-size:32px;margin:10px 0 8px}.chart-note{font-size:10px}
+.chart-bottom>div,.chart-legend p{font-size:10px}.chart-donut{width:62px;height:62px}.reference-chart{height:212px;padding:16px}
+.chart-legend{gap:6px}.chart-bottom{margin-top:10px;gap:10px}
+.section-heading h2,.sources-copy h2,.faq h2{font-size:54px;line-height:1.1}
+.step-title h3{font-size:25px;letter-spacing:0}
+.steps article>p,.sources-copy p,.section-heading>p,details p{font-size:16px;line-height:1.65}
+summary{font-size:17px}.integration-list h3{font-family:var(--reference-font);font-size:18px}.integration-list p{font-size:13px}
+.file-types{font-size:13px}.section-kicker{font-size:12px}.download h2{font-size:72px;letter-spacing:0}.download>p{font-size:17px}
+footer p,footer>span,footer>a:last-child{font-size:13px}
+@media(min-width:900px){.reference-hand{height:min(56dvh,calc(100dvh - 385px))}.reference-bottom-copy{max-width:430px}.reference-charts{max-width:660px;width:41%}}
+@media(max-width:1100px) and (min-width:900px){.chart-top>span{display:none}.chart-legend{grid-template-columns:1fr}.chart-legend p:last-child{display:none}.chart-legend b{display:inline;margin-left:4px}.reference-bottom-copy p{font-size:22px}}
+@media(max-width:899px){
+ .reference-intro{top:78px}.reference-intro h1{font-size:clamp(38px,8.6vw,50px);line-height:1.03;margin-top:18px}
+ .reference-eyebrow{font-size:12px}.reference-subtitle{font-size:14px;margin-top:14px}.reference-hero-actions{margin-top:16px}
+ .reference-cta,.reference-cta.secondary{font-size:13px;min-width:124px;height:42px;padding:0 16px}
+ .reference-nav-actions a{font-size:12px}.nav-brand-group{width:190px}
+ .reference-hand{height:min(37svh,calc(100svh - 525px));min-height:220px;bottom:220px}
+ .reference-bottom-copy{bottom:123px}.reference-bottom-copy>span{font-size:10px;margin-bottom:7px}.reference-bottom-copy p{font-size:18px;line-height:1.13}
+ .reference-chart{height:98px}.chart-top{font-size:10px}.chart-top small{font-size:7px}.chart-note{font-size:8px}.reference-chart>strong{font-size:23px;margin:7px 0 5px}
+ .reference-about h2{font-size:36px}.reference-stats strong{font-size:38px}.reference-stats span{font-size:15px}
+ .section-heading h2,.sources-copy h2,.faq h2{font-size:42px}.download h2{font-size:46px}.download>p{font-size:15px}.section-kicker{font-size:10px}
+ .step-title h3{font-size:24px}.steps article>p,.sources-copy p,details p{font-size:15px}.integration-list p{font-size:11px}.integration-list h3{font-size:16px}
+}

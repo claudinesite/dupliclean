@@ -1,0 +1,45 @@
+/* Rollups-inspired sidebar, illustrated overview and vertical benefits. */
+.poster-benefits{display:grid;grid-template-columns:30% minmax(0,1fr);padding:0;align-items:start}
+.benefit-nav{position:sticky;top:100px;padding:52px 28px;display:flex;flex-direction:column;gap:8px;margin-top:265px}
+.benefit-nav-label,.benefit-timeline-label{font-size:10px;letter-spacing:1.5px;color:var(--muted);margin-bottom:18px}
+.benefit-nav a{display:flex;align-items:baseline;gap:12px;padding:12px 0;color:var(--muted);font-size:14px;line-height:1.45;transition:color .2s}
+.benefit-nav a>span{font-size:11px;letter-spacing:1px;color:var(--copper)}
+.benefit-nav a[aria-current],.benefit-nav a:hover{color:var(--ink)}
+.benefit-nav a[aria-current]{font-weight:600}
+.benefit-main{min-width:0}
+.poster-heading{text-align:left;padding:84px 36px 60px}
+.poster-heading h2{font-size:clamp(36px,3.5vw,52px);line-height:1.09;margin:23px 0 0;max-width:700px}
+.poster-heading h2 span{color:var(--muted)}
+.benefit-overview{display:grid;grid-template-columns:1.65fr 1fr;background:var(--frame-h) left top/100% 1px no-repeat,var(--frame-v) left top/1px 100% no-repeat}
+.benefit-demo{position:relative;min-height:340px;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 24px;background:radial-gradient(ellipse at 45% 60%,#dbc2a64d,transparent 70%)}
+.benefit-radar{position:absolute;width:280px;height:280px;left:calc(50% - 140px);top:calc(50% - 140px);border:1px solid #b9987555;border-radius:50%;pointer-events:none}
+.benefit-radar span{position:absolute;inset:28px;border:1px solid #b9987533;border-radius:50%}.benefit-radar span:nth-child(2){inset:56px}.benefit-radar span:nth-child(3){inset:84px}
+.benefit-file{position:relative;display:flex;align-items:center;gap:12px;padding:18px 16px;width:100%;max-width:305px;background:#fbf7ef;border:1px solid #d4b99a;border-radius:5px;box-shadow:0 12px 30px #6d452015;font-size:12px;transform:translate(10px,4px)}
+.benefit-file>span{color:var(--copper);font-size:26px}.benefit-file small{display:block;font-size:9px;color:var(--muted);margin-top:6px}.benefit-file b{margin-left:auto;font-size:9px;color:var(--copper);font-weight:500;white-space:nowrap}
+.benefit-file-back{transform:translate(-8px,-10px);background:#eaddcd;color:#8a705a;opacity:.75}
+.benefit-demo-caption{position:absolute;bottom:24px;font-size:8px;letter-spacing:1px;color:var(--muted);text-align:center}
+.benefit-overview-copy{padding:32px 25px;display:flex;flex-direction:column;align-items:flex-start;background:var(--frame-v) left top/1px 100% no-repeat}
+.benefit-overview-copy h3{font-size:30px;line-height:1.12;font-weight:400;margin:22px 0 14px}
+.benefit-overview-copy p{font-size:14px;line-height:1.6;color:var(--muted);margin:0 0 30px}
+.benefit-overview-copy a{margin-top:auto;font-size:11px;color:var(--copper);display:flex;gap:14px;align-items:center}.benefit-overview-copy a span{display:grid;place-items:center;width:23px;height:23px;border-radius:50%;background:#e7d4bf}
+.benefit-details{display:grid;grid-template-columns:1.65fr 1fr;background:var(--frame-h) left top/100% 1px no-repeat,var(--frame-v) left top/1px 100% no-repeat;align-items:start}
+.poster-grid{padding:38px 30px 25px}
+.benefit-timeline-label{margin-bottom:32px}
+.poster-grid article{position:relative;display:grid;grid-template-columns:30px minmax(0,1fr);gap:14px;padding:0 0 44px;scroll-margin-top:50px}
+.poster-grid article:last-child{padding-bottom:12px}
+.benefit-number{font-size:11px;color:var(--copper);padding-top:5px}
+.benefit-article-content{position:relative}
+.benefit-article-content::before{content:'';position:absolute;left:-30px;top:31px;bottom:-24px;width:1px;background:var(--frame-v)}
+.poster-grid article:last-child .benefit-article-content::before{bottom:0}
+.poster-grid .poster-icon{float:right;display:grid;place-items:center;width:32px;height:32px;color:var(--copper);background:#ecd8c1;border-radius:50%;margin:0 0 10px 10px}
+.poster-icon svg{width:18px;height:18px}
+.poster-grid h3,.poster-choice h3{font-size:23px;line-height:1.25;font-weight:400;margin:0 0 15px}
+.poster-grid p,.poster-choice p{font-size:14px;line-height:1.65;color:var(--muted);margin:0}
+.poster-grid .benefit-explanation{margin-top:12px}
+.poster-choice{position:sticky;top:50px;padding:38px 25px 45px;display:flex;flex-direction:column;align-items:flex-start;gap:24px;background:var(--frame-v) left top/1px 100% no-repeat}
+.poster-choice .poster-icon{display:grid;place-items:center;width:60px;height:60px;border-radius:50%;color:var(--copper);background:#e5c1a3}.poster-choice .poster-icon svg{width:30px;height:30px}
+.poster-choice h3{font-size:29px;margin-bottom:20px}.poster-choice p{color:var(--copper)}
+.sources-copy .poster-more{font-size:12px;letter-spacing:2px;text-transform:uppercase;margin-top:20px}
+.reference-eyebrow{padding-inline:20px;flex-wrap:wrap}
+@media(max-width:1100px){.poster-benefits{grid-template-columns:25% minmax(0,1fr)}.benefit-nav{padding:40px 20px}.benefit-nav a{font-size:12px}.poster-grid{padding-inline:24px}.benefit-details,.benefit-overview{grid-template-columns:1.5fr 1fr}.benefit-file{gap:7px;padding-inline:10px;font-size:11px}.benefit-file small{font-size:8px}.benefit-file b{font-size:8px}}
+@media(max-width:760px){.poster-benefits{display:flex;flex-direction:column}.benefit-main{width:100%}.benefit-nav{position:static;order:0;margin:0;padding:24px;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:0 16px;background:var(--frame-h) left bottom/100% 1px no-repeat}.benefit-nav-label{grid-column:1/-1;margin-bottom:10px}.benefit-nav a{font-size:12px;gap:8px;padding:10px 0}.poster-heading{padding:42px 24px}.poster-heading h2{font-size:38px}.benefit-overview{grid-template-columns:1fr}.benefit-demo{min-height:285px}.benefit-overview-copy{padding:28px 24px;background:var(--frame-h) left top/100% 1px no-repeat}.benefit-overview-copy h3{font-size:32px}.benefit-overview-copy h3 br{display:none}.benefit-overview-copy a{margin-top:0}.benefit-details{grid-template-columns:1fr}.poster-grid{padding:32px 24px}.poster-grid h3{font-size:25px}.poster-choice{position:static;padding:30px 24px;flex-direction:row;gap:18px;background:var(--frame-h) left top/100% 1px no-repeat,#efdfce}.poster-choice .poster-icon{flex-shrink:0;width:42px;height:42px}.poster-choice .poster-icon svg{width:24px;height:24px}.poster-choice h3{font-size:24px}.benefit-file{font-size:12px;padding:18px 14px}.benefit-file small{font-size:9px}.benefit-file b{font-size:9px}}

@@ -1,0 +1,17 @@
+/* Keep the existing reset; compile Tailwind's theme and utilities locally. */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../dist/index.html";
+@source "../dist/app.js";
+@source "../dist/reference.js";
+
+@theme {
+  --color-paper: #F8F2EA;
+  --color-ink: #3B1D0F;
+  --color-copper: #8B4A28;
+  --color-chocolate: #7F3F1F;
+  --font-sans: "At Hauss", Arial, sans-serif;
+  --font-display: "Perfectly Nineties", Georgia, serif;
+  --breakpoint-desktop: 900px;
+}

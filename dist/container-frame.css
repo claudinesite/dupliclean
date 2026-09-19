@@ -1,0 +1,21 @@
+/* Dashed section and column boundaries, matching the supplied Vessa grid. */
+:root{--frame-width:min(1240px,calc(100vw - 96px));--frame-ink:rgba(117,99,81,.46);--frame-h:repeating-linear-gradient(to right,var(--frame-ink) 0 8px,transparent 8px 15px);--frame-v:repeating-linear-gradient(to bottom,var(--frame-ink) 0 8px,transparent 8px 15px)}
+.framed-section{position:relative}
+.framed-section::before{content:"";position:absolute;inset-block:0;left:50%;transform:translateX(-50%);width:var(--frame-width);pointer-events:none;z-index:2;background:var(--frame-v) left top/1px 100% no-repeat,var(--frame-v) right top/1px 100% no-repeat,var(--frame-h) left top/100% 1px no-repeat,var(--frame-h) left bottom/100% 1px no-repeat}
+.reference-about,.download{--frame-ink:rgba(228,207,183,.4)}
+.how{padding-inline:0;padding-bottom:0}
+.how .section-heading{padding-inline:40px}
+.how .steps{gap:0;background:var(--frame-h) left top/100% 1px no-repeat}
+.how .steps>article{padding:40px;position:relative}
+.how .steps>article+article::before{content:"";position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--frame-v);pointer-events:none}
+.sources-section{border:0;border-radius:0;gap:0;padding:0;background:transparent}
+.sources-copy,.sources-section .integration-list{padding:60px 40px}
+.sources-section .integration-list{background:var(--frame-v) left top/1px 100% no-repeat}
+.faq{gap:0;padding-block:0}
+.faq>div{padding:65px 40px}
+.faq .faq-list{border-top:0;background:var(--frame-v) left top/1px 100% no-repeat}
+.faq details{border-bottom:0;background:var(--frame-h) left bottom/100% 1px no-repeat}
+.reference-stats>div+div{border-left:0;background:var(--frame-v) left top/1px 100% no-repeat}
+@media(max-width:1100px){:root{--frame-width:calc(100vw - 56px)}.how .steps>article{padding:30px 22px}}
+@media(max-width:760px){:root{--frame-width:calc(100vw - 36px)}.how .section-heading{padding-inline:24px}.how .steps{gap:0}.how .steps>article{padding:30px 24px}.how .steps>article+article::before{width:100%;height:1px;bottom:auto;background:var(--frame-h)}.sources-copy,.sources-section .integration-list,.faq>div{padding:35px 24px}.sources-section .integration-list,.faq .faq-list{background:var(--frame-h) left top/100% 1px no-repeat}}
+@media(max-width:540px){.reference-stats>div+div{border-top:0;background:var(--frame-h) left top/100% 1px no-repeat}}

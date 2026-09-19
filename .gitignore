@@ -2,3 +2,4 @@
 *-preview.png
 verify.cjs
 *.tar.gz
+node_modules/

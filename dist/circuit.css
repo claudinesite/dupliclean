@@ -1,0 +1,21 @@
+/* Fine copper traces and layered travelling signals. */
+.circuit-lines{color:#bca187;opacity:1;transform:scale(1.15);transform-origin:50% 55%}
+.circuit-lines>g:first-child{stroke-width:1.6;opacity:.7}
+.circuit-lines path,.circuit-lines circle{vector-effect:non-scaling-stroke}
+.circuit-node{display:none}
+.circuit-brand{background:#f3ece0;border-color:#d8c4af;box-shadow:0 4px 18px #70412712,inset 0 1px 0 #fff9}
+.circuit-pulse{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:58 1142;stroke-dashoffset:120;animation:circuit-flow var(--circuit-duration,10s) linear infinite;animation-delay:var(--circuit-delay,0s)}
+.circuit-pulse--halo{stroke:#d19763;stroke-width:9;opacity:.11}
+.circuit-pulse--trail{stroke:#b8774b;stroke-width:1.7;stroke-dasharray:130 1070;opacity:.35}
+.circuit-pulse--core{stroke:#ac633a;stroke-width:2.3;opacity:.9}
+.circuit-pulse--tip{stroke:#f4bf83;stroke-width:3.5;stroke-dasharray:2 1198;opacity:1}
+.circuit-junction-ring{fill:var(--reference-paper);stroke:#bc9774;stroke-width:1.3;opacity:.85}
+.circuit-junction-dot{fill:#a96b40;animation:circuit-node-light 6s ease-in-out infinite;animation-delay:var(--node-delay)}
+.circuit-paused .circuit-pulse,.circuit-paused .circuit-junction-dot{animation-play-state:paused}
+.circuit-toggle{position:absolute;right:20px;top:66px;z-index:6;display:flex;align-items:center;gap:6px;min-height:30px;padding:4px 9px;border:1px solid #b99b7833;border-radius:20px;background:#f6f2e980;color:#887666;font:400 11px var(--reference-font);cursor:pointer}
+.circuit-toggle:hover{color:#995436}.circuit-toggle svg{width:10px;height:10px;fill:currentColor}
+.circuit-toggle:focus-visible{outline:2px solid #995436;outline-offset:3px}
+@keyframes circuit-flow{from{stroke-dashoffset:120}to{stroke-dashoffset:-1080}}
+@keyframes circuit-node-light{0%,65%,100%{opacity:.25}75%,85%{opacity:1}}
+@media(max-width:899px){.circuit-toggle{top:55px;right:12px;font-size:10px;min-height:24px}.circuit-pulse--halo{stroke-width:7}.circuit-pulse--core{opacity:.85}}
+@media(prefers-reduced-motion:reduce){.circuit-pulse{animation:none;display:none}.circuit-junction-dot{animation:none;opacity:.5}.circuit-toggle{display:none}}
