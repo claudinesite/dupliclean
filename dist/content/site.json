@@ -152,10 +152,6 @@
       {
         "question": "Quelles langues sont disponibles ?",
         "answer": "Français, anglais, italien, espagnol, allemand et portugais. Votre préférence de langue peut être enregistrée localement sur votre appareil."
-      },
-      {
-        "question": "La démonstration du site analyse-t-elle mes fichiers ?",
-        "answer": "Non. Elle utilise uniquement des exemples fictifs. Elle ne se connecte à aucun compte, ne lit aucun de vos fichiers et n’exécute aucune suppression réelle."
       }
     ]
   },
