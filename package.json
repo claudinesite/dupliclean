@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --minify",
+    "build": "node scripts/generate-legal-pages.mjs && tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --minify",
     "watch:css": "tailwindcss -i ./src/tailwind.css -o ./dist/tailwind.css --watch"
   },
   "devDependencies": {
