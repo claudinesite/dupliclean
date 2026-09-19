@@ -9,3 +9,4 @@ const demo=document.querySelector('#demo-dialog');
 document.querySelector('#open-demo').addEventListener('click',()=>demo.showModal());
 document.querySelector('.demo-close').addEventListener('click',()=>demo.close());
 demo.addEventListener('click',e=>{if(e.target===demo){const r=demo.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)demo.close();}});
+import('./cms-content.js').catch(error=>console.warn('[DupliClean CMS]',error.message));

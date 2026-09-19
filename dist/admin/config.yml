@@ -1,0 +1,159 @@
+locale: fr
+
+backend:
+  name: github
+  repo: claudinesite/dupliclean
+  branch: main
+  base_url: https://dupliclean.vercel.app
+  auth_endpoint: api/begin
+  site_domain: dupliclean.vercel.app
+
+site_url: https://dupliclean.vercel.app
+display_url: https://dupliclean.vercel.app
+logo_url: https://dupliclean.vercel.app/assets/dupliclean-phone-hand-transparent.png
+publish_mode: simple
+media_folder: dist/assets/uploads
+public_folder: /assets/uploads
+
+collections:
+  - name: site
+    label: Site DupliClean
+    files:
+      - name: landing
+        label: Page d’accueil
+        file: dist/content/site.json
+        format: json
+        fields:
+          - label: Hero
+            name: hero
+            widget: object
+            collapsed: false
+            fields:
+              - { label: Accroche — début, name: eyebrowLead, widget: string }
+              - { label: Accroche — fin, name: eyebrowEnd, widget: string }
+              - { label: Titre — début, name: titleLead, widget: string }
+              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Titre — seconde ligne, name: titleEnd, widget: string }
+              - { label: Sous-titre, name: subtitle, widget: string }
+              - { label: Bouton principal, name: primaryButton, widget: string }
+              - { label: Bouton secondaire, name: secondaryButton, widget: string }
+              - { label: Texte de présentation — début, name: aboutLead, widget: string }
+              - { label: Texte de présentation — suite, name: aboutBody, widget: text }
+
+          - label: Chiffres clés
+            name: stats
+            widget: list
+            min: 3
+            max: 3
+            summary: "{{fields.value}} — {{fields.label}}"
+            fields:
+              - { label: Valeur, name: value, widget: string }
+              - { label: Explication, name: label, widget: string }
+
+          - label: Avantages
+            name: benefits
+            widget: object
+            fields:
+              - { label: Titre — début, name: titleLead, widget: string }
+              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Résultats — première ligne, name: resultsTitleLead, widget: string }
+              - { label: Résultats — seconde ligne, name: resultsTitleEnd, widget: string }
+              - { label: Description des résultats, name: resultsDescription, widget: text }
+              - label: Cartes avantages
+                name: items
+                widget: list
+                min: 4
+                max: 4
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Résumé, name: summary, widget: string }
+                  - { label: Explication, name: explanation, widget: text }
+              - { label: Avertissement — titre, name: choiceTitle, widget: string }
+              - { label: Avertissement — texte, name: choiceDescription, widget: string }
+
+          - label: Comment ça marche
+            name: steps
+            widget: object
+            fields:
+              - { label: Petit titre, name: kicker, widget: string }
+              - { label: Titre — début, name: titleLead, widget: string }
+              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Introduction, name: intro, widget: text }
+              - label: Étapes
+                name: items
+                widget: list
+                min: 3
+                max: 3
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+
+          - label: Sources
+            name: sources
+            widget: object
+            fields:
+              - { label: Petit titre, name: kicker, widget: string }
+              - { label: Titre — début, name: titleLead, widget: string }
+              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Description, name: description, widget: text }
+              - label: Liste des sources
+                name: items
+                widget: list
+                min: 3
+                max: 3
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Nom, name: title, widget: string }
+                  - { label: Description, name: description, widget: string }
+
+          - label: Données personnelles
+            name: data
+            widget: object
+            fields:
+              - { label: Petit titre, name: kicker, widget: string }
+              - { label: Titre — début, name: titleLead, widget: string }
+              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Introduction, name: intro, widget: text }
+              - label: Actions
+                name: items
+                widget: list
+                min: 3
+                max: 3
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Titre, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+
+          - label: Questions fréquentes
+            name: faq
+            widget: object
+            fields:
+              - { label: Petit titre, name: kicker, widget: string }
+              - { label: Titre — début, name: titleLead, widget: string }
+              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - label: Questions
+                name: items
+                widget: list
+                min: 1
+                summary: "{{fields.question}}"
+                fields:
+                  - { label: Question, name: question, widget: string }
+                  - { label: Réponse, name: answer, widget: text }
+
+          - label: Téléchargement
+            name: download
+            widget: object
+            fields:
+              - { label: Petit titre, name: kicker, widget: string }
+              - { label: Titre — début, name: titleLead, widget: string }
+              - { label: Titre — partie colorée, name: titleAccent, widget: string }
+              - { label: Description, name: description, widget: string }
+              - { label: Disponibilité, name: availability, widget: string }
+
+          - label: Pied de page
+            name: footer
+            widget: object
+            fields:
+              - { label: Slogan, name: tagline, widget: string }
