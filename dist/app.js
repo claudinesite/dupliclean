@@ -1,3 +1,9 @@
+document
+  .querySelectorAll('.reference-bottom-copy > span, .reference-about-label, .section-kicker')
+  .forEach((element) => {
+    element.textContent = element.textContent.replaceAll('✳', '*');
+  });
+
 let currentSource = 'Téléphone';
 let scanning = false;
 let awaitingConfirmation = false;
