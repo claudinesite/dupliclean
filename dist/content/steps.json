@@ -6,7 +6,7 @@
   "items": [
     {
       "title": "Choisissez la source.",
-      "description": "Sélectionnez les fichiers autorisés sur votre appareil Android, votre compte OneDrive ou votre compte MEGA."
+      "description": "Sélectionnez les fichiers autorisés sur votre appareil Android, votre compte OneDrive, Dropbox ou votre compte MEGA."
     },
     {
       "title": "Lancez un seul scan.",
