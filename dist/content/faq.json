@@ -13,23 +13,23 @@
     },
     {
       "question": "Faut-il créer un compte DupliClean ?",
-      "answer": "Non. Il n’y a pas de compte DupliClean distinct. Pour OneDrive ou Google Drive, vous utilisez votre compte existant et vous vous authentifiez auprès de Microsoft ou Google."
+      "answer": "Non. Il n’y a pas de compte DupliClean distinct. Pour OneDrive, Dropbox ou MEGA, vous utilisez votre compte existant et vous vous authentifiez auprès de Microsoft, Dropbox ou MEGA."
     },
     {
       "question": "Mes fichiers sont-ils envoyés sur un serveur DupliClean ?",
-      "answer": "Les fichiers locaux ne sont pas envoyés vers un serveur du développeur pour l’analyse. DupliClean n’y conserve pas de copies permanentes de vos fichiers, miniatures ou résultats. Pour le cloud, les données nécessaires sont échangées avec Microsoft ou Google ; certaines miniatures peuvent être téléchargées temporairement pour la comparaison."
+      "answer": "Les fichiers locaux ne sont pas envoyés vers un serveur du développeur pour l’analyse. DupliClean n’y conserve pas de copies permanentes de vos fichiers, miniatures ou résultats. Pour le cloud, les données nécessaires sont échangées avec Microsoft, Dropbox ou MEGA ; certaines miniatures peuvent être téléchargées temporairement pour la comparaison."
     },
     {
       "question": "Que devient un fichier supprimé dans le cloud ?",
-      "answer": "OneDrive traite la demande selon ses règles de suppression et de corbeille. Google Drive déplace le fichier vers la corbeille lorsque cette opération est prise en charge. La possibilité de restauration dépend de la source et n’est pas garantie par DupliClean."
+      "answer": "OneDrive, Dropbox et MEGA traitent les demandes de suppression selon leurs propres règles de gestion des fichiers et de la corbeille. Lorsque cette fonctionnalité est prise en charge, les fichiers supprimés sont déplacés vers la corbeille.\n\nLa possibilité de restaurer ces fichiers dépend des politiques de chaque service et n’est pas garantie par DupliClean."
     },
     {
       "question": "Effacer l’historique supprime-t-il mes fichiers ?",
-      "answer": "Non. Supprimer une ou plusieurs entrées de l’historique retire uniquement ces informations locales. Cela ne supprime pas les fichiers correspondants sur Android, OneDrive ou Google Drive."
+      "answer": "Non. Supprimer une ou plusieurs entrées de l’historique retire uniquement ces informations locales. Cela ne supprime pas les fichiers correspondants sur Android, OneDrive, Dropbox ou MEGA."
     },
     {
       "question": "Puis-je limiter ou retirer l’accès à mes fichiers ?",
-      "answer": "Oui. Les versions récentes d’Android permettent un accès complet ou limité à certains médias sélectionnés. Vous pouvez modifier cet accès dans les paramètres Android. Les autorisations cloud se retirent depuis les paramètres de votre compte Microsoft ou Google."
+      "answer": "Oui. Les versions récentes d’Android permettent un accès complet ou limité à certains médias sélectionnés. Vous pouvez modifier cet accès dans les paramètres Android. Les autorisations cloud se retirent depuis les paramètres de votre compte Microsoft, Dropbox ou MEGA."
     },
     {
       "question": "Quelles langues sont disponibles ?",
