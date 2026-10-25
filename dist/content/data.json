@@ -14,7 +14,7 @@
     },
     {
       "title": "Retirez les autorisations.",
-      "description": "Modifiez l’accès aux médias dans les paramètres Android. Pour OneDrive et Google Drive, retirez l’accès de DupliClean dans les paramètres de sécurité ou de confidentialité du compte concerné."
+      "description": "Modifiez l’accès aux médias dans les paramètres Android. Pour OneDrive et MEGA, retirez l’accès de DupliClean dans les paramètres de sécurité ou de confidentialité du compte concerné."
     }
   ]
 }
