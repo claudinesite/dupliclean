@@ -13,8 +13,8 @@
       "description": "Connexion et fichiers gérés par Microsoft"
     },
     {
-      "title": "Google Drive",
-      "description": "Connexion et fichiers gérés par Google"
+      "title": "Dropbox",
+      "description": "Connexion et fichiers gérés par Dropbox"
     }
   ]
 }
