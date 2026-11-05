@@ -1,0 +1,496 @@
+{
+  "name": "siteContent",
+  "type": "document",
+  "title": "Site DupliClean",
+  "description": "Ouvrez la fiche Site DupliClean, choisissez une rubrique, modifiez les champs et cliquez sur Publish pour publier.",
+  "groups": [
+    {
+      "name": "hero",
+      "title": "01 · Accueil et boutons",
+      "default": true
+    },
+    {
+      "name": "stats",
+      "title": "02 · Chiffres clés"
+    },
+    {
+      "name": "benefits",
+      "title": "03 · Avantages et résultats"
+    },
+    {
+      "name": "steps",
+      "title": "04 · Comment ça marche"
+    },
+    {
+      "name": "sources",
+      "title": "05 · Sources de fichiers"
+    },
+    {
+      "name": "data",
+      "title": "06 · Données et confidentialité"
+    },
+    {
+      "name": "faq",
+      "title": "07 · Questions fréquentes"
+    },
+    {
+      "name": "download",
+      "title": "08 · Téléchargement"
+    },
+    {
+      "name": "footer",
+      "title": "09 · Pied de page"
+    }
+  ],
+  "fields": [
+    {
+      "name": "title",
+      "title": "Nom du site",
+      "type": "string",
+      "readOnly": true,
+      "hidden": true
+    },
+    {
+      "name": "hero",
+      "title": "01 · Accueil et boutons",
+      "type": "object",
+      "group": "hero",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "eyebrowLead",
+          "title": "Accroche — début",
+          "type": "string",
+          "description": "Première phrase au-dessus du grand titre."
+        },
+        {
+          "name": "eyebrowEnd",
+          "title": "Accroche — fin",
+          "type": "string",
+          "description": "Deuxième phrase de l’accroche."
+        },
+        {
+          "name": "titleLead",
+          "title": "Grand titre — début",
+          "type": "string"
+        },
+        {
+          "name": "titleAccent",
+          "title": "Grand titre — partie colorée",
+          "type": "string"
+        },
+        {
+          "name": "titleEnd",
+          "title": "Grand titre — seconde ligne",
+          "type": "string"
+        },
+        {
+          "name": "subtitle",
+          "title": "Slogan sous le titre",
+          "type": "string"
+        },
+        {
+          "name": "primaryButton",
+          "title": "Bouton principal",
+          "type": "string",
+          "description": "Ce bouton mène au téléchargement."
+        },
+        {
+          "name": "secondaryButton",
+          "title": "Bouton secondaire",
+          "type": "string",
+          "description": "Ce bouton mène aux étapes de fonctionnement."
+        },
+        {
+          "name": "aboutLead",
+          "title": "Présentation — texte en gras",
+          "type": "string"
+        },
+        {
+          "name": "aboutBody",
+          "title": "Présentation — suite",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "stats",
+      "title": "02 · Chiffres clés",
+      "type": "object",
+      "group": "stats",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "items",
+          "title": "Les 3 chiffres clés",
+          "type": "array",
+          "description": "Ces trois éléments apparaissent juste sous la présentation de DupliClean. Gardez exactement 3 éléments.",
+          "of": [
+            {
+              "type": "object",
+              "name": "itemsEntry",
+              "fields": [
+                {
+                  "name": "value",
+                  "title": "Valeur ou titre court",
+                  "type": "string"
+                },
+                {
+                  "name": "label",
+                  "title": "Explication",
+                  "type": "string"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "benefits",
+      "title": "03 · Avantages et résultats",
+      "type": "object",
+      "group": "benefits",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "titleLead",
+          "title": "Grand titre — début",
+          "type": "string"
+        },
+        {
+          "name": "titleAccent",
+          "title": "Grand titre — partie colorée",
+          "type": "string"
+        },
+        {
+          "name": "resultsTitleLead",
+          "title": "Bloc résultats — première ligne",
+          "type": "string"
+        },
+        {
+          "name": "resultsTitleEnd",
+          "title": "Bloc résultats — seconde ligne",
+          "type": "string"
+        },
+        {
+          "name": "resultsDescription",
+          "title": "Bloc résultats — description",
+          "type": "text"
+        },
+        {
+          "name": "items",
+          "title": "Les 4 avantages",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "itemsEntry",
+              "fields": [
+                {
+                  "name": "title",
+                  "title": "Titre",
+                  "type": "string"
+                },
+                {
+                  "name": "summary",
+                  "title": "Résumé court",
+                  "type": "string"
+                },
+                {
+                  "name": "explanation",
+                  "title": "Explication détaillée",
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "description": "Gardez exactement 4 éléments."
+        },
+        {
+          "name": "choiceTitle",
+          "title": "Message de sécurité — titre",
+          "type": "string"
+        },
+        {
+          "name": "choiceDescription",
+          "title": "Message de sécurité — texte",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "steps",
+      "title": "04 · Comment ça marche",
+      "type": "object",
+      "group": "steps",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "kicker",
+          "title": "Petit titre",
+          "type": "string"
+        },
+        {
+          "name": "titleLead",
+          "title": "Grand titre — début",
+          "type": "string"
+        },
+        {
+          "name": "titleAccent",
+          "title": "Grand titre — partie colorée",
+          "type": "string"
+        },
+        {
+          "name": "intro",
+          "title": "Introduction",
+          "type": "text"
+        },
+        {
+          "name": "items",
+          "title": "Les 3 étapes",
+          "type": "array",
+          "description": "Gardez l’ordre choisir la source, lancer le scan, examiner et confirmer. Gardez exactement 3 éléments.",
+          "of": [
+            {
+              "type": "object",
+              "name": "itemsEntry",
+              "fields": [
+                {
+                  "name": "title",
+                  "title": "Titre de l’étape",
+                  "type": "string"
+                },
+                {
+                  "name": "description",
+                  "title": "Description",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "sources",
+      "title": "05 · Sources de fichiers",
+      "type": "object",
+      "group": "sources",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "kicker",
+          "title": "Petit titre",
+          "type": "string"
+        },
+        {
+          "name": "titleLead",
+          "title": "Grand titre — début",
+          "type": "string"
+        },
+        {
+          "name": "titleAccent",
+          "title": "Grand titre — partie colorée",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "title": "Description générale",
+          "type": "text"
+        },
+        {
+          "name": "items",
+          "title": "Téléphone, OneDrive et Google Drive",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "itemsEntry",
+              "fields": [
+                {
+                  "name": "title",
+                  "title": "Nom de la source",
+                  "type": "string"
+                },
+                {
+                  "name": "description",
+                  "title": "Description",
+                  "type": "string"
+                }
+              ]
+            }
+          ],
+          "description": "Gardez exactement 3 éléments."
+        }
+      ]
+    },
+    {
+      "name": "data",
+      "title": "06 · Données et confidentialité",
+      "type": "object",
+      "group": "data",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "kicker",
+          "title": "Petit titre",
+          "type": "string"
+        },
+        {
+          "name": "titleLead",
+          "title": "Grand titre — début",
+          "type": "string"
+        },
+        {
+          "name": "titleAccent",
+          "title": "Grand titre — partie colorée",
+          "type": "string"
+        },
+        {
+          "name": "intro",
+          "title": "Introduction",
+          "type": "text"
+        },
+        {
+          "name": "items",
+          "title": "Les 3 actions expliquées",
+          "type": "array",
+          "of": [
+            {
+              "type": "object",
+              "name": "itemsEntry",
+              "fields": [
+                {
+                  "name": "title",
+                  "title": "Titre",
+                  "type": "string"
+                },
+                {
+                  "name": "description",
+                  "title": "Description",
+                  "type": "text"
+                }
+              ]
+            }
+          ],
+          "description": "Gardez exactement 3 éléments."
+        }
+      ]
+    },
+    {
+      "name": "faq",
+      "title": "07 · Questions fréquentes",
+      "type": "object",
+      "group": "faq",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "kicker",
+          "title": "Petit titre",
+          "type": "string"
+        },
+        {
+          "name": "titleLead",
+          "title": "Grand titre — début",
+          "type": "string"
+        },
+        {
+          "name": "titleAccent",
+          "title": "Grand titre — partie colorée",
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "title": "Questions et réponses",
+          "type": "array",
+          "description": "Ouvrez une question pour modifier sa réponse. Vous pouvez aussi en ajouter une.",
+          "of": [
+            {
+              "type": "object",
+              "name": "itemsEntry",
+              "fields": [
+                {
+                  "name": "question",
+                  "title": "Question",
+                  "type": "string"
+                },
+                {
+                  "name": "answer",
+                  "title": "Réponse",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "download",
+      "title": "08 · Téléchargement",
+      "type": "object",
+      "group": "download",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "kicker",
+          "title": "Petit titre",
+          "type": "string"
+        },
+        {
+          "name": "titleLead",
+          "title": "Grand titre — début",
+          "type": "string"
+        },
+        {
+          "name": "titleAccent",
+          "title": "Grand titre — partie colorée",
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "title": "Phrase d’appel",
+          "type": "string"
+        },
+        {
+          "name": "availability",
+          "title": "Disponibilité de l’application",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "footer",
+      "title": "09 · Pied de page",
+      "type": "object",
+      "group": "footer",
+      "options": {
+        "collapsible": false
+      },
+      "fields": [
+        {
+          "name": "tagline",
+          "title": "Slogan du pied de page",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

@@ -149,7 +149,7 @@
 
   const sections = ['hero', 'stats', 'benefits', 'steps', 'sources', 'data', 'faq', 'download', 'footer'];
 
-  Promise.all(sections.map((section) =>
+  const fallbackContent = Promise.all(sections.map((section) =>
     fetch(`/content/${section}.json`, { cache: 'no-store' })
       .then((response) => {
         if (!response.ok) throw new Error(`${section}.json indisponible (${response.status})`);
@@ -157,6 +157,31 @@
       })
       .then((value) => [section, section === 'stats' ? value.items : value]),
   ))
-    .then((entries) => applyContent(Object.fromEntries(entries)))
+    .then((entries) => Object.fromEntries(entries));
+
+  // Keep a readable copy if Sanity is unavailable, and fill optional fields
+  // from it while an editor is completing a document.
+  function mergeContent(fallback, published) {
+    if (typeof fallback === 'string') return typeof published === 'string' ? published : fallback;
+    if (Array.isArray(fallback)) {
+      if (!Array.isArray(published) || !published.length) return fallback;
+      return published.map((item, index) => mergeContent(fallback[index] || fallback[0], item));
+    }
+    return Object.fromEntries(Object.entries(fallback).map(([key, value]) =>
+      [key, mergeContent(value, published?.[key])],
+    ));
+  }
+
+  const publishedContent = fetch('/api/content', { signal: AbortSignal.timeout(6500) })
+    .then((response) => {
+      if (!response.ok) throw new Error(`Sanity indisponible (${response.status})`);
+      return response.json();
+    })
+    .then((content) => ({ ...content, stats: content.stats?.items }))
+    .catch((error) => { console.warn('[DupliClean CMS]', error.message); return null; });
+
+  fallbackContent.then(applyContent).catch((error) => console.warn('[DupliClean CMS]', error.message));
+  Promise.all([fallbackContent, publishedContent])
+    .then(([fallback, published]) => { if (published) applyContent(mergeContent(fallback, published)); })
     .catch((error) => console.warn('[DupliClean CMS]', error.message));
 })();

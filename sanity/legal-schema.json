@@ -1,0 +1,338 @@
+[
+  {
+    "name": "privacyPolicy",
+    "type": "document",
+    "title": "Confidentialité",
+    "groups": [
+      {
+        "name": "fr",
+        "title": "Français",
+        "default": true
+      },
+      {
+        "name": "en",
+        "title": "English"
+      }
+    ],
+    "fields": [
+      {
+        "name": "title",
+        "title": "Document",
+        "type": "string",
+        "readOnly": true
+      },
+      {
+        "name": "bodyFr",
+        "title": "Texte français",
+        "type": "array",
+        "group": "fr",
+        "of": [
+          {
+            "type": "block",
+            "styles": [
+              {
+                "title": "Paragraphe",
+                "value": "normal"
+              },
+              {
+                "title": "Titre de section",
+                "value": "h2"
+              },
+              {
+                "title": "Sous-titre",
+                "value": "h3"
+              }
+            ],
+            "lists": [
+              {
+                "title": "Liste à puces",
+                "value": "bullet"
+              }
+            ],
+            "marks": {
+              "decorators": [
+                {
+                  "title": "Gras",
+                  "value": "strong"
+                },
+                {
+                  "title": "Italique",
+                  "value": "em"
+                }
+              ],
+              "annotations": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "bodyEn",
+        "title": "English text",
+        "type": "array",
+        "group": "en",
+        "of": [
+          {
+            "type": "block",
+            "styles": [
+              {
+                "title": "Paragraph",
+                "value": "normal"
+              },
+              {
+                "title": "Section heading",
+                "value": "h2"
+              },
+              {
+                "title": "Subheading",
+                "value": "h3"
+              }
+            ],
+            "lists": [
+              {
+                "title": "Bullet list",
+                "value": "bullet"
+              }
+            ],
+            "marks": {
+              "decorators": [
+                {
+                  "title": "Bold",
+                  "value": "strong"
+                },
+                {
+                  "title": "Italic",
+                  "value": "em"
+                }
+              ],
+              "annotations": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "termsOfUse",
+    "type": "document",
+    "title": "Conditions d’utilisation",
+    "groups": [
+      {
+        "name": "fr",
+        "title": "Français",
+        "default": true
+      },
+      {
+        "name": "en",
+        "title": "English"
+      }
+    ],
+    "fields": [
+      {
+        "name": "title",
+        "title": "Document",
+        "type": "string",
+        "readOnly": true
+      },
+      {
+        "name": "bodyFr",
+        "title": "Texte français",
+        "type": "array",
+        "group": "fr",
+        "of": [
+          {
+            "type": "block",
+            "styles": [
+              {
+                "title": "Paragraphe",
+                "value": "normal"
+              },
+              {
+                "title": "Titre de section",
+                "value": "h2"
+              },
+              {
+                "title": "Sous-titre",
+                "value": "h3"
+              }
+            ],
+            "lists": [
+              {
+                "title": "Liste à puces",
+                "value": "bullet"
+              }
+            ],
+            "marks": {
+              "decorators": [
+                {
+                  "title": "Gras",
+                  "value": "strong"
+                },
+                {
+                  "title": "Italique",
+                  "value": "em"
+                }
+              ],
+              "annotations": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "bodyEn",
+        "title": "English text",
+        "type": "array",
+        "group": "en",
+        "of": [
+          {
+            "type": "block",
+            "styles": [
+              {
+                "title": "Paragraph",
+                "value": "normal"
+              },
+              {
+                "title": "Section heading",
+                "value": "h2"
+              },
+              {
+                "title": "Subheading",
+                "value": "h3"
+              }
+            ],
+            "lists": [
+              {
+                "title": "Bullet list",
+                "value": "bullet"
+              }
+            ],
+            "marks": {
+              "decorators": [
+                {
+                  "title": "Bold",
+                  "value": "strong"
+                },
+                {
+                  "title": "Italic",
+                  "value": "em"
+                }
+              ],
+              "annotations": []
+            }
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "dataDeletion",
+    "type": "document",
+    "title": "Suppression des données",
+    "groups": [
+      {
+        "name": "fr",
+        "title": "Français",
+        "default": true
+      },
+      {
+        "name": "en",
+        "title": "English"
+      }
+    ],
+    "fields": [
+      {
+        "name": "title",
+        "title": "Document",
+        "type": "string",
+        "readOnly": true
+      },
+      {
+        "name": "bodyFr",
+        "title": "Texte français",
+        "type": "array",
+        "group": "fr",
+        "of": [
+          {
+            "type": "block",
+            "styles": [
+              {
+                "title": "Paragraphe",
+                "value": "normal"
+              },
+              {
+                "title": "Titre de section",
+                "value": "h2"
+              },
+              {
+                "title": "Sous-titre",
+                "value": "h3"
+              }
+            ],
+            "lists": [
+              {
+                "title": "Liste à puces",
+                "value": "bullet"
+              }
+            ],
+            "marks": {
+              "decorators": [
+                {
+                  "title": "Gras",
+                  "value": "strong"
+                },
+                {
+                  "title": "Italique",
+                  "value": "em"
+                }
+              ],
+              "annotations": []
+            }
+          }
+        ]
+      },
+      {
+        "name": "bodyEn",
+        "title": "English text",
+        "type": "array",
+        "group": "en",
+        "of": [
+          {
+            "type": "block",
+            "styles": [
+              {
+                "title": "Paragraph",
+                "value": "normal"
+              },
+              {
+                "title": "Section heading",
+                "value": "h2"
+              },
+              {
+                "title": "Subheading",
+                "value": "h3"
+              }
+            ],
+            "lists": [
+              {
+                "title": "Bullet list",
+                "value": "bullet"
+              }
+            ],
+            "marks": {
+              "decorators": [
+                {
+                  "title": "Bold",
+                  "value": "strong"
+                },
+                {
+                  "title": "Italic",
+                  "value": "em"
+                }
+              ],
+              "annotations": []
+            }
+          }
+        ]
+      }
+    ]
+  }
+]

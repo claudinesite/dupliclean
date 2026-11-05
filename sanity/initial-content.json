@@ -1,0 +1,196 @@
+{
+  "_id": "siteContent",
+  "title": "Site DupliClean",
+  "hero": {
+    "eyebrowLead": "Moins de doublons.",
+    "eyebrowEnd": "Plus de place pour ce qui compte !",
+    "titleLead": "Libérez",
+    "titleAccent": "votre espace.",
+    "titleEnd": "Simplement.",
+    "subtitle": "Trouvez. Supprimez. Respirez.",
+    "primaryButton": "Découvrir l’app",
+    "secondaryButton": "Comment ça marche",
+    "aboutLead": "Doublons, photos similaires, fichiers volumineux :",
+    "aboutBody": "DupliClean vous aide à faire le tri. Vous choisissez quoi supprimer."
+  },
+  "stats": {
+    "items": [
+      {
+        "value": "3 sources",
+        "label": "Téléphone, OneDrive, Dropbox et MEGA",
+        "_key": "item-1"
+      },
+      {
+        "value": "Votre choix",
+        "label": "Vous validez chaque suppression",
+        "_key": "item-2"
+      },
+      {
+        "value": "Sans compte",
+        "label": "Aucun compte DupliClean à créer",
+        "_key": "item-3"
+      }
+    ]
+  },
+  "benefits": {
+    "titleLead": "Moins de doublons,",
+    "titleAccent": "plus de place pour ce qui compte !",
+    "resultsTitleLead": "Vos résultats.",
+    "resultsTitleEnd": "Vos décisions.",
+    "resultsDescription": "Ouvrez une catégorie pour examiner les fichiers détectés et choisir ce que vous souhaitez retirer. À la fin du scan, rien n’a encore été supprimé.",
+    "items": [
+      {
+        "title": "Doublons exacts",
+        "summary": "Repérez les fichiers dont le contenu est identique.",
+        "explanation": "DupliClean compare des informations comme la taille et les empreintes des fichiers, calculées sur Android ou fournies par le service cloud.",
+        "_key": "item-1"
+      },
+      {
+        "title": "Photos similaires",
+        "summary": "Retrouvez les photos qui se ressemblent visuellement.",
+        "explanation": "La comparaison s’appuie sur des miniatures. La similarité reste une estimation : vérifiez les résultats avant de choisir les photos à supprimer.",
+        "_key": "item-2"
+      },
+      {
+        "title": "Fichiers volumineux et captures d’écran",
+        "summary": "Identifiez les fichiers qui méritent un peu de tri.",
+        "explanation": "Selon la source et la fonctionnalité utilisée, DupliClean repère les fichiers volumineux et les captures d’écran, et estime l’espace récupérable.",
+        "_key": "item-3"
+      },
+      {
+        "title": "Vos données restent entre vos mains",
+        "summary": "Vous choisissez les fichiers et confirmez leur suppression.",
+        "explanation": "Les fichiers locaux ne sont pas envoyés sur un serveur du développeur pour l’analyse. Aucune copie permanente des fichiers ou résultats n’y est conservée.",
+        "_key": "item-4"
+      }
+    ],
+    "choiceTitle": "DupliClean ne supprime pas automatiquement vos fichiers.",
+    "choiceDescription": "C’est vous qui décidez quoi supprimer !"
+  },
+  "steps": {
+    "kicker": "*   COMMENT ÇA MARCHE",
+    "titleLead": "Une source. Un scan.",
+    "titleAccent": "Plusieurs résultats utiles.",
+    "intro": "DupliClean ne recherche pas seulement les doublons : le même scan vous aide à repérer plusieurs catégories de fichiers à examiner.",
+    "items": [
+      {
+        "title": "Choisissez la source.",
+        "description": "Sélectionnez les fichiers autorisés sur votre appareil Android, votre compte OneDrive, Dropbox ou votre compte MEGA.",
+        "_key": "item-1"
+      },
+      {
+        "title": "Lancez un seul scan.",
+        "description": "Selon la source et les autorisations accordées, DupliClean recherche les doublons exacts, les photos visuellement similaires, les fichiers volumineux et les captures d’écran.",
+        "_key": "item-2"
+      },
+      {
+        "title": "Examinez puis confirmez.",
+        "description": "Ouvrez chaque catégorie, vérifiez les fichiers proposés et choisissez ceux à conserver ou à supprimer. Rien n’est supprimé automatiquement.",
+        "_key": "item-3"
+      }
+    ]
+  },
+  "sources": {
+    "kicker": "*   VOS FICHIERS, OÙ QU’ILS SOIENT",
+    "titleLead": "Plusieurs sources.",
+    "titleAccent": "Un appareil mieux organisé.",
+    "description": "Aucun compte DupliClean distinct à créer. Utilisez les médias autorisés sur Android ou vos comptes Microsoft et Google existants. Les fonctions disponibles dépendent de la source et des autorisations.",
+    "items": [
+      {
+        "title": "Votre téléphone",
+        "description": "Photos et vidéos autorisées · Analyse locale",
+        "_key": "item-1"
+      },
+      {
+        "title": "OneDrive",
+        "description": "Connexion et fichiers gérés par Microsoft",
+        "_key": "item-2"
+      },
+      {
+        "title": "Dropbox",
+        "description": "Connexion et fichiers gérés par Dropbox",
+        "_key": "item-3"
+      }
+    ]
+  },
+  "data": {
+    "kicker": "*   VOS DONNÉES, VOS CHOIX",
+    "titleLead": "Votre historique.",
+    "titleAccent": "Sous votre contrôle.",
+    "intro": "DupliClean peut conserver vos préférences et l’historique des nettoyages localement sur votre appareil.",
+    "items": [
+      {
+        "title": "Gérez l’historique dans l’application.",
+        "description": "Supprimez une entrée, sélectionnez-en plusieurs ou effacez tout l’historique. Cela retire uniquement les informations de nettoyage, pas les fichiers de votre téléphone ou du cloud.",
+        "_key": "item-1"
+      },
+      {
+        "title": "Effacez les données locales.",
+        "description": "Dans les paramètres Android, ouvrez les informations de DupliClean puis effacez ses données ou son stockage. Désinstaller l’application retire aussi ses préférences et autres données locales.",
+        "_key": "item-2"
+      },
+      {
+        "title": "Retirez les autorisations.",
+        "description": "Modifiez l’accès aux médias dans les paramètres Android. Pour OneDrive et MEGA, retirez l’accès de DupliClean dans les paramètres de sécurité ou de confidentialité du compte concerné.",
+        "_key": "item-3"
+      }
+    ]
+  },
+  "faq": {
+    "kicker": "*   EN TOUTE CLARTÉ",
+    "titleLead": "Moins de doutes.",
+    "titleAccent": "Plus de sérénité.",
+    "items": [
+      {
+        "question": "DupliClean supprime-t-il automatiquement mes fichiers ?",
+        "answer": "Non. Les résultats vous sont présentés avant toute suppression. Vous choisissez les fichiers à conserver ou à supprimer, puis confirmez l’opération.",
+        "_key": "item-1"
+      },
+      {
+        "question": "Que peut analyser DupliClean ?",
+        "answer": "Selon la source et les fonctions utilisées : les doublons exacts, les photos visuellement similaires, les fichiers volumineux et les captures d’écran. Les photos similaires sont des suggestions à vérifier, pas une garantie que les images sont identiques.",
+        "_key": "item-2"
+      },
+      {
+        "question": "Faut-il créer un compte DupliClean ?",
+        "answer": "Non. Il n’y a pas de compte DupliClean distinct. Pour OneDrive, Dropbox ou MEGA, vous utilisez votre compte existant et vous vous authentifiez auprès de Microsoft, Dropbox ou MEGA.",
+        "_key": "item-3"
+      },
+      {
+        "question": "Mes fichiers sont-ils envoyés sur un serveur DupliClean ?",
+        "answer": "Les fichiers locaux ne sont pas envoyés vers un serveur du développeur pour l’analyse. DupliClean n’y conserve pas de copies permanentes de vos fichiers, miniatures ou résultats. Pour le cloud, les données nécessaires sont échangées avec Microsoft, Dropbox ou MEGA ; certaines miniatures peuvent être téléchargées temporairement pour la comparaison.",
+        "_key": "item-4"
+      },
+      {
+        "question": "Que devient un fichier supprimé dans le cloud ?",
+        "answer": "OneDrive, Dropbox et MEGA traitent les demandes de suppression selon leurs propres règles de gestion des fichiers et de la corbeille. Lorsque cette fonctionnalité est prise en charge, les fichiers supprimés sont déplacés vers la corbeille.\n\nLa possibilité de restaurer ces fichiers dépend des politiques de chaque service et n’est pas garantie par DupliClean.",
+        "_key": "item-5"
+      },
+      {
+        "question": "Effacer l’historique supprime-t-il mes fichiers ?",
+        "answer": "Non. Supprimer une ou plusieurs entrées de l’historique retire uniquement ces informations locales. Cela ne supprime pas les fichiers correspondants sur Android, OneDrive, Dropbox ou MEGA.",
+        "_key": "item-6"
+      },
+      {
+        "question": "Puis-je limiter ou retirer l’accès à mes fichiers ?",
+        "answer": "Oui. Les versions récentes d’Android permettent un accès complet ou limité à certains médias sélectionnés. Vous pouvez modifier cet accès dans les paramètres Android. Les autorisations cloud se retirent depuis les paramètres de votre compte Microsoft, Dropbox ou MEGA.",
+        "_key": "item-7"
+      },
+      {
+        "question": "Quelles langues sont disponibles ?",
+        "answer": "Français, anglais, italien, espagnol, allemand et portugais. Votre préférence de langue peut être enregistrée localement sur votre appareil.",
+        "_key": "item-8"
+      }
+    ]
+  },
+  "download": {
+    "kicker": "*   TROUVEZ. SUPPRIMEZ. RESPIREZ.",
+    "titleLead": "Un appareil plus léger,",
+    "titleAccent": "un quotidien plus fluide.",
+    "description": "Libérez votre espace simplement.",
+    "availability": "Disponible uniquement sur Android, via Google Play."
+  },
+  "footer": {
+    "tagline": "Moins de doublons, plus de place pour ce qui compte !"
+  }
+}

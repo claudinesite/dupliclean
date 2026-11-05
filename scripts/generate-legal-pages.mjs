@@ -20,8 +20,10 @@ function escapeHtml(value) {
 
 function inline(value) {
   return escapeHtml(value)
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) =>
+      /^(https?:\/\/|mailto:|#)/i.test(url) ? `<a href="${url}">${label}</a>` : label)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
 }
 
 function slug(value) {
@@ -91,7 +93,7 @@ function markdownToHtml(markdown) {
   return blocks.join('\n');
 }
 
-function documentTemplate(name, title, markdown) {
+export function documentTemplate(name, title, markdown) {
   const body = markdown.replace(/^# .+\r?\n/, '').replace(/^- \[(Français|English)\].+\r?\n/gm, '').replace(/^\s*---/, '');
   let language = 'fr';
   const toc = [];
@@ -145,8 +147,10 @@ function documentTemplate(name, title, markdown) {
 </html>`;
 }
 
-for (const [name, title] of pages) {
-  const markdown = await readFile(path.join(root, 'legal', `${name}.md`), 'utf8');
-  await writeFile(path.join(root, 'dist', `${name}.html`), documentTemplate(name, title, markdown), 'utf8');
+if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  for (const [name, title] of pages) {
+    const markdown = await readFile(path.join(root, 'legal', `${name}.md`), 'utf8');
+    await writeFile(path.join(root, 'dist', `${name}.html`), documentTemplate(name, title, markdown), 'utf8');
+  }
+  console.log(`Generated ${pages.length} DupliClean legal pages.`);
 }
-console.log(`Generated ${pages.length} DupliClean legal pages.`);

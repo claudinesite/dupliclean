@@ -1,57 +1,44 @@
 # DupliClean
 
-Landing page statique en HTML, CSS personnalisé, Tailwind CSS et JavaScript natif. Le contenu éditorial est géré avec Decap CMS et reste stocké dans le dépôt GitHub.
+Site HTML, CSS, Tailwind et JavaScript natif, hébergé sur Vercel. Le contenu est géré dans Sanity : projet DupliClean `89363tcz`, dataset public `production`. Descake reste indépendant.
+
+## Modifier le site
+
+1. Ouvrir https://dupliclean.ca/admin/ ou https://dupliclean-admin.sanity.studio/.
+2. Se connecter avec le compte Sanity propriétaire du projet.
+3. Ouvrir **Site DupliClean**, puis la fiche du même nom.
+4. Choisir un onglet : Accueil, Chiffres clés, Avantages, Étapes, Sources, Données, FAQ, Téléchargement ou Pied de page.
+5. Modifier puis cliquer sur **Publish**. Les brouillons restent privés.
+6. Actualiser le site après environ une minute, le temps des caches Sanity et Vercel.
+
+Les trois documents juridiques ont chacun leur fiche et deux onglets Français / English avec un éditeur de texte mis en forme. Les URL publiques restent identiques.
+
+Utiliser les fiches existantes plutôt que créer des doublons : le site lit leurs identifiants fixes. Pour inviter un collaborateur plus tard, ouvrir les membres du projet DupliClean dans Sanity Manage.
+
+## Fonctionnement
+
+- `api/content.js` lit la fiche publiée `siteContent` avec la projection explicite de `sanity/content-query.cjs`.
+- `dist/cms-content.js` applique ces textes au design existant.
+- `api/legal.js` rend les documents juridiques publiés aux mêmes adresses `.html`, via les réécritures Vercel.
+- `sanity/client.cjs` fixe le projet, le dataset, la version d’API et la perspective `published`. Aucun jeton n’est nécessaire au site.
+- `dist/content/*.json`, les pages HTML générées et `legal/*.md` conservent la copie de secours.
+- `scripts/generate-legal-pages.mjs` partage le rendu juridique entre le build et les fonctions.
+
+Le Studio est **géré par le connecteur Sanity**, sans Studio local. Les schémas de référence sont `sanity/schema.json` et `sanity/legal-schema.json`. Pour les modifier, utiliser `deploy_schema` puis `deploy_studio` sur le workspace `default`.
+
+Les fichiers `sanity/initial-*.json` sont les instantanés de migration, pris après récupération des dernières publications Decap. Ne pas les réimporter au-dessus des contenus édités depuis Sanity.
 
 ## Développement
 
 ```sh
 npm ci
 npm run build
-python -m http.server 4173 --bind 127.0.0.1 --directory dist
+node --test tests/sanity.test.cjs
+vercel dev
 ```
 
-Ouvrir `http://127.0.0.1:4173`. Pendant les modifications des classes HTML :
+`vercel dev` exécute les routes API et les réécritures. Un serveur statique simple affiche seulement le design et le contenu de secours.
 
-```sh
-npm run watch:css
-```
+Les changements de code passent par GitHub → Vercel. Publier un texte dans Sanity ne demande ni commit ni redéploiement.
 
-## Administration Decap CMS
-
-L’interface d’administration est disponible sur `https://dupliclean.vercel.app/admin/`.
-
-- La structure des champs se trouve dans `dist/admin/config.yml`.
-- Les textes modifiables se trouvent dans `dist/content/site.json`.
-- `dist/cms-content.js` applique le contenu au site sans modifier le design.
-- Chaque publication depuis Decap crée un commit sur `main`. L’intégration GitHub de Vercel redéploie ensuite automatiquement le site.
-
-### Authentification GitHub
-
-Créer une application OAuth GitHub avec :
-
-- Homepage URL : `https://dupliclean.vercel.app/admin/`
-- Authorization callback URL : `https://dupliclean.vercel.app/api/complete`
-
-Ajouter ensuite ces variables à tous les environnements du projet Vercel :
-
-```env
-ORIGIN=https://dupliclean.vercel.app
-COMPLETE_URL=https://dupliclean.vercel.app/api/complete
-ADMIN_PANEL_URL=https://dupliclean.vercel.app/admin/
-OAUTH_CLIENT_ID=...
-OAUTH_CLIENT_SECRET=...
-```
-
-Les fonctions `api/begin.js` et `api/complete.js` effectuent le flux OAuth. Le secret GitHub reste uniquement dans Vercel et ne doit jamais être ajouté au dépôt.
-
-## Fichiers principaux
-
-- `dist/index.html` : page et classes utilitaires Tailwind.
-- `src/tailwind.css` : imports, détection des sources et thème DupliClean.
-- `dist/tailwind.css` : feuille générée par `npm run build`.
-- `dist/style.css`, `dist/reference.css`, `dist/typography.css` : composition visuelle.
-- `dist/app.js`, `dist/reference.js` : interactions.
-- `dist/assets/` : images.
-- `vercel.json` : configuration de build et des fonctions Vercel.
-
-Le dossier `dist` reste directement hébergeable. Tailwind est compilé à la construction ; aucun script Tailwind/CDN n’est chargé sur la page publique.
+Les anciens identifiants GitHub OAuth de Decap ne sont plus utilisés. Les anciens endpoints redirigent vers Sanity. Le propriétaire peut révoquer les secrets OAuth après validation de la migration.
