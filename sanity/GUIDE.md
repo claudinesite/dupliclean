@@ -10,7 +10,7 @@ Ouvrez [dupliclean.ca/admin/](https://dupliclean.ca/admin/). Vous arrivez sur Sa
 2. Choisissez l’onglet correspondant à ce que vous souhaitez modifier.
 3. Modifiez les champs. Sanity enregistre automatiquement votre brouillon.
 4. Cliquez sur **Publish** pour rendre les changements publics.
-5. Ouvrez [dupliclean.ca](https://dupliclean.ca/) et actualisez après environ une minute.
+5. Ouvrez [dupliclean.ca](https://dupliclean.ca/) et actualisez après une à deux minutes.
 
 Les champs et onglets sont nommés en français. Certains boutons de l’interface Sanity, notamment **Publish**, peuvent être en anglais.
 

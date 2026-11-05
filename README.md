@@ -9,7 +9,7 @@ Site HTML, CSS, Tailwind et JavaScript natif, hébergé sur Vercel. Le contenu e
 3. Ouvrir **Site DupliClean**, puis la fiche du même nom.
 4. Choisir un onglet : Accueil, Chiffres clés, Avantages, Étapes, Sources, Données, FAQ, Téléchargement ou Pied de page.
 5. Modifier puis cliquer sur **Publish**. Les brouillons restent privés.
-6. Actualiser le site après environ une minute, le temps des caches Sanity et Vercel.
+6. Actualiser le site après une à deux minutes, le temps des caches Sanity et Vercel.
 
 Les trois documents juridiques ont chacun leur fiche et deux onglets Français / English avec un éditeur de texte mis en forme. Les URL publiques restent identiques.
 
