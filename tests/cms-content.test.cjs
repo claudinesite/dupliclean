@@ -73,8 +73,8 @@ test('links and images reject script URLs and untrusted image hosts', async () =
   assert.match(document.querySelector('.faq-list summary').textContent, /<img/);
 });
 
-test('Sanity image resolution includes optimized URLs and accepts empty optional fields', () => {
-  const result = resolveImages({mainImage: {
+test('Sanity image resolution includes optimized URLs and accepts empty optional fields', async () => {
+  const result = await resolveImages({mainImage: {
     _type: 'image', asset: {_id: 'image-abc123-100x200-png'}, alt: 'Téléphone',
     crop: {left: 0, right: 0, top: 0, bottom: 0},
   }, optional: null});
