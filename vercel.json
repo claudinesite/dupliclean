@@ -3,13 +3,13 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "functions": {
-    "api/*.js": {
-      "maxDuration": 10
-    },
     "api/legal.js": {
       "maxDuration": 10,
       "includeFiles": "dist/*.html"
-    }
+    },
+    "api/content.js": { "maxDuration": 10 },
+    "api/begin.js": { "maxDuration": 10 },
+    "api/complete.js": { "maxDuration": 10 }
   },
   "redirects": [
     { "source": "/admin", "destination": "https://dupliclean-admin.sanity.studio/", "permanent": false },
