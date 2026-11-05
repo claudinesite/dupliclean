@@ -1,7 +1,7 @@
 [
   {
     "key": "hero",
-    "id": "section.hero",
+    "id": "section-hero",
     "type": "siteHero",
     "title": "Le haut de page",
     "description": "Le grand titre, l’accroche et les boutons affichés en premier.",
@@ -273,7 +273,7 @@
   },
   {
     "key": "stats",
-    "id": "section.stats",
+    "id": "section-stats",
     "type": "siteStats",
     "title": "L’ESPRIT DUPLICLEAN",
     "description": "Le texte de présentation de DupliClean et les trois informations qui l’accompagnent.",
@@ -396,7 +396,7 @@
   },
   {
     "key": "benefits",
-    "id": "section.benefits",
+    "id": "section-benefits",
     "type": "siteBenefits",
     "title": "Les fonctionnalités",
     "description": "Les avantages, les résultats de scan et le message de sécurité.",
@@ -606,7 +606,7 @@
   },
   {
     "key": "steps",
-    "id": "section.steps",
+    "id": "section-steps",
     "type": "siteSteps",
     "title": "Les étapes d’utilisation",
     "description": "Choisir une source, lancer le scan, examiner les résultats.",
@@ -724,7 +724,7 @@
   },
   {
     "key": "sources",
-    "id": "section.sources",
+    "id": "section-sources",
     "type": "siteSources",
     "title": "Les sources de fichiers",
     "description": "Les emplacements que l’application peut analyser.",
@@ -860,7 +860,7 @@
   },
   {
     "key": "data",
-    "id": "section.data",
+    "id": "section-data",
     "type": "siteData",
     "title": "Les données et la confidentialité",
     "description": "L’historique, les données locales et les autorisations.",
@@ -997,7 +997,7 @@
   },
   {
     "key": "faq",
-    "id": "section.faq",
+    "id": "section-faq",
     "type": "siteFaq",
     "title": "Les questions fréquentes",
     "description": "Ajoutez une question ou modifiez les réponses existantes.",
@@ -1088,7 +1088,7 @@
   },
   {
     "key": "download",
-    "id": "section.download",
+    "id": "section-download",
     "type": "siteDownload",
     "title": "Le téléchargement",
     "description": "Le texte qui invite les visiteurs à télécharger l’application.",
@@ -1198,7 +1198,7 @@
   },
   {
     "key": "footer",
-    "id": "section.footer",
+    "id": "section-footer",
     "type": "siteFooter",
     "title": "Le bas de page",
     "description": "Le slogan affiché tout en bas du site.",

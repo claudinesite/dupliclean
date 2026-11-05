@@ -21,6 +21,15 @@ async function render(published) {
 }
 const image = {url: 'https://cdn.sanity.io/images/89363tcz/production/test-100x100.png', alt: 'Image modifiée', caption: 'Ma légende'};
 
+test('published section identifiers remain readable without authentication', () => {
+  const sections = require('../studio/sections.json');
+  const query = require('../sanity/content-query.cjs');
+  for (const section of sections) {
+    assert.ok(!section.id.includes('.'), 'Sanity treats dotted IDs as private');
+    assert.ok(query.includes(`_id==${JSON.stringify(section.id)}`));
+  }
+});
+
 test('section edits update the spirit text, images, links and buttons together', async () => {
   const {document, window, opened} = await render({
     stats: {presentationLead: 'DupliClean simplifie le tri.', presentationEnd: 'Gardez vos souvenirs.', kicker: 'L’ESPRIT DUPLICLEAN'},
