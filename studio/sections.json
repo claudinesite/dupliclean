@@ -109,9 +109,25 @@
     "key": "stats",
     "id": "section.stats",
     "type": "siteStats",
-    "title": "La présentation en bref",
-    "description": "Les trois informations qui présentent DupliClean en un coup d’œil.",
+    "title": "L’ESPRIT DUPLICLEAN",
+    "description": "Le texte de présentation de DupliClean et les trois informations qui l’accompagnent.",
     "fields": [
+      {
+        "name": "presentationLead",
+        "title": "Texte principal",
+        "type": "text",
+        "rows": 4,
+        "description": "Le début du grand texte, de « DupliClean » jusqu’à « garder l’essentiel ». Les retours à la ligne sont repris sur grand écran.",
+        "fieldset": "presentation"
+      },
+      {
+        "name": "presentationEnd",
+        "title": "Suite du texte",
+        "type": "text",
+        "rows": 4,
+        "description": "La seconde partie, affichée dans la couleur plus douce du bandeau.",
+        "fieldset": "presentation"
+      },
       {
         "name": "items",
         "title": "Les informations à afficher",
@@ -134,10 +150,26 @@
               }
             ]
           }
-        ]
+        ],
+        "fieldset": "highlights"
       }
     ],
-    "fieldsets": []
+    "fieldsets": [
+      {
+        "name": "presentation",
+        "title": "Le grand texte de présentation",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "highlights",
+        "title": "Les trois informations en dessous",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
   },
   {
     "key": "benefits",

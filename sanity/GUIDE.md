@@ -15,7 +15,7 @@ Ouvrez [dupliclean.ca/admin/](https://dupliclean.ca/admin/) et connectez-vous à
 | Rubrique | À modifier |
 | --- | --- |
 | Le haut de page | Accroche, grand titre, slogan et boutons |
-| La présentation en bref | Les trois informations de présentation |
+| L’ESPRIT DUPLICLEAN | Le grand texte de présentation et les trois informations en dessous |
 | Les fonctionnalités | Avantages, résultats et message de sécurité |
 | Les étapes d’utilisation | Choisir la source, scanner, vérifier |
 | Les sources de fichiers | Les emplacements analysés |

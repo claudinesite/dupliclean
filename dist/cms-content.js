@@ -36,6 +36,30 @@
     items.slice(0, elements.length).forEach((item, index) => callback(elements[index], item));
   }
 
+  function presentationNodes(value) {
+    return value.split('\n').flatMap((line, index) => index ? [
+      Object.assign(document.createElement('br'), { className: 'desktop-break' }),
+      document.createTextNode(` ${line}`),
+    ] : [document.createTextNode(line)]);
+  }
+
+  function setPresentation(stats) {
+    if (!stats?.presentationLead || !stats?.presentationEnd) return;
+    const heading = select('.reference-about h2');
+    if (!heading) return;
+    const symbols = select('.about-symbols', heading);
+    const leading = stats.presentationLead;
+    const content = [];
+    // Reuse the decorative logo group rather than rebuilding its SVG markup.
+    if (symbols && /^DupliClean\s/.test(leading)) {
+      content.push(document.createTextNode('DupliClean '), symbols,
+        ...presentationNodes(leading.slice('DupliClean'.length)));
+    } else content.push(...presentationNodes(leading));
+    const accent = document.createElement('span');
+    accent.append(...presentationNodes(stats.presentationEnd));
+    heading.replaceChildren(...content, document.createTextNode(' '), accent);
+  }
+
   function applyContent(content) {
     const { hero, stats, benefits, steps, sources, data, faq, download, footer } = content;
 
@@ -65,7 +89,8 @@
       document.title = `DupliClean — ${hero.titleLead} ${hero.titleAccent} ${hero.titleEnd}`;
     }
 
-    applyFixedItems('.reference-stats > div', stats, (element, item) => {
+    setPresentation(stats);
+    applyFixedItems('.reference-stats > div', stats?.items, (element, item) => {
       setText('strong', item.value, element);
       setText('span', item.label, element);
     });
@@ -155,7 +180,7 @@
         if (!response.ok) throw new Error(`${section}.json indisponible (${response.status})`);
         return response.json();
       })
-      .then((value) => [section, section === 'stats' ? value.items : value]),
+      .then((value) => [section, value]),
   ))
     .then((entries) => Object.fromEntries(entries));
 
@@ -177,7 +202,6 @@
       if (!response.ok) throw new Error(`Sanity indisponible (${response.status})`);
       return response.json();
     })
-    .then((content) => ({ ...content, stats: content.stats?.items }))
     .catch((error) => { console.warn('[DupliClean CMS]', error.message); return null; });
 
   fallbackContent.then(applyContent).catch((error) => console.warn('[DupliClean CMS]', error.message));
