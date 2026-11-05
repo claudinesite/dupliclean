@@ -22,10 +22,12 @@ module.exports = async function legal(request, response) {
     if (!document?.bodyFr?.length || !document?.bodyEn?.length) throw new Error('Incomplete legal document');
     const markdown = `# ${page.title}\n\n# Français\n\n${portableToMarkdown(document.bodyFr)}\n\n# English\n\n${portableToMarkdown(document.bodyEn)}`;
     const { documentTemplate } = await import('../scripts/generate-legal-pages.mjs');
+    response.setHeader('X-DupliClean-Content', 'sanity');
     response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=30, stale-while-revalidate=60');
     return response.status(200).send(documentTemplate(slug, page.title, markdown));
   } catch (error) {
     console.warn('[Sanity legal]', error.message);
+    response.setHeader('X-DupliClean-Content', 'fallback');
     response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=10');
     const html = await readFile(path.join(process.cwd(), 'dist', `${slug}.html`), 'utf8');
     return response.status(200).send(html);

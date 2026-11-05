@@ -7,17 +7,31 @@
       "maxDuration": 10,
       "includeFiles": "dist/*.html"
     },
-    "api/content.js": { "maxDuration": 10 },
-    "api/begin.js": { "maxDuration": 10 },
-    "api/complete.js": { "maxDuration": 10 }
+    "api/content.js": {
+      "maxDuration": 10
+    },
+    "api/begin.js": {
+      "maxDuration": 10
+    },
+    "api/complete.js": {
+      "maxDuration": 10
+    }
   },
-  "redirects": [
-    { "source": "/admin", "destination": "https://dupliclean-admin.sanity.studio/", "permanent": false },
-    { "source": "/admin/:path*", "destination": "https://dupliclean-admin.sanity.studio/", "permanent": false }
-  ],
-  "rewrites": [
-    { "source": "/privacy-policy.html", "destination": "/api/legal?page=privacy-policy" },
-    { "source": "/terms-of-use.html", "destination": "/api/legal?page=terms-of-use" },
-    { "source": "/data-deletion.html", "destination": "/api/legal?page=data-deletion" }
+  "routes": [
+    {
+      "src": "/admin(?:/.*)?",
+      "status": 307,
+      "headers": {
+        "Location": "https://dupliclean-admin.sanity.studio/",
+        "Cache-Control": "no-store"
+      }
+    },
+    {
+      "src": "/(privacy-policy|terms-of-use|data-deletion)\\.html",
+      "dest": "/api/legal?page=$1"
+    },
+    {
+      "handle": "filesystem"
+    }
   ]
 }
