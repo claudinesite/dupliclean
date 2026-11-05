@@ -1,0 +1,514 @@
+[
+  {
+    "key": "hero",
+    "id": "section.hero",
+    "type": "siteHero",
+    "title": "Le haut de page",
+    "description": "Le grand titre, l’accroche et les boutons affichés en premier.",
+    "fields": [
+      {
+        "name": "eyebrowLead",
+        "title": "Accroche — début",
+        "type": "string",
+        "description": "Première phrase au-dessus du grand titre.",
+        "fieldset": "intro"
+      },
+      {
+        "name": "eyebrowEnd",
+        "title": "Accroche — fin",
+        "type": "string",
+        "description": "Deuxième phrase de l’accroche.",
+        "fieldset": "intro"
+      },
+      {
+        "name": "titleLead",
+        "title": "Grand titre — début",
+        "type": "string",
+        "description": "Exemple : Libérez",
+        "fieldset": "headline"
+      },
+      {
+        "name": "titleAccent",
+        "title": "Grand titre — partie colorée",
+        "type": "string",
+        "description": "Exemple : votre espace. Cette partie reçoit la couleur d’accent du site.",
+        "fieldset": "headline"
+      },
+      {
+        "name": "titleEnd",
+        "title": "Grand titre — seconde ligne",
+        "type": "string",
+        "description": "Exemple : Simplement.",
+        "fieldset": "headline"
+      },
+      {
+        "name": "subtitle",
+        "title": "Slogan sous le titre",
+        "type": "string",
+        "fieldset": "headline"
+      },
+      {
+        "name": "primaryButton",
+        "title": "Bouton principal",
+        "type": "string",
+        "description": "Le bouton principal mène à la zone de téléchargement.",
+        "fieldset": "actions"
+      },
+      {
+        "name": "secondaryButton",
+        "title": "Bouton secondaire",
+        "type": "string",
+        "description": "Le second bouton mène aux étapes d’utilisation.",
+        "fieldset": "actions"
+      },
+      {
+        "name": "aboutLead",
+        "title": "Présentation — texte en gras",
+        "type": "string",
+        "fieldset": "about"
+      },
+      {
+        "name": "aboutBody",
+        "title": "Présentation — suite",
+        "type": "text",
+        "fieldset": "about"
+      }
+    ],
+    "fieldsets": [
+      {
+        "name": "intro",
+        "title": "L’accroche",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "headline",
+        "title": "Le grand titre et le slogan",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "actions",
+        "title": "Les boutons",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "about",
+        "title": "La présentation sous le visuel",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
+  },
+  {
+    "key": "stats",
+    "id": "section.stats",
+    "type": "siteStats",
+    "title": "La présentation en bref",
+    "description": "Les trois informations qui présentent DupliClean en un coup d’œil.",
+    "fields": [
+      {
+        "name": "items",
+        "title": "Les informations à afficher",
+        "type": "array",
+        "description": "Ces trois éléments apparaissent juste sous la présentation de DupliClean. Gardez exactement 3 éléments.",
+        "of": [
+          {
+            "type": "object",
+            "name": "itemsEntry",
+            "fields": [
+              {
+                "name": "value",
+                "title": "Valeur ou titre court",
+                "type": "string"
+              },
+              {
+                "name": "label",
+                "title": "Explication",
+                "type": "string"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fieldsets": []
+  },
+  {
+    "key": "benefits",
+    "id": "section.benefits",
+    "type": "siteBenefits",
+    "title": "Les fonctionnalités",
+    "description": "Les avantages, les résultats de scan et le message de sécurité.",
+    "fields": [
+      {
+        "name": "titleLead",
+        "title": "Grand titre — début",
+        "type": "string",
+        "fieldset": "intro"
+      },
+      {
+        "name": "titleAccent",
+        "title": "Grand titre — partie colorée",
+        "type": "string",
+        "fieldset": "intro"
+      },
+      {
+        "name": "resultsTitleLead",
+        "title": "Bloc résultats — première ligne",
+        "type": "string",
+        "fieldset": "results"
+      },
+      {
+        "name": "resultsTitleEnd",
+        "title": "Bloc résultats — seconde ligne",
+        "type": "string",
+        "fieldset": "results"
+      },
+      {
+        "name": "resultsDescription",
+        "title": "Bloc résultats — description",
+        "type": "text",
+        "fieldset": "results"
+      },
+      {
+        "name": "items",
+        "title": "Les fonctionnalités présentées",
+        "type": "array",
+        "of": [
+          {
+            "type": "object",
+            "name": "itemsEntry",
+            "fields": [
+              {
+                "name": "title",
+                "title": "Titre",
+                "type": "string"
+              },
+              {
+                "name": "summary",
+                "title": "Résumé court",
+                "type": "string"
+              },
+              {
+                "name": "explanation",
+                "title": "Explication détaillée",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "description": "Gardez exactement 4 éléments.",
+        "fieldset": "features"
+      },
+      {
+        "name": "choiceTitle",
+        "title": "Message de sécurité — titre",
+        "type": "string",
+        "fieldset": "choice"
+      },
+      {
+        "name": "choiceDescription",
+        "title": "Message de sécurité — texte",
+        "type": "string",
+        "fieldset": "choice"
+      }
+    ],
+    "fieldsets": [
+      {
+        "name": "intro",
+        "title": "Le titre de la rubrique",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "results",
+        "title": "La présentation des résultats",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "features",
+        "title": "Les fonctionnalités",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "choice",
+        "title": "Le message de sécurité",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
+  },
+  {
+    "key": "steps",
+    "id": "section.steps",
+    "type": "siteSteps",
+    "title": "Les étapes d’utilisation",
+    "description": "Choisir une source, lancer le scan, examiner les résultats.",
+    "fields": [
+      {
+        "name": "kicker",
+        "title": "Petit titre",
+        "type": "string"
+      },
+      {
+        "name": "titleLead",
+        "title": "Grand titre — début",
+        "type": "string"
+      },
+      {
+        "name": "titleAccent",
+        "title": "Grand titre — partie colorée",
+        "type": "string"
+      },
+      {
+        "name": "intro",
+        "title": "Introduction",
+        "type": "text"
+      },
+      {
+        "name": "items",
+        "title": "Les étapes, dans l’ordre",
+        "type": "array",
+        "description": "Gardez l’ordre choisir la source, lancer le scan, examiner et confirmer. Gardez exactement 3 éléments.",
+        "of": [
+          {
+            "type": "object",
+            "name": "itemsEntry",
+            "fields": [
+              {
+                "name": "title",
+                "title": "Titre de l’étape",
+                "type": "string"
+              },
+              {
+                "name": "description",
+                "title": "Description",
+                "type": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fieldsets": []
+  },
+  {
+    "key": "sources",
+    "id": "section.sources",
+    "type": "siteSources",
+    "title": "Les sources de fichiers",
+    "description": "Les emplacements que l’application peut analyser.",
+    "fields": [
+      {
+        "name": "kicker",
+        "title": "Petit titre",
+        "type": "string"
+      },
+      {
+        "name": "titleLead",
+        "title": "Grand titre — début",
+        "type": "string"
+      },
+      {
+        "name": "titleAccent",
+        "title": "Grand titre — partie colorée",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "title": "Description générale",
+        "type": "text"
+      },
+      {
+        "name": "items",
+        "title": "Les sources présentées",
+        "type": "array",
+        "of": [
+          {
+            "type": "object",
+            "name": "itemsEntry",
+            "fields": [
+              {
+                "name": "title",
+                "title": "Nom de la source",
+                "type": "string"
+              },
+              {
+                "name": "description",
+                "title": "Description",
+                "type": "string"
+              }
+            ]
+          }
+        ],
+        "description": "Gardez exactement 3 éléments."
+      }
+    ],
+    "fieldsets": []
+  },
+  {
+    "key": "data",
+    "id": "section.data",
+    "type": "siteData",
+    "title": "Les données et la confidentialité",
+    "description": "L’historique, les données locales et les autorisations.",
+    "fields": [
+      {
+        "name": "kicker",
+        "title": "Petit titre",
+        "type": "string"
+      },
+      {
+        "name": "titleLead",
+        "title": "Grand titre — début",
+        "type": "string"
+      },
+      {
+        "name": "titleAccent",
+        "title": "Grand titre — partie colorée",
+        "type": "string"
+      },
+      {
+        "name": "intro",
+        "title": "Introduction",
+        "type": "text"
+      },
+      {
+        "name": "items",
+        "title": "Les actions expliquées",
+        "type": "array",
+        "of": [
+          {
+            "type": "object",
+            "name": "itemsEntry",
+            "fields": [
+              {
+                "name": "title",
+                "title": "Titre",
+                "type": "string"
+              },
+              {
+                "name": "description",
+                "title": "Description",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "description": "Gardez exactement 3 éléments."
+      }
+    ],
+    "fieldsets": []
+  },
+  {
+    "key": "faq",
+    "id": "section.faq",
+    "type": "siteFaq",
+    "title": "Les questions fréquentes",
+    "description": "Ajoutez une question ou modifiez les réponses existantes.",
+    "fields": [
+      {
+        "name": "kicker",
+        "title": "Petit titre",
+        "type": "string"
+      },
+      {
+        "name": "titleLead",
+        "title": "Grand titre — début",
+        "type": "string"
+      },
+      {
+        "name": "titleAccent",
+        "title": "Grand titre — partie colorée",
+        "type": "string"
+      },
+      {
+        "name": "items",
+        "title": "Les questions et leurs réponses",
+        "type": "array",
+        "description": "Ouvrez une question pour modifier sa réponse. Vous pouvez aussi en ajouter une.",
+        "of": [
+          {
+            "type": "object",
+            "name": "itemsEntry",
+            "fields": [
+              {
+                "name": "question",
+                "title": "Question",
+                "type": "string"
+              },
+              {
+                "name": "answer",
+                "title": "Réponse",
+                "type": "text"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "fieldsets": []
+  },
+  {
+    "key": "download",
+    "id": "section.download",
+    "type": "siteDownload",
+    "title": "Le téléchargement",
+    "description": "Le texte qui invite les visiteurs à télécharger l’application.",
+    "fields": [
+      {
+        "name": "kicker",
+        "title": "Petit titre",
+        "type": "string"
+      },
+      {
+        "name": "titleLead",
+        "title": "Grand titre — début",
+        "type": "string"
+      },
+      {
+        "name": "titleAccent",
+        "title": "Grand titre — partie colorée",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "title": "Phrase d’appel",
+        "type": "string"
+      },
+      {
+        "name": "availability",
+        "title": "Disponibilité de l’application",
+        "type": "string"
+      }
+    ],
+    "fieldsets": []
+  },
+  {
+    "key": "footer",
+    "id": "section.footer",
+    "type": "siteFooter",
+    "title": "Le bas de page",
+    "description": "Le slogan affiché tout en bas du site.",
+    "fields": [
+      {
+        "name": "tagline",
+        "title": "Slogan du pied de page",
+        "type": "string"
+      }
+    ],
+    "fieldsets": []
+  }
+]

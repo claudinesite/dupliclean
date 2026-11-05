@@ -1,41 +1,37 @@
 # Modifier DupliClean
 
-## Entrer dans l’administration
+Ouvrez [dupliclean.ca/admin/](https://dupliclean.ca/admin/) et connectez-vous à Sanity.
 
-Ouvrez [dupliclean.ca/admin/](https://dupliclean.ca/admin/). Vous arrivez sur Sanity : connectez-vous avec le compte qui possède le projet DupliClean. Le compte utilisé pour Descake a maintenant accès aux deux projets.
+## Trois gestes
 
-## Changer un texte de la page d’accueil
+1. Choisissez une rubrique dans le menu de gauche. Le formulaire s’ouvre directement.
+2. Modifiez vos textes : Sanity enregistre automatiquement un brouillon.
+3. Cliquez sur **Publier**, puis actualisez le site après une à deux minutes.
 
-1. Cliquez sur **Site DupliClean** puis sur la fiche **Site DupliClean**.
-2. Choisissez l’onglet correspondant à ce que vous souhaitez modifier.
-3. Modifiez les champs. Sanity enregistre automatiquement votre brouillon.
-4. Cliquez sur **Publish** pour rendre les changements publics.
-5. Ouvrez [dupliclean.ca](https://dupliclean.ca/) et actualisez après une à deux minutes.
+**Bien commencer** présente ces étapes et permet également d’accéder à chaque rubrique.
 
-Les champs et onglets sont nommés en français. Certains boutons de l’interface Sanity, notamment **Publish**, peuvent être en anglais.
+## Le menu suit l’ordre du site
 
-## Les rubriques
-
-| Onglet | Ce qu’il contient |
+| Rubrique | À modifier |
 | --- | --- |
-| Accueil et boutons | Accroche, titre principal, slogan, boutons et présentation |
-| Chiffres clés | Les trois informations sous la présentation |
-| Avantages et résultats | Les quatre fonctions, le texte des résultats et le message de confirmation |
-| Comment ça marche | Choisir la source, scanner, examiner et confirmer |
-| Sources de fichiers | Présentation et liste des sources affichées |
-| Données et confidentialité | Historique, données locales et autorisations |
-| Questions fréquentes | Questions et réponses; des questions peuvent être ajoutées |
-| Téléchargement | Titre, texte et disponibilité de l’application |
-| Pied de page | Slogan tout en bas |
+| Le haut de page | Accroche, grand titre, slogan et boutons |
+| La présentation en bref | Les trois informations de présentation |
+| Les fonctionnalités | Avantages, résultats et message de sécurité |
+| Les étapes d’utilisation | Choisir la source, scanner, vérifier |
+| Les sources de fichiers | Les emplacements analysés |
+| Les données et la confidentialité | Historique, données locales, autorisations |
+| Les questions fréquentes | Questions et réponses; vous pouvez en ajouter |
+| Le téléchargement | Titre, texte et disponibilité |
+| Le bas de page | Le slogan du pied de page |
 
-Les listes de chiffres clés, avantages, étapes et sources correspondent à un nombre fixe d’emplacements sur le site. Modifiez leurs textes en gardant le nombre d’éléments indiqué. La FAQ peut contenir davantage de questions.
+Les listes qui correspondent à un nombre fixe de blocs sur le site sont vérifiées avant la publication. La FAQ permet d’ajouter des questions.
 
-## Modifier un document juridique
+## Pages légales
 
-Ouvrez **Confidentialité**, **Conditions d’utilisation** ou **Suppression des données**, puis la fiche existante. Choisissez **Français** ou **English** et utilisez la barre de mise en forme pour les titres, listes et textes en gras. Cliquez ensuite sur **Publish**. Les adresses des trois pages restent les mêmes.
+Ouvrez **Pages légales**, puis le document concerné. Choisissez Français ou English et utilisez la barre de mise en forme pour les titres, listes et textes en gras. Publiez lorsque les deux versions sont prêtes. Les URL publiques restent identiques.
 
-## Avant de quitter
+## Brouillon ou publié ?
 
-Un brouillon enregistré n’est pas encore public. Cliquez sur **Publish** uniquement lorsque les modifications sont prêtes. Utilisez les fiches existantes pour mettre à jour le site, plutôt que créer une nouvelle fiche.
+Un brouillon enregistré n’est pas encore visible sur le site. Le bouton **Publier** rend vos changements publics. Si vous ouvrez une ancienne version publiée en lecture seule, choisissez **Voir le brouillon** pour reprendre l’édition.
 
 L’accès est actuellement réservé au propriétaire. Votre ami pourra être invité plus tard depuis les membres du projet DupliClean dans Sanity Manage.

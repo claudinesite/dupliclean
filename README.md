@@ -6,25 +6,36 @@ Site HTML, CSS, Tailwind et JavaScript natif, hébergé sur Vercel. Le contenu e
 
 1. Ouvrir https://dupliclean.ca/admin/ ou https://dupliclean-admin.sanity.studio/.
 2. Se connecter avec le compte Sanity propriétaire du projet.
-3. Ouvrir **Site DupliClean**, puis la fiche du même nom.
-4. Choisir un onglet : Accueil, Chiffres clés, Avantages, Étapes, Sources, Données, FAQ, Téléchargement ou Pied de page.
-5. Modifier puis cliquer sur **Publish**. Les brouillons restent privés.
+3. Choisir directement une rubrique dans le menu : le formulaire s’ouvre sans liste intermédiaire.
+4. L’écran **Bien commencer** explique la publication et donne aussi accès aux rubriques.
+5. Modifier puis cliquer sur **Publier**. Les brouillons restent privés.
 6. Actualiser le site après une à deux minutes, le temps des caches Sanity et Vercel.
 
-Les trois documents juridiques ont chacun leur fiche et deux onglets Français / English avec un éditeur de texte mis en forme. Les URL publiques restent identiques.
+Les trois documents juridiques sont regroupés sous **Pages légales**, avec chacun deux onglets Français / English et un éditeur de texte mis en forme. Les URL publiques restent identiques.
 
-Utiliser les fiches existantes plutôt que créer des doublons : le site lit leurs identifiants fixes. Pour inviter un collaborateur plus tard, ouvrir les membres du projet DupliClean dans Sanity Manage.
+Les rubriques sont des singletons : la création de doublons, la suppression et la dépublication sont désactivées dans le Studio. Pour inviter un collaborateur plus tard, ouvrir les membres du projet DupliClean dans Sanity Manage.
 
 ## Fonctionnement
 
-- `api/content.js` lit la fiche publiée `siteContent` avec la projection explicite de `sanity/content-query.cjs`.
+- `api/content.js` lit neuf documents publiés `section.*` avec la projection explicite de `sanity/content-query.cjs`. La fiche originale `siteContent` est conservée comme archive et secours.
 - `dist/cms-content.js` applique ces textes au design existant.
 - `api/legal.js` rend les documents juridiques publiés aux mêmes adresses `.html`, via les réécritures Vercel.
 - `sanity/client.cjs` fixe le projet, le dataset, la version d’API et la perspective `published`. Aucun jeton n’est nécessaire au site.
 - `dist/content/*.json`, les pages HTML générées et `legal/*.md` conservent la copie de secours.
 - `scripts/generate-legal-pages.mjs` partage le rendu juridique entre le build et les fonctions.
 
-Le Studio est **géré par le connecteur Sanity**, sans Studio local. Les schémas de référence sont `sanity/schema.json` et `sanity/legal-schema.json`. Pour les modifier, utiliser `deploy_schema` puis `deploy_studio` sur le workspace `default`.
+Le Studio est désormais **géré par le code dans `studio/`**. Cette source remplace l’interface MCP générée pour permettre une navigation directe, les singletons et la traduction française. Le workspace actif est `dupliclean`; l’ancien workspace MCP `default` est conservé en archive. Ne pas réutiliser `deploy_studio` ou `deploy_schema` pour le Studio actif.
+
+```sh
+npm ci --prefix studio
+npm run typecheck --prefix studio
+npm run build --prefix studio
+npm run deploy --prefix studio
+```
+
+Les schémas sont dans `studio/schemas.ts` et `studio/sections.json`; la navigation est dans `studio/structure.ts`. La commande de déploiement réutilise l’application Sanity `hjq0ue8c1eh4wfk4v3rxvtet` et l’hôte `dupliclean-admin`.
+
+`studio/scripts/migrate-sections.ts` effectue une migration idempotente (simulation par défaut) depuis `siteContent`. Il conserve les données originales et copie les éventuels brouillons sans les publier.
 
 Les fichiers `sanity/initial-*.json` sont les instantanés de migration, pris après récupération des dernières publications Decap. Ne pas les réimporter au-dessus des contenus édités depuis Sanity.
 
