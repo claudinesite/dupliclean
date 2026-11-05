@@ -1,5 +1,6 @@
 import {defineType, defineField, defineArrayMember, type FieldDefinition, type SchemaTypeDefinition} from 'sanity'
 import {DocumentTextIcon} from '@sanity/icons/DocumentText'
+import {ImageIcon} from '@sanity/icons/Image'
 import sections from './sections.json'
 import legalSchemas from '../sanity/legal-schema.json'
 import legacy from '../sanity/schema.json'
@@ -11,6 +12,11 @@ type FieldSource = {
 
 function field(source: FieldSource, fixedLength?: number): FieldDefinition {
   const converted: Record<string, unknown> = {...source}
+  if (source.type === 'image') converted.icon = ImageIcon
+  if (source.type === 'url') {
+    converted.validation = (rule: {uri(options: {allowRelative: boolean; scheme: string[]}): unknown}) =>
+      rule.uri({allowRelative: true, scheme: ['http', 'https', 'mailto']})
+  }
   if (source.fields) converted.fields = source.fields.map(item => field(item))
   if (source.of) converted.of = source.of.map(item => defineArrayMember({
     ...item,
@@ -21,9 +27,10 @@ function field(source: FieldSource, fixedLength?: number): FieldDefinition {
         prepare: (value: Record<string, string>) => ({title: value.title || value.question || value.value || 'Élément', subtitle: value.label})},
     } : {}),
   } as Parameters<typeof defineArrayMember>[0]))
-  if (source.type === 'array' && source.name === 'items') {
+  if (source.type === 'array' && ['items', 'exampleCards', 'legend', 'navigationLinks'].includes(source.name)) {
+    const length = source.name === 'exampleCards' ? 2 : source.name === 'legend' ? 3 : fixedLength;
     converted.validation = (rule: {required(): {length(size: number): unknown}; min(size: number): unknown}) =>
-      fixedLength ? rule.required().length(fixedLength) : rule.min(1)
+      length ? rule.required().length(length) : rule.min(1)
   }
   return defineField(converted as unknown as FieldDefinition)
 }

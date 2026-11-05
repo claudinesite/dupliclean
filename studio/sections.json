@@ -72,6 +72,150 @@
         "title": "Présentation — suite",
         "type": "text",
         "fieldset": "about"
+      },
+      {
+        "name": "primaryLink",
+        "title": "Destination du bouton principal",
+        "type": "url",
+        "fieldset": "links"
+      },
+      {
+        "name": "secondaryLink",
+        "title": "Destination du bouton secondaire",
+        "type": "url",
+        "fieldset": "links"
+      },
+      {
+        "name": "navDiscoverLabel",
+        "title": "Bouton du menu : Découvrir",
+        "type": "string",
+        "fieldset": "links"
+      },
+      {
+        "name": "navDownloadLabel",
+        "title": "Bouton du menu : Télécharger",
+        "type": "string",
+        "fieldset": "links"
+      },
+      {
+        "name": "mainImage",
+        "title": "Grand visuel du téléphone",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
+      },
+      {
+        "name": "navigationLinks",
+        "title": "Les liens du menu déroulant",
+        "type": "array",
+        "fieldset": "links",
+        "of": [
+          {
+            "type": "object",
+            "name": "navigationLink",
+            "fields": [
+              {
+                "name": "label",
+                "title": "Texte du lien",
+                "type": "string"
+              },
+              {
+                "name": "link",
+                "title": "Destination",
+                "type": "url"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "exampleCards",
+        "title": "Les deux encadrés d’exemple",
+        "type": "array",
+        "fieldset": "proof",
+        "description": "Données d’illustration affichées à côté du téléphone.",
+        "of": [
+          {
+            "type": "object",
+            "name": "exampleCard",
+            "fields": [
+              {
+                "name": "title",
+                "title": "Titre",
+                "type": "string"
+              },
+              {
+                "name": "subtitle",
+                "title": "Sous-titre",
+                "type": "string"
+              },
+              {
+                "name": "badge",
+                "title": "Étiquette en haut à droite",
+                "type": "string"
+              },
+              {
+                "name": "value",
+                "title": "Valeur principale",
+                "type": "string"
+              },
+              {
+                "name": "noteBadge",
+                "title": "Petit badge sous la valeur",
+                "type": "string"
+              },
+              {
+                "name": "note",
+                "title": "Texte après le badge",
+                "type": "string"
+              },
+              {
+                "name": "legendTitle",
+                "title": "Titre de la légende",
+                "type": "string"
+              },
+              {
+                "name": "legend",
+                "title": "Les trois lignes de légende",
+                "type": "array",
+                "of": [
+                  {
+                    "type": "object",
+                    "name": "legendItem",
+                    "fields": [
+                      {
+                        "name": "label",
+                        "title": "Libellé",
+                        "type": "string"
+                      },
+                      {
+                        "name": "value",
+                        "title": "Valeur",
+                        "type": "string"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ],
     "fieldsets": [
@@ -101,6 +245,28 @@
         "title": "La présentation sous le visuel",
         "options": {
           "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "links",
+        "title": "Les boutons et les liens",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "proof",
+        "title": "Les encadrés sous le titre",
+        "options": {
+          "collapsible": true,
+          "collapsed": true
         }
       }
     ]
@@ -147,11 +313,61 @@
                 "name": "label",
                 "title": "Explication",
                 "type": "string"
+              },
+              {
+                "name": "image",
+                "title": "Image ou icône (facultative)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "Description de l’image",
+                    "type": "string",
+                    "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+                  },
+                  {
+                    "name": "caption",
+                    "title": "Légende (facultative)",
+                    "type": "string"
+                  }
+                ]
               }
             ]
           }
         ],
         "fieldset": "highlights"
+      },
+      {
+        "name": "kicker",
+        "title": "Le petit titre au-dessus du texte",
+        "type": "string",
+        "fieldset": "presentation"
+      },
+      {
+        "name": "mainImage",
+        "title": "Image de la rubrique (facultative)",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
     "fieldsets": [
@@ -165,6 +381,13 @@
       {
         "name": "highlights",
         "title": "Les trois informations en dessous",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
         "options": {
           "collapsible": false
         }
@@ -231,6 +454,32 @@
                 "name": "explanation",
                 "title": "Explication détaillée",
                 "type": "text"
+              },
+              {
+                "name": "image",
+                "title": "Image ou icône (facultative)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "Description de l’image",
+                    "type": "string",
+                    "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+                  },
+                  {
+                    "name": "caption",
+                    "title": "Légende (facultative)",
+                    "type": "string"
+                  }
+                ]
+              },
+              {
+                "name": "menuLabel",
+                "title": "Intitulé court dans le sommaire",
+                "type": "string"
               }
             ]
           }
@@ -249,6 +498,65 @@
         "title": "Message de sécurité — texte",
         "type": "string",
         "fieldset": "choice"
+      },
+      {
+        "name": "kicker",
+        "title": "Le petit titre de la rubrique",
+        "type": "string",
+        "fieldset": "intro"
+      },
+      {
+        "name": "navLabel",
+        "title": "Titre du sommaire latéral",
+        "type": "string",
+        "fieldset": "intro"
+      },
+      {
+        "name": "resultsKicker",
+        "title": "Petit titre du bloc résultats",
+        "type": "string",
+        "fieldset": "intro"
+      },
+      {
+        "name": "detailsLabel",
+        "title": "Titre au-dessus des fonctionnalités",
+        "type": "string",
+        "fieldset": "intro"
+      },
+      {
+        "name": "resultsButtonLabel",
+        "title": "Texte du bouton des résultats",
+        "type": "string",
+        "fieldset": "links"
+      },
+      {
+        "name": "resultsButtonLink",
+        "title": "Destination de ce bouton",
+        "type": "url",
+        "fieldset": "links"
+      },
+      {
+        "name": "mainImage",
+        "title": "Capture des résultats de l’application",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
     "fieldsets": [
@@ -279,6 +587,20 @@
         "options": {
           "collapsible": false
         }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "links",
+        "title": "Les boutons et les liens",
+        "options": {
+          "collapsible": false
+        }
       }
     ]
   },
@@ -292,22 +614,26 @@
       {
         "name": "kicker",
         "title": "Petit titre",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleLead",
         "title": "Grand titre — début",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleAccent",
         "title": "Grand titre — partie colorée",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "intro",
         "title": "Introduction",
-        "type": "text"
+        "type": "text",
+        "fieldset": "texts"
       },
       {
         "name": "items",
@@ -328,13 +654,73 @@
                 "name": "description",
                 "title": "Description",
                 "type": "text"
+              },
+              {
+                "name": "image",
+                "title": "Image ou icône (facultative)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "Description de l’image",
+                    "type": "string",
+                    "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+                  },
+                  {
+                    "name": "caption",
+                    "title": "Légende (facultative)",
+                    "type": "string"
+                  }
+                ]
               }
             ]
           }
-        ]
+        ],
+        "fieldset": "texts"
+      },
+      {
+        "name": "mainImage",
+        "title": "Image de la rubrique (facultative)",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
-    "fieldsets": []
+    "fieldsets": [
+      {
+        "name": "texts",
+        "title": "Les textes",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
   },
   {
     "key": "sources",
@@ -346,22 +732,26 @@
       {
         "name": "kicker",
         "title": "Petit titre",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleLead",
         "title": "Grand titre — début",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleAccent",
         "title": "Grand titre — partie colorée",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "description",
         "title": "Description générale",
-        "type": "text"
+        "type": "text",
+        "fieldset": "texts"
       },
       {
         "name": "items",
@@ -381,14 +771,92 @@
                 "name": "description",
                 "title": "Description",
                 "type": "string"
+              },
+              {
+                "name": "image",
+                "title": "Image ou icône (facultative)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "Description de l’image",
+                    "type": "string",
+                    "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+                  },
+                  {
+                    "name": "caption",
+                    "title": "Légende (facultative)",
+                    "type": "string"
+                  }
+                ]
+              },
+              {
+                "name": "tag",
+                "title": "Étiquette : LOCAL ou CLOUD",
+                "type": "string"
               }
             ]
           }
         ],
-        "description": "Gardez exactement 3 éléments."
+        "description": "Gardez exactement 3 éléments.",
+        "fieldset": "texts"
+      },
+      {
+        "name": "fileTypes",
+        "title": "Types de fichiers affichés",
+        "type": "string",
+        "description": "Séparez les types par des virgules : Photos, Vidéos, Documents.",
+        "fieldset": "texts"
+      },
+      {
+        "name": "note",
+        "title": "Note sous les types de fichiers",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "mainImage",
+        "title": "Image de la rubrique (facultative)",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
-    "fieldsets": []
+    "fieldsets": [
+      {
+        "name": "texts",
+        "title": "Les textes",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
   },
   {
     "key": "data",
@@ -400,22 +868,26 @@
       {
         "name": "kicker",
         "title": "Petit titre",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleLead",
         "title": "Grand titre — début",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleAccent",
         "title": "Grand titre — partie colorée",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "intro",
         "title": "Introduction",
-        "type": "text"
+        "type": "text",
+        "fieldset": "texts"
       },
       {
         "name": "items",
@@ -435,14 +907,93 @@
                 "name": "description",
                 "title": "Description",
                 "type": "text"
+              },
+              {
+                "name": "image",
+                "title": "Image ou icône (facultative)",
+                "type": "image",
+                "options": {
+                  "hotspot": true
+                },
+                "fields": [
+                  {
+                    "name": "alt",
+                    "title": "Description de l’image",
+                    "type": "string",
+                    "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+                  },
+                  {
+                    "name": "caption",
+                    "title": "Légende (facultative)",
+                    "type": "string"
+                  }
+                ]
               }
             ]
           }
         ],
-        "description": "Gardez exactement 3 éléments."
+        "description": "Gardez exactement 3 éléments.",
+        "fieldset": "texts"
+      },
+      {
+        "name": "buttonLabel",
+        "title": "Texte du lien vers la gestion des données",
+        "type": "string",
+        "fieldset": "links"
+      },
+      {
+        "name": "buttonLink",
+        "title": "Destination de ce lien",
+        "type": "url",
+        "fieldset": "links"
+      },
+      {
+        "name": "mainImage",
+        "title": "Image de la rubrique (facultative)",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
-    "fieldsets": []
+    "fieldsets": [
+      {
+        "name": "texts",
+        "title": "Les textes",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "links",
+        "title": "Les boutons et les liens",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
   },
   {
     "key": "faq",
@@ -454,17 +1005,20 @@
       {
         "name": "kicker",
         "title": "Petit titre",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleLead",
         "title": "Grand titre — début",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleAccent",
         "title": "Grand titre — partie colorée",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "items",
@@ -488,10 +1042,49 @@
               }
             ]
           }
-        ]
+        ],
+        "fieldset": "texts"
+      },
+      {
+        "name": "mainImage",
+        "title": "Image de la rubrique (facultative)",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
-    "fieldsets": []
+    "fieldsets": [
+      {
+        "name": "texts",
+        "title": "Les textes",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
   },
   {
     "key": "download",
@@ -503,30 +1096,105 @@
       {
         "name": "kicker",
         "title": "Petit titre",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleLead",
         "title": "Grand titre — début",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "titleAccent",
         "title": "Grand titre — partie colorée",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "description",
         "title": "Phrase d’appel",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
       },
       {
         "name": "availability",
         "title": "Disponibilité de l’application",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "buttonLabel",
+        "title": "Nom affiché sur le bouton",
+        "type": "string",
+        "fieldset": "links"
+      },
+      {
+        "name": "buttonEyebrow",
+        "title": "Petit texte du bouton",
+        "type": "string",
+        "fieldset": "links"
+      },
+      {
+        "name": "playStoreUrl",
+        "title": "Lien Google Play",
+        "type": "url",
+        "description": "Collez le lien de votre application sur Google Play.",
+        "fieldset": "links"
+      },
+      {
+        "name": "languages",
+        "title": "Langues disponibles",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "mainImage",
+        "title": "Image de la rubrique (facultative)",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
-    "fieldsets": []
+    "fieldsets": [
+      {
+        "name": "texts",
+        "title": "Les textes",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "links",
+        "title": "Les boutons et les liens",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
   },
   {
     "key": "footer",
@@ -538,9 +1206,90 @@
       {
         "name": "tagline",
         "title": "Slogan du pied de page",
-        "type": "string"
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "backToTopLabel",
+        "title": "Lien de retour en haut",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "copyright",
+        "title": "Texte du copyright",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "developerLabel",
+        "title": "Texte du lien développeur",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "developerUrl",
+        "title": "Lien vers le développeur",
+        "type": "url",
+        "fieldset": "texts"
+      },
+      {
+        "name": "privacyLabel",
+        "title": "Lien : confidentialité",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "termsLabel",
+        "title": "Lien : conditions d’utilisation",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "deletionLabel",
+        "title": "Lien : suppression des données",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
+        "name": "mainImage",
+        "title": "Logo du pied de page (facultatif)",
+        "type": "image",
+        "options": {
+          "hotspot": true
+        },
+        "description": "Choisissez une image ou déposez un fichier ici. Le visuel actuel est utilisé par défaut.",
+        "fields": [
+          {
+            "name": "alt",
+            "title": "Description de l’image",
+            "type": "string",
+            "description": "Décrivez brièvement ce que montre l’image pour les personnes qui ne la voient pas."
+          },
+          {
+            "name": "caption",
+            "title": "Légende (facultative)",
+            "type": "string"
+          }
+        ],
+        "fieldset": "media"
       }
     ],
-    "fieldsets": []
+    "fieldsets": [
+      {
+        "name": "texts",
+        "title": "Les textes",
+        "options": {
+          "collapsible": false
+        }
+      },
+      {
+        "name": "media",
+        "title": "Le visuel",
+        "options": {
+          "collapsible": false
+        }
+      }
+    ]
   }
 ]

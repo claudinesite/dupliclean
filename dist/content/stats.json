@@ -2,17 +2,22 @@
   "items": [
     {
       "value": "3 sources",
-      "label": "Téléphone, OneDrive, Dropbox et MEGA"
+      "label": "Téléphone, OneDrive, Dropbox et MEGA",
+      "image": null
     },
     {
       "value": "Votre choix",
-      "label": "Vous validez chaque suppression"
+      "label": "Vous validez chaque suppression",
+      "image": null
     },
     {
       "value": "Sans compte",
-      "label": "Aucun compte DupliClean à créer"
+      "label": "Aucun compte DupliClean à créer",
+      "image": null
     }
   ],
   "presentationLead": "DupliClean vous aide à retrouver\nvos doublons, à libérer de l’espace et à\ngarder l’essentiel.",
-  "presentationEnd": "Moins de copies inutiles,\nplus de place pour vos souvenirs et\npour tout ce qui compte vraiment."
+  "presentationEnd": "Moins de copies inutiles,\nplus de place pour vos souvenirs et\npour tout ce qui compte vraiment.",
+  "kicker": "*   L’ESPRIT DUPLICLEAN",
+  "mainImage": null
 }

@@ -6,15 +6,21 @@
   "items": [
     {
       "title": "Gérez l’historique dans l’application.",
-      "description": "Supprimez une entrée, sélectionnez-en plusieurs ou effacez tout l’historique. Cela retire uniquement les informations de nettoyage, pas les fichiers de votre téléphone ou du cloud."
+      "description": "Supprimez une entrée, sélectionnez-en plusieurs ou effacez tout l’historique. Cela retire uniquement les informations de nettoyage, pas les fichiers de votre téléphone ou du cloud.",
+      "image": null
     },
     {
       "title": "Effacez les données locales.",
-      "description": "Dans les paramètres Android, ouvrez les informations de DupliClean puis effacez ses données ou son stockage. Désinstaller l’application retire aussi ses préférences et autres données locales."
+      "description": "Dans les paramètres Android, ouvrez les informations de DupliClean puis effacez ses données ou son stockage. Désinstaller l’application retire aussi ses préférences et autres données locales.",
+      "image": null
     },
     {
       "title": "Retirez les autorisations.",
-      "description": "Modifiez l’accès aux médias dans les paramètres Android. Pour OneDrive et MEGA, retirez l’accès de DupliClean dans les paramètres de sécurité ou de confidentialité du compte concerné."
+      "description": "Modifiez l’accès aux médias dans les paramètres Android. Pour OneDrive et MEGA, retirez l’accès de DupliClean dans les paramètres de sécurité ou de confidentialité du compte concerné.",
+      "image": null
     }
-  ]
+  ],
+  "buttonLabel": "Gestion et suppression des données",
+  "buttonLink": "https://dupliclean.ca/data-deletion.html",
+  "mainImage": null
 }

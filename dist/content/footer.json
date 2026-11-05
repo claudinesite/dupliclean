@@ -1,3 +1,11 @@
 {
-  "tagline": "Moins de doublons, plus de place pour ce qui compte !"
+  "tagline": "Moins de doublons, plus de place pour ce qui compte !",
+  "backToTopLabel": "Retour en haut ↑",
+  "copyright": "© 2026 DupliClean",
+  "developerLabel": "Contacter le développeur",
+  "developerUrl": "https://claudeportofolio.vercel.app/#contact",
+  "privacyLabel": "Confidentialité",
+  "termsLabel": "Conditions d’utilisation",
+  "deletionLabel": "Gestion et suppression des données",
+  "mainImage": null
 }

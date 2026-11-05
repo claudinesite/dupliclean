@@ -6,15 +6,24 @@
   "items": [
     {
       "title": "Votre téléphone",
-      "description": "Photos et vidéos autorisées · Analyse locale"
+      "description": "Photos et vidéos autorisées · Analyse locale",
+      "image": null,
+      "tag": "LOCAL"
     },
     {
       "title": "OneDrive",
-      "description": "Connexion et fichiers gérés par Microsoft"
+      "description": "Connexion et fichiers gérés par Microsoft",
+      "image": null,
+      "tag": "CLOUD"
     },
     {
       "title": "Dropbox",
-      "description": "Connexion et fichiers gérés par Dropbox"
+      "description": "Connexion et fichiers gérés par Dropbox",
+      "image": null,
+      "tag": "CLOUD"
     }
-  ]
+  ],
+  "fileTypes": "Photos, Vidéos, Documents",
+  "note": "Selon la source et les accès autorisés",
+  "mainImage": null
 }

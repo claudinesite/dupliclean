@@ -8,5 +8,110 @@
   "primaryButton": "Découvrir l’app",
   "secondaryButton": "Comment ça marche",
   "aboutLead": "Doublons, photos similaires, fichiers volumineux :",
-  "aboutBody": "DupliClean vous aide à faire le tri. Vous choisissez quoi supprimer."
+  "aboutBody": "DupliClean vous aide à faire le tri. Vous choisissez quoi supprimer.",
+  "primaryLink": "#telecharger",
+  "secondaryLink": "#fonctionnement",
+  "navDiscoverLabel": "Découvrir",
+  "navDownloadLabel": "Télécharger",
+  "mainImage": {
+    "url": "/assets/dupliclean-phone-hand-transparent.png",
+    "alt": "Une main tient un téléphone avec DupliClean ouvert : Phone, OneDrive et Google Drive.",
+    "caption": ""
+  },
+  "navigationLinks": [
+    {
+      "_key": "nav0",
+      "_type": "navigationLink",
+      "label": "Les avantages",
+      "link": "#avantages"
+    },
+    {
+      "_key": "nav1",
+      "_type": "navigationLink",
+      "label": "Comment ça marche",
+      "link": "#fonctionnement"
+    },
+    {
+      "_key": "nav2",
+      "_type": "navigationLink",
+      "label": "Vos espaces",
+      "link": "#sources"
+    },
+    {
+      "_key": "nav3",
+      "_type": "navigationLink",
+      "label": "Vos données",
+      "link": "#donnees"
+    },
+    {
+      "_key": "nav4",
+      "_type": "navigationLink",
+      "label": "Questions fréquentes",
+      "link": "#questions"
+    }
+  ],
+  "exampleCards": [
+    {
+      "_key": "card0",
+      "_type": "exampleCard",
+      "title": "Espace à récupérer",
+      "subtitle": "Exemple d’analyse · OneDrive",
+      "badge": "▧   Total⌄",
+      "value": "3,2 Go",
+      "noteBadge": "↗ 128",
+      "note": " doublons repérés",
+      "legendTitle": "Répartition",
+      "legend": [
+        {
+          "_key": "l0",
+          "_type": "legendItem",
+          "label": "Photos",
+          "value": "2,4 Go"
+        },
+        {
+          "_key": "l1",
+          "_type": "legendItem",
+          "label": "Vidéos",
+          "value": "640 Mo"
+        },
+        {
+          "_key": "l2",
+          "_type": "legendItem",
+          "label": "Documents",
+          "value": "160 Mo"
+        }
+      ]
+    },
+    {
+      "_key": "card1",
+      "_type": "exampleCard",
+      "title": "Vous gardez la main",
+      "subtitle": "Votre confirmation fait la différence",
+      "badge": "♧   Choix⌄",
+      "value": "100 %",
+      "noteBadge": "✓ Vous",
+      "note": " choisissez quoi supprimer",
+      "legendTitle": "Toujours votre décision",
+      "legend": [
+        {
+          "_key": "l0",
+          "_type": "legendItem",
+          "label": "Comparer",
+          "value": "Vos fichiers"
+        },
+        {
+          "_key": "l1",
+          "_type": "legendItem",
+          "label": "Choisir",
+          "value": "Les copies"
+        },
+        {
+          "_key": "l2",
+          "_type": "legendItem",
+          "label": "Confirmer",
+          "value": "La sélection"
+        }
+      ]
+    }
+  ]
 }

@@ -1,0 +1,16 @@
+/* Optional uploaded media preserves the existing layout when left empty. */
+.cms-section-media{margin:28px auto;max-width:640px;text-align:center}
+.cms-section-media img{display:block;width:auto;max-width:100%;height:auto;max-height:320px;object-fit:contain;margin:auto;border-radius:12px}
+.cms-section-media figcaption{font-size:12px;line-height:1.6;margin-top:12px;color:inherit;opacity:.75}
+.cms-section-media.cms-small-media{margin:0 auto 18px;max-width:64px}
+.cms-small-media img{max-height:64px;border-radius:8px}
+.cms-custom-visual{font-size:0!important}
+.cms-custom-visual>:not(.cms-uploaded-image),.cms-custom-visual::before,.cms-custom-visual::after{display:none!important}
+.cms-uploaded-image{display:block;width:100%;height:100%;max-width:100%;object-fit:contain;border-radius:inherit}
+.step-visual .cms-uploaded-image{position:absolute;inset:0;padding:14px}
+.how>.cms-section-media{max-width:900px}
+.sources-copy .cms-section-media,.data-heading .cms-section-media,.faq .cms-section-media{margin:24px 0}
+.data-actions article>span.cms-custom-visual{min-width:38px;height:38px}
+.download .cms-section-media{max-width:420px}
+.download .cms-section-media img{max-height:220px}
+@media(max-width:760px){.cms-section-media img{max-height:260px}.cms-small-media img{max-height:64px}}

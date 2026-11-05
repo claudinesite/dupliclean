@@ -1,5 +1,6 @@
 const query = require('../sanity/content-query.cjs');
 const { queryPublished } = require('../sanity/client.cjs');
+const { resolveImages } = require('../sanity/images.cjs');
 
 module.exports = async function content(request, response) {
   if (request.method !== 'GET' && request.method !== 'HEAD') {
@@ -11,7 +12,7 @@ module.exports = async function content(request, response) {
     if (!content?.hero || !content?.faq) throw new Error('Site content missing');
     response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=30, stale-while-revalidate=60');
     response.setHeader('X-Content-Type-Options', 'nosniff');
-    return response.status(200).json(content);
+    return response.status(200).json(resolveImages(content));
   } catch (error) {
     console.warn('[Sanity content]', error.message);
     response.setHeader('Cache-Control', 'no-store');

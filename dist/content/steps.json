@@ -6,15 +6,19 @@
   "items": [
     {
       "title": "Choisissez la source.",
-      "description": "Sélectionnez les fichiers autorisés sur votre appareil Android, votre compte OneDrive, Dropbox ou votre compte MEGA."
+      "description": "Sélectionnez les fichiers autorisés sur votre appareil Android, votre compte OneDrive, Dropbox ou votre compte MEGA.",
+      "image": null
     },
     {
       "title": "Lancez un seul scan.",
-      "description": "Selon la source et les autorisations accordées, DupliClean recherche les doublons exacts, les photos visuellement similaires, les fichiers volumineux et les captures d’écran."
+      "description": "Selon la source et les autorisations accordées, DupliClean recherche les doublons exacts, les photos visuellement similaires, les fichiers volumineux et les captures d’écran.",
+      "image": null
     },
     {
       "title": "Examinez puis confirmez.",
-      "description": "Ouvrez chaque catégorie, vérifiez les fichiers proposés et choisissez ceux à conserver ou à supprimer. Rien n’est supprimé automatiquement."
+      "description": "Ouvrez chaque catégorie, vérifiez les fichiers proposés et choisissez ceux à conserver ou à supprimer. Rien n’est supprimé automatiquement.",
+      "image": null
     }
-  ]
+  ],
+  "mainImage": null
 }

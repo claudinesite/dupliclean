@@ -8,24 +8,43 @@
     {
       "title": "Doublons exacts",
       "summary": "Repérez les fichiers dont le contenu est identique.",
-      "explanation": "DupliClean compare des informations comme la taille et les empreintes des fichiers, calculées sur Android ou fournies par le service cloud."
+      "explanation": "DupliClean compare des informations comme la taille et les empreintes des fichiers, calculées sur Android ou fournies par le service cloud.",
+      "image": null,
+      "menuLabel": "Doublons exacts"
     },
     {
       "title": "Photos similaires",
       "summary": "Retrouvez les photos qui se ressemblent visuellement.",
-      "explanation": "La comparaison s’appuie sur des miniatures. La similarité reste une estimation : vérifiez les résultats avant de choisir les photos à supprimer."
+      "explanation": "La comparaison s’appuie sur des miniatures. La similarité reste une estimation : vérifiez les résultats avant de choisir les photos à supprimer.",
+      "image": null,
+      "menuLabel": "Photos similaires"
     },
     {
       "title": "Fichiers volumineux et captures d’écran",
       "summary": "Identifiez les fichiers qui méritent un peu de tri.",
-      "explanation": "Selon la source et la fonctionnalité utilisée, DupliClean repère les fichiers volumineux et les captures d’écran, et estime l’espace récupérable."
+      "explanation": "Selon la source et la fonctionnalité utilisée, DupliClean repère les fichiers volumineux et les captures d’écran, et estime l’espace récupérable.",
+      "image": null,
+      "menuLabel": "Fichiers à trier"
     },
     {
       "title": "Vos données restent entre vos mains",
       "summary": "Vous choisissez les fichiers et confirmez leur suppression.",
-      "explanation": "Les fichiers locaux ne sont pas envoyés sur un serveur du développeur pour l’analyse. Aucune copie permanente des fichiers ou résultats n’y est conservée."
+      "explanation": "Les fichiers locaux ne sont pas envoyés sur un serveur du développeur pour l’analyse. Aucune copie permanente des fichiers ou résultats n’y est conservée.",
+      "image": null,
+      "menuLabel": "Vos données, votre choix"
     }
   ],
   "choiceTitle": "DupliClean ne supprime pas automatiquement vos fichiers.",
-  "choiceDescription": "C’est vous qui décidez quoi supprimer !"
+  "choiceDescription": "C’est vous qui décidez quoi supprimer !",
+  "kicker": "*   TROUVEZ. SUPPRIMEZ. RESPIREZ.",
+  "navLabel": "DUPLICLEAN, EN DÉTAIL",
+  "resultsKicker": "APRÈS L’ANALYSE",
+  "detailsLabel": "LES AVANTAGES",
+  "resultsButtonLabel": "Comment ça marche",
+  "resultsButtonLink": "#fonctionnement",
+  "mainImage": {
+    "url": "/assets/dupliclean-scan-results.jpg",
+    "alt": "Résultats de scan DupliClean : doublons exacts, photos similaires, fichiers volumineux et captures d’écran. Aucun fichier supprimé.",
+    "caption": "CAPTURE DE L’APPLICATION · EXEMPLE DE RÉSULTATS"
+  }
 }
