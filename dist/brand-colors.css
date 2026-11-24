@@ -52,8 +52,6 @@ body,main,.reference-top,body>footer{background:var(--paper);color:var(--ink)}
 .site-footer p,.site-footer>span,.site-footer>a:last-child{color:var(--muted)}
 .circuit-lines{color:#c58f6c}
 .circuit-brand{background:var(--peach);border-color:#e8bb9b;color:var(--terracotta-deep)}
-.circuit-pulse--core{stroke:var(--copper)}.circuit-pulse--trail{stroke:#A85E32}.circuit-pulse--tip{stroke:#edba83}
-.circuit-junction-ring{fill:var(--cream);stroke:#bb7650}.circuit-junction-dot{fill:var(--copper)}
 .circuit-toggle{background:#F8F2EAbb;border-color:#8B4A2840;color:var(--muted)}
 .footer-orbit svg{color:var(--peach)}.footer-orbit .orbit-panel{fill:var(--peach)}
 .footer-orbit-toggle{color:var(--cream);background:#7F3F1F99;border-color:#F3E1CF55}
