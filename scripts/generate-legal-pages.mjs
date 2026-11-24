@@ -15,19 +15,24 @@ function escapeHtml(value) {
     .replaceAll('"', '&quot;');
 }
 
-function inline(value) {
-  const token = /`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+function inline(value, linkEmails = true) {
+  const token = /`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*|(?<![\w.%+@-])([\w%+-]+(?:\.[\w%+-]+)*@(?:[a-z\d-]+\.)+[a-z]{2,})(?![\w@-])/gi;
   let output = '';
   let cursor = 0;
   for (const match of value.matchAll(token)) {
-    const [raw, code, label, url, bold, italic] = match;
+    const [raw, code, label, url, bold, italic, email] = match;
     output += escapeHtml(value.slice(cursor, match.index));
     if (code) output += `<code>${escapeHtml(code)}</code>`;
     else if (label) {
       const safe = /^(https?:\/\/|mailto:|#|\/(?![\/\\]))/i.test(url) && !/[\s\\]/.test(url);
-      output += safe ? `<a href="${escapeHtml(url)}">${inline(label)}</a>` : inline(label);
-    } else if (bold) output += `<strong>${inline(bold)}</strong>`;
-    else output += `<em>${inline(italic)}</em>`;
+      const content = inline(label, false);
+      output += safe ? `<a href="${escapeHtml(url)}">${content}</a>` : content;
+    } else if (bold) output += `<strong>${inline(bold, linkEmails)}</strong>`;
+    else if (italic) output += `<em>${inline(italic, linkEmails)}</em>`;
+    else if (email && linkEmails) {
+      const href = `mailto:${encodeURIComponent(email).replace('%40', '@')}`;
+      output += `<a href="${href}">${escapeHtml(email)}</a>`;
+    } else output += escapeHtml(raw);
     cursor = match.index + raw.length;
   }
   return output + escapeHtml(value.slice(cursor));
