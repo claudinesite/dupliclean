@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import legalContent from '../sanity/legal-content.cjs';
@@ -105,11 +105,16 @@ function markdownToHtml(markdown) {
   return blocks.join('\n');
 }
 
-export function documentTemplate(name, title, markdown) {
+export function documentTemplate(name, title, markdown, lang = 'fr') {
+  const en = lang === 'en';
+  const home = en ? '/en/' : '/';
+  const alternate = en ? 'fr' : 'en';
   const body = markdown.replace(/^# .+\r?\n/, '').replace(/^- \[(Français|English)\].+\r?\n/gm, '').replace(/^\s*---/, '');
   let language = 'fr';
   const toc = [];
-  const content = markdownToHtml(body).replace(/<h([123]) id="([^"]+)">(.*?)<\/h\1>/g, (_, level, id, label) => {
+  const englishStart = body.search(/^# English\s*$/m);
+  if (en && englishStart < 0) throw new Error(`Missing English legal text in ${name}`);
+  const content = markdownToHtml(en ? body.slice(englishStart) : body).replace(/<h([123]) id="([^"]+)">(.*?)<\/h\1>/g, (_, level, id, label) => {
     if (label === 'English') language = 'en';
     const anchor = label === 'Français' ? 'français' : label === 'English' ? 'english' : `${language}-${id}`;
     if (level === '2') toc.push({ anchor, label, language });
@@ -122,11 +127,24 @@ export function documentTemplate(name, title, markdown) {
     'data-deletion': ['Vos données.', 'Vos décisions.'],
     'third-party-licenses': ['Licences tierces.', 'Third-party licenses.'],
   };
-  const [headline, accent] = titles[name];
-  const nav = pages.map(([id, page], index) => `<a href="/${id}.html" ${id === name ? 'aria-current="page"' : ''}><span>0${index + 1}</span>${page.title}<span aria-hidden="true">↗</span></a>`).join('');
-  const date = /(?:Dernière mise à jour : )([^*\r\n]+)/.exec(markdown)?.[1] || '';
+  const englishTitles = {
+    'privacy-policy': ['Your privacy.', 'In plain English.', 'Privacy policy'],
+    'terms-of-use': ['Using DupliClean.', 'The terms explained.', 'Terms of use'],
+    'data-deletion': ['Your data.', 'Your decisions.', 'Data management and deletion'],
+    'third-party-licenses': ['Third-party software.', 'Licenses and notices.', 'Third-party licenses'],
+  };
+  const [headline, accent] = (en ? englishTitles : titles)[name];
+  if (en) title = englishTitles[name][2];
+  const nav = pages.map(([id, page], index) => `<a href="${home}${id}.html" ${id === name ? 'aria-current="page"' : ''}><span>0${index + 1}</span>${en ? englishTitles[id][2] : page.title}<span aria-hidden="true">↗</span></a>`).join('');
+  const date = (en ? /Last updated:\s*([^*\r\n]+)/i : /Dernière mise à jour : ([^*\r\n]+)/).exec(markdown)?.[1] || '';
+  function contents(language) {
+    const label = language === 'en' ? 'Contents · English' : 'Sommaire · Français';
+    const links = toc.filter(entry => entry.language === language).map(entry =>
+      `<a href="#${entry.anchor}">${entry.label}</a>`).join('');
+    return `<details${language === lang ? ' open' : ''}><summary>${label}</summary><nav aria-label="${label}">${links}</nav></details>`;
+  }
   return `<!doctype html>
-<html lang="fr">
+<html lang="${lang}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -136,33 +154,38 @@ export function documentTemplate(name, title, markdown) {
   <link rel="stylesheet" href="/grain.css">
   <link rel="stylesheet" href="/footer-orbit.css">
   <link rel="stylesheet" href="/legal.css">
+  <link rel="stylesheet" href="/language.css">
+  <link rel="alternate" hreflang="en" href="https://dupliclean.ca/en/${name}.html">
+  <link rel="alternate" hreflang="fr" href="https://dupliclean.ca/${name}.html">
 </head>
 <body id="top">
-  <a class="skip" href="#document">Aller au document</a>
-  <header class="legal-header frame"><a class="legal-brand" href="/" aria-label="DupliClean, accueil"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m22 3-8 14m-3-2 7 4-3 10-12-7 8-7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m7 22 3-4m1 7 3-5M25 17v6m-3-3h6" stroke="currentColor" stroke-width="1.5"/></svg></span>Dupli<span>Clean.</span></a><a class="back" href="/">Retour au site <span aria-hidden="true">↗</span></a></header>
+  <a class="skip" href="#document">${en ? 'Skip to document' : 'Aller au document'}</a>
+  <header class="legal-header frame"><a class="legal-brand" href="${home}" aria-label="${en ? 'DupliClean home' : 'DupliClean, accueil'}"><span class="brand-mark"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m22 3-8 14m-3-2 7 4-3 10-12-7 8-7Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="m7 22 3-4m1 7 3-5M25 17v6m-3-3h6" stroke="currentColor" stroke-width="1.5"/></svg></span>Dupli<span>Clean.</span></a><div class="header-tools"><a class="language-switch" href="${en ? '/' : '/en/'}${name}.html" lang="${alternate}" hreflang="${alternate}" aria-label="${en ? 'Lire en français' : 'Read in English'}">${alternate.toUpperCase()}</a><a class="back" href="${home}">${en ? 'Back to the site' : 'Retour au site'} <span aria-hidden="true">↗</span></a></div></header>
   <main class="frame">
     <section class="legal-hero" aria-labelledby="page-title">
-      <p class="eyebrow"><span aria-hidden="true">✳︎</span> DUPLICLEAN / INFORMATIONS OFFICIELLES</p>
+      <p class="eyebrow"><span aria-hidden="true">✳︎</span> DUPLICLEAN / ${en ? 'OFFICIAL INFORMATION' : 'INFORMATIONS OFFICIELLES'}</p>
       <h1 id="page-title">${headline}<br><span>${accent}</span></h1>
-      <div class="hero-meta"><p>${title}</p>${date ? `<span>Mis à jour le ${escapeHtml(date)}</span>` : ''}</div>
+      <div class="hero-meta"><p>${title}</p>${date ? `<span>${en ? 'Updated' : 'Mis à jour le'} ${escapeHtml(date)}</span>` : ''}</div>
       <div class="orbit" aria-hidden="true"></div>
     </section>
-    <nav class="document-nav" aria-label="Documents officiels">${nav}</nav>
+    <nav class="document-nav" aria-label="${en ? 'Official documents' : 'Documents officiels'}">${nav}</nav>
     <div class="reading-layout">
-      <aside class="contents"><div class="contents-inner"><p class="eyebrow">DANS CE DOCUMENT</p><nav class="languages" aria-label="Langues"><a href="#français">Français ↓</a><a href="#english">English ↓</a></nav><details open><summary>Sommaire · Français</summary><nav aria-label="Sommaire français">${toc.filter(t => t.language === 'fr').map(t => `<a href="#${t.anchor}">${t.label}</a>`).join('')}</nav></details><details><summary>Contents · English</summary><nav aria-label="English contents">${toc.filter(t => t.language === 'en').map(t => `<a href="#${t.anchor}">${t.label}</a>`).join('')}</nav></details><a class="to-top" href="#top">Retour en haut ↑</a></div></aside>
-      <article id="document" class="legal-prose" aria-label="${title}">${content}</article>
+      <aside class="contents"><div class="contents-inner"><p class="eyebrow">${en ? 'IN THIS DOCUMENT' : 'DANS CE DOCUMENT'}</p>${en ? '' : '<nav class="languages" aria-label="Langues"><a href="#français">Français ↓</a><a href="#english">English ↓</a></nav>'}${(en ? ['en'] : ['fr', 'en']).map(language => contents(language)).join('')}<a class="to-top" href="#top">${en ? 'Back to top ↑' : 'Retour en haut ↑'}</a></div></aside>
+      <article id="document" class="legal-prose" aria-label="${title}">${en ? content.replace(/href="(?:https:\/\/dupliclean\.ca)?\/([\w-]+\.html)(?=[#"?])/g, 'href="/en/$1') : content}</article>
     </div>
-    <section class="legal-outro download" id="telecharger"><p class="eyebrow"><span aria-hidden="true">✳︎</span> TROUVEZ. SUPPRIMEZ. RESPIREZ.</p><h2>Un appareil plus léger,<br><span>un quotidien plus fluide.</span></h2><p class="outro-description">Libérez votre espace simplement.</p><a href="/#telecharger" class="outro-link"><span class="play-symbol" aria-hidden="true">▷</span><span><small>Disponible sur</small>Google Play</span><span aria-hidden="true">↗</span></a><p class="outro-availability">Disponible uniquement sur Android, via Google Play.</p><p class="outro-languages">Français · English · Italiano · Español · Deutsch · Português</p></section>
+    <section class="legal-outro download" id="telecharger"><p class="eyebrow"><span aria-hidden="true">✳︎</span> ${en ? 'FIND. REMOVE. BREATHE.' : 'TROUVEZ. SUPPRIMEZ. RESPIREZ.'}</p><h2>${en ? 'A lighter device,' : 'Un appareil plus léger,'}<br><span>${en ? 'a smoother day.' : 'un quotidien plus fluide.'}</span></h2><p class="outro-description">${en ? 'Make room for what matters.' : 'Libérez votre espace simplement.'}</p><a href="${home}#telecharger" class="outro-link"><span class="play-symbol" aria-hidden="true">▷</span><span><small>${en ? 'Get it on' : 'Disponible sur'}</small>Google Play</span><span aria-hidden="true">↗</span></a><p class="outro-availability">${en ? 'Available exclusively for Android on Google Play.' : 'Disponible uniquement sur Android, via Google Play.'}</p><p class="outro-languages">${en ? 'French · English · Italian · Spanish · German · Portuguese' : 'Français · English · Italiano · Español · Deutsch · Português'}</p></section>
   </main>
-  <footer class="legal-footer frame"><a class="legal-brand" href="/">Dupli<span>Clean.</span></a><span>© ${new Date().getFullYear()} DupliClean</span><a href="#top">Retour en haut ↑</a></footer>
+  <footer class="legal-footer frame"><a class="legal-brand" href="${home}">Dupli<span>Clean.</span></a><span>© ${new Date().getFullYear()} DupliClean</span><a href="#top">${en ? 'Back to top ↑' : 'Retour en haut ↑'}</a></footer>
 <script src="/footer-orbit.js"></script>
 </body>
 </html>`;
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+  await mkdir(path.join(root, 'dist/en'), {recursive: true});
   for (const [name, {title}] of pages) {
     const markdown = await readFile(path.join(root, 'legal', `${name}.md`), 'utf8');
+    await writeFile(path.join(root, 'dist/en', `${name}.html`), documentTemplate(name, title, markdown, 'en'), 'utf8');
     await writeFile(path.join(root, 'dist', `${name}.html`), documentTemplate(name, title, markdown), 'utf8');
   }
   console.log(`Generated ${pages.length} DupliClean legal pages.`);

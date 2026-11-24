@@ -1,4 +1,5 @@
-(function () {
+function createContentRenderer(document, location, interactive = true) {
+  const english = document.documentElement.lang === 'en';
   const select = (selector, root = document) => root.querySelector(selector);
   const selectAll = (selector, root = document) => [...root.querySelectorAll(selector)];
 
@@ -10,7 +11,7 @@
   function safeLink(value) {
     if (typeof value !== 'string' || !value.trim()) return null;
     try {
-      const url = new URL(value, location.origin);
+      const url = new URL(value, location.href || location.origin);
       return ['https:', 'http:', 'mailto:'].includes(url.protocol) ? url.href : null;
     } catch { return null; }
   }
@@ -129,7 +130,7 @@
   const band = select('.stats-band');
   const statsList = select('.stats-list');
   function syncStatsBand() {
-    if (!band || !statsList) return;
+    if (!interactive || !band || !statsList) return;
     const copy = statsList.cloneNode(true);
     copy.setAttribute('aria-hidden', 'true');
     select('.stats-list[aria-hidden]', band)?.remove();
@@ -139,7 +140,8 @@
   syncStatsBand();
   select('.stats-toggle')?.addEventListener('click', (event) => {
     const paused = band.classList.toggle('is-paused');
-    const label = paused ? 'Reprendre le défilement' : 'Mettre le bandeau en pause';
+    const label = english ? (paused ? 'Resume scrolling' : 'Pause scrolling')
+      : (paused ? 'Reprendre le défilement' : 'Mettre le bandeau en pause');
     event.currentTarget.setAttribute('aria-label', label);
     event.currentTarget.title = label;
   });
@@ -354,9 +356,17 @@
     }
   }
 
+  return applyContent;
+}
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = createContentRenderer;
+} else {
+  const applyContent = createContentRenderer(document, location);
+  const english = document.documentElement.lang === 'en';
   const sections = ['hero', 'stats', 'benefits', 'steps', 'sources', 'data', 'faq', 'download', 'footer'];
 
-  const fallbackContent = Promise.all(sections.map((section) =>
+  const fallbackContent = english ? fetch('/content/english.json').then(response => response.json()) : Promise.all(sections.map((section) =>
     fetch(`/content/${section}.json`, { cache: 'no-store' })
       .then((response) => {
         if (!response.ok) throw new Error(`${section}.json indisponible (${response.status})`);
@@ -380,7 +390,7 @@
     ));
   }
 
-  const publishedContent = fetch('/api/content', { signal: AbortSignal.timeout(6500) })
+  const publishedContent = fetch(english ? '/api/content?lang=en' : '/api/content', { signal: AbortSignal.timeout(6500) })
     .then((response) => {
       if (!response.ok) throw new Error(`Sanity indisponible (${response.status})`);
       return response.json();
@@ -391,4 +401,4 @@
   Promise.all([fallbackContent, publishedContent])
     .then(([fallback, published]) => { if (published) applyContent(mergeContent(fallback, published)); })
     .catch((error) => console.warn('[DupliClean CMS]', error.message));
-})();
+}

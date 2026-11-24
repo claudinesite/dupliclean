@@ -1,0 +1,291 @@
+{
+  "hero": {
+    "eyebrowLead": "Fewer duplicates.",
+    "eyebrowEnd": "More room for what matters.",
+    "titleLead": "Free up",
+    "titleAccent": "your space.",
+    "titleEnd": "Keep what matters.",
+    "subtitle": "Find. Remove. Breathe.",
+    "primaryButton": "Explore the app",
+    "secondaryButton": "How it works",
+    "aboutLead": "Duplicates, similar photos, large files.",
+    "aboutBody": "DupliClean helps you sort through them. You decide what to delete.",
+    "primaryLink": "#telecharger",
+    "secondaryLink": "#fonctionnement",
+    "navDiscoverLabel": "Explore",
+    "navDownloadLabel": "Download",
+    "mainImage": {
+      "url": "/assets/dupliclean-phone-dashboard.png",
+      "alt": "A hand holds a phone showing the DupliClean home screen, Phone and Cloud sources, and the activity dashboard.",
+      "caption": ""
+    },
+    "navigationLinks": [
+      {
+        "label": "Features",
+        "link": "#avantages"
+      },
+      {
+        "label": "How it works",
+        "link": "#fonctionnement"
+      },
+      {
+        "label": "File sources",
+        "link": "#sources"
+      },
+      {
+        "label": "Your data",
+        "link": "#donnees"
+      },
+      {
+        "label": "Frequently asked questions",
+        "link": "#questions"
+      }
+    ],
+    "exampleCards": [
+      {
+        "title": "Space to reclaim",
+        "subtitle": "Sample scan · OneDrive",
+        "badge": "▧   Total⌄",
+        "value": "3.2 GB",
+        "noteBadge": "↗ 128",
+        "note": "duplicates found",
+        "legendTitle": "Breakdown",
+        "legend": [
+          {
+            "label": "Photos",
+            "value": "2.4 GB"
+          },
+          {
+            "label": "Videos",
+            "value": "640 MB"
+          },
+          {
+            "label": "Documents",
+            "value": "160 MB"
+          }
+        ]
+      },
+      {
+        "title": "You’re in control",
+        "subtitle": "Every deletion needs your approval",
+        "badge": "♧   Choice⌄",
+        "value": "100%",
+        "noteBadge": "✓ You",
+        "note": "choose what to delete",
+        "legendTitle": "Always your decision",
+        "legend": [
+          {
+            "label": "Compare",
+            "value": "Your files"
+          },
+          {
+            "label": "Select",
+            "value": "The copies"
+          },
+          {
+            "label": "Confirm",
+            "value": "Your selection"
+          }
+        ]
+      }
+    ]
+  },
+  "stats": {
+    "items": [
+      {
+        "value": "4 sources",
+        "label": "Phone, OneDrive, Dropbox and MEGA"
+      },
+      {
+        "value": "Your choice",
+        "label": "You confirm every deletion"
+      },
+      {
+        "value": "No sign-up",
+        "label": "No separate DupliClean account"
+      }
+    ],
+    "presentationLead": "DupliClean helps you find duplicates,\nfree up space and keep what matters.",
+    "presentationEnd": "Fewer unwanted copies.\nMore room for your memories.",
+    "kicker": "*   THE IDEA BEHIND DUPLICLEAN"
+  },
+  "benefits": {
+    "titleLead": "Fewer duplicates,",
+    "titleAccent": "more room for what matters.",
+    "resultsTitleLead": "Your results.",
+    "resultsTitleEnd": "Your decision.",
+    "resultsDescription": "Open a category to review the files and choose what to remove. When the scan finishes, all your files are still there.",
+    "items": [
+      {
+        "title": "Exact duplicates",
+        "summary": "Find files with identical contents.",
+        "explanation": "DupliClean compares details such as file sizes and fingerprints calculated on Android or supplied by your cloud service.",
+        "menuLabel": "Exact duplicates"
+      },
+      {
+        "title": "Similar photos",
+        "summary": "Find photos that look alike.",
+        "explanation": "DupliClean compares thumbnails to estimate similarity. Review the photos before choosing which ones to delete.",
+        "menuLabel": "Similar photos"
+      },
+      {
+        "title": "Large files and screenshots",
+        "summary": "Spot files worth sorting through.",
+        "explanation": "Depending on the source and feature, DupliClean identifies large files and screenshots and estimates how much space you could reclaim.",
+        "menuLabel": "Files to review"
+      },
+      {
+        "title": "Your data stays in your hands",
+        "summary": "You select the files and confirm each deletion.",
+        "explanation": "DupliClean analyses local files on your device. The developer’s servers receive no local files for analysis and keep no permanent copies of files or results.",
+        "menuLabel": "Your data, your choice"
+      }
+    ],
+    "choiceTitle": "DupliClean never deletes files automatically.",
+    "choiceDescription": "You decide what goes.",
+    "kicker": "*   FIND. REMOVE. BREATHE.",
+    "navLabel": "EXPLORE DUPLICLEAN",
+    "resultsKicker": "AFTER THE SCAN",
+    "detailsLabel": "FEATURES",
+    "resultsButtonLabel": "How it works",
+    "resultsButtonLink": "#fonctionnement",
+    "mainImage": {
+      "url": "/assets/dupliclean-scan-results.jpg",
+      "alt": "DupliClean scan results showing exact duplicates, similar photos, large files and screenshots. No files have been deleted.",
+      "caption": "IN-APP SCREENSHOT · SAMPLE RESULTS"
+    }
+  },
+  "steps": {
+    "kicker": "*   HOW IT WORKS",
+    "titleLead": "One source. One scan.",
+    "titleAccent": "Four ways to tidy up.",
+    "intro": "A single scan can turn up several categories of files to review.",
+    "items": [
+      {
+        "title": "Choose a source.",
+        "description": "Select the files you’ve allowed DupliClean to access on your Android device or in your OneDrive, Dropbox or MEGA account."
+      },
+      {
+        "title": "Run a scan.",
+        "description": "Depending on the source and permissions, DupliClean looks for exact duplicates, similar photos, large files and screenshots."
+      },
+      {
+        "title": "Review and confirm.",
+        "description": "Open a category, compare the files and decide which ones to keep. DupliClean only deletes files after you confirm."
+      }
+    ]
+  },
+  "sources": {
+    "kicker": "*   WHEREVER YOUR FILES LIVE",
+    "titleLead": "Multiple sources.",
+    "titleAccent": "One tidier device.",
+    "description": "Use the media you’ve shared on Android or connect your OneDrive, Dropbox or MEGA account. Features vary by source and permissions. No separate DupliClean account is needed.",
+    "items": [
+      {
+        "title": "Your phone",
+        "description": "Photos and videos you allow · On-device scan",
+        "tag": "LOCAL"
+      },
+      {
+        "title": "OneDrive",
+        "description": "Sign-in and files managed by Microsoft",
+        "tag": "CLOUD"
+      },
+      {
+        "title": "Dropbox",
+        "description": "Sign-in and files managed by Dropbox",
+        "tag": "CLOUD"
+      },
+      {
+        "title": "MEGA",
+        "description": "Sign-in and files managed by MEGA",
+        "tag": "CLOUD"
+      }
+    ],
+    "fileTypes": "Photos, Videos, Documents",
+    "note": "Availability depends on the source and permissions"
+  },
+  "data": {
+    "kicker": "*   YOUR DATA, YOUR CHOICE",
+    "titleLead": "Your history.",
+    "titleAccent": "Under your control.",
+    "intro": "DupliClean can store your preferences and cleanup history locally on your device.",
+    "items": [
+      {
+        "title": "Manage your history in the app.",
+        "description": "Remove an entry, select several, or clear your entire history. This clears cleanup records and leaves the files on your phone and in the cloud intact."
+      },
+      {
+        "title": "Clear local data.",
+        "description": "Open DupliClean’s app info in Android settings and clear its data or storage. Uninstalling the app also removes its preferences and other local data."
+      },
+      {
+        "title": "Revoke access.",
+        "description": "Change media access in Android settings. For OneDrive and MEGA, revoke DupliClean’s access in your account’s security or privacy settings."
+      }
+    ],
+    "buttonLabel": "Data management and deletion",
+    "buttonLink": "/en/data-deletion.html"
+  },
+  "faq": {
+    "kicker": "*   YOUR QUESTIONS",
+    "titleLead": "A few questions.",
+    "titleAccent": "Clear answers.",
+    "items": [
+      {
+        "question": "Does DupliClean delete files automatically?",
+        "answer": "No. You see the results first, choose which files to keep or delete, and confirm before anything is removed."
+      },
+      {
+        "question": "What can DupliClean scan for?",
+        "answer": "Depending on the source and features, it can find exact duplicates, visually similar photos, large files and screenshots. Review similar-photo suggestions before deleting anything. Two photos can look alike without being identical."
+      },
+      {
+        "question": "Do I need a DupliClean account?",
+        "answer": "No. For OneDrive, Dropbox and MEGA, use your existing account and sign in directly with the provider."
+      },
+      {
+        "question": "Are my files sent to a DupliClean server?",
+        "answer": "Local files stay on your device for analysis. The developer’s servers keep no permanent copies of your files, thumbnails or results. Cloud scans exchange the necessary data with Microsoft, Dropbox or MEGA and may temporarily download thumbnails for comparison."
+      },
+      {
+        "question": "What happens when I delete a cloud file?",
+        "answer": "OneDrive, Dropbox and MEGA handle deletions according to their own policies. Where supported, deleted files move to the cloud service’s trash. Recovery depends on the provider’s policy and DupliClean cannot guarantee it."
+      },
+      {
+        "question": "Does clearing my history delete my files?",
+        "answer": "No. Clearing history removes only the local cleanup records. Files on Android, OneDrive, Dropbox and MEGA are unaffected."
+      },
+      {
+        "question": "Can I limit or revoke access to my files?",
+        "answer": "Yes. Recent Android versions let you grant full access or select specific media. You can change this in Android settings. To revoke cloud access, use your Microsoft, Dropbox or MEGA account settings."
+      },
+      {
+        "question": "Which languages does the app support?",
+        "answer": "French, English, Italian, Spanish, German and Portuguese. Your language preference can be stored locally on your device."
+      }
+    ]
+  },
+  "download": {
+    "kicker": "*   FIND. REMOVE. BREATHE.",
+    "titleLead": "A lighter device.",
+    "titleAccent": "A smoother day.",
+    "description": "Make room for what matters.",
+    "availability": "Available exclusively for Android on Google Play.",
+    "buttonLabel": "Google Play",
+    "buttonEyebrow": "Get it on",
+    "playStoreUrl": "https://play.google.com/store/apps/details?id=com.dupliclean.app&pcampaignid=web_share",
+    "languages": "French · English · Italian · Spanish · German · Portuguese"
+  },
+  "footer": {
+    "tagline": "Fewer duplicates. More room for what matters.",
+    "backToTopLabel": "Back to top ↑",
+    "copyright": "© 2026 DupliClean",
+    "developerLabel": "Contact the developer",
+    "developerUrl": "https://claudeportofolio.vercel.app/#contact",
+    "privacyLabel": "Privacy",
+    "termsLabel": "Terms of use",
+    "deletionLabel": "Data management and deletion",
+    "licensesLabel": "Third-party licenses"
+  }
+}

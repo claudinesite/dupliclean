@@ -1,0 +1,15 @@
+.header-tools { display: flex; align-items: center; gap: clamp(4px, 1vw, 14px); }
+.language-switch {
+  display: inline-grid;
+  place-items: center;
+  min-width: 36px;
+  min-height: 36px;
+  color: #62351f;
+  font: 600 13px/1 var(--reference-font, Arial, sans-serif);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.language-switch:focus-visible { outline: 2px solid currentColor; }
+@media (max-width: 540px) {
+  .reference-nav .nav-brand-group { max-width: min(44vw, 190px); }
+}

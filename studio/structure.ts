@@ -13,6 +13,11 @@ export const structure: StructureResolver = S => S.list().title('Modifier DupliC
     .title(`${String(index + 1).padStart(2, '0')} · ${section.title}`)
     .icon(DocumentTextIcon).singleton(section.key)),
   S.divider(),
+  S.listItem().id('english').title('Version anglaise').icon(EarthGlobeIcon).child(
+    S.list().title('Sections en anglais').items(sections.map((section, index) =>
+      S.listItem().id(section.key + '-en').title(`${String(index + 1).padStart(2, '0')} · ${section.title}`)
+        .icon(DocumentTextIcon).singleton(section.key + '-en'))),
+  ),
   S.listItem().id('documents').title('Pages légales').icon(EarthGlobeIcon).child(
     S.list().title('Les documents officiels').items([
       S.listItem().title('Politique de confidentialité').singleton('privacyPolicy'),

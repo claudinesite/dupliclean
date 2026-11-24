@@ -1,6 +1,6 @@
 /* Large outlined sectors inspired by the Rollups reference, in DupliClean copper. */
 (() => {
-  const developerLink = document.querySelector('a[href="mailto:claudeaboki@gmail.com"]');
+  const developerLink = document.querySelector('[data-developer-contact][href="mailto:claudeaboki@gmail.com"]');
   if (developerLink) {
     developerLink.href = 'https://claudeportofolio.vercel.app/#contact';
     developerLink.target = '_blank';
@@ -26,10 +26,13 @@
   let paused = false;
   let visible = false;
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const en = document.documentElement.lang === 'en';
   function update() {
     section.classList.toggle('footer-orbit-paused', paused || !visible || document.hidden || reduced.matches);
-    button.setAttribute('aria-label', paused ? 'Reprendre l’animation des arcs' : 'Mettre l’animation des arcs en pause');
+    button.setAttribute('aria-label', en ? (paused ? 'Resume animation' : 'Pause animation') :
+      (paused ? 'Reprendre l’animation des arcs' : 'Mettre l’animation des arcs en pause'));
     button.innerHTML = `<svg viewBox="0 0 12 12" aria-hidden="true"><path d="${paused?'m3 2 7 4-7 4z':'M3 2h2v8H3zm4 0h2v8H7z'}"/></svg><span>${paused?'Animation en pause':'Animation'}</span>`;
+    if (paused && en) button.querySelector('span').textContent = 'Animation paused';
   }
   button.addEventListener('click', () => { paused = !paused; update(); });
   new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; update(); }).observe(section);

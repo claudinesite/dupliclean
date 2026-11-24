@@ -50,6 +50,27 @@ test('Sanity failure permits frontend fallback and rejects writes', async () => 
   assert.equal(write.statusCode, 405);
 });
 
+test('English pages use their own published sections and English legal body', async () => {
+  global.fetch = async url => {
+    assert.match(url.searchParams.get('query'), /section-hero-en/);
+    return {ok: true, json: async () => ({result: {hero: {}, faq: {}}})};
+  };
+  const api = response();
+  await contentHandler({method: 'GET', query: {lang: 'en'}}, api);
+  assert.equal(api.statusCode, 200);
+  const example = text => [{_type: 'block', children: [{_type: 'span', text}]}];
+  global.fetch = async () => ({ok: true, json: async () => ({result: {
+    bodyFr: example('Contenu français du client'), bodyEn: example('Current published English text'),
+  }})});
+  const page = response();
+  await legalHandler({method: 'GET', query: {page: 'privacy-policy', lang: 'en'}}, page);
+  assert.equal(page.headers['X-DupliClean-Content'], 'sanity');
+  assert.match(page.body, /Current published English text/);
+  assert.doesNotMatch(page.body, /Contenu français du client/);
+  assert.match(page.body, /href="\/en\/terms-of-use.html"/);
+  assert.match(page.body, /href="\/privacy-policy.html" lang="fr"/);
+});
+
 test('archived legal import renders French and English with unique anchors', async () => {
   const imported = JSON.parse(readFileSync('sanity/initial-legal-content.json', 'utf8'));
   for (const {type, content: doc} of imported) {

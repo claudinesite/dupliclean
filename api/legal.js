@@ -7,6 +7,7 @@ const legalBlocks = '{_key,_type,style,listItem,children[]{_key,_type,text,marks
 module.exports = async function legal(request, response) {
   const slug = request.query?.page;
   const page = Object.hasOwn(LEGAL_PAGES, slug) ? LEGAL_PAGES[slug] : null;
+  const language = request.query?.lang === 'en' ? 'en' : 'fr';
   if (!page) return response.status(404).send('Document introuvable.');
   if (request.method !== 'GET' && request.method !== 'HEAD') {
     response.setHeader('Allow', 'GET, HEAD');
@@ -25,12 +26,12 @@ module.exports = async function legal(request, response) {
     const { documentTemplate } = await import('../scripts/generate-legal-pages.mjs');
     response.setHeader('X-DupliClean-Content', 'sanity');
     response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=30, stale-while-revalidate=60');
-    return response.status(200).send(documentTemplate(slug, page.title, markdown));
+    return response.status(200).send(documentTemplate(slug, page.title, markdown, language));
   } catch (error) {
     console.warn('[Sanity legal]', error.message);
     response.setHeader('X-DupliClean-Content', 'fallback');
     response.setHeader('Cache-Control', 'public, max-age=0, s-maxage=10');
-    const html = await readFile(path.join(process.cwd(), 'dist', `${slug}.html`), 'utf8');
+    const html = await readFile(path.join(process.cwd(), 'dist', language === 'en' ? 'en' : '', `${slug}.html`), 'utf8');
     return response.status(200).send(html);
   }
 };

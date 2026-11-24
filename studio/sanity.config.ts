@@ -10,6 +10,9 @@ const singletons = [
   ...sections.map(section => defineSingleton({
     id: section.key, documentId: section.id, schemaType: section.type, title: section.title,
   })),
+  ...sections.map(section => defineSingleton({
+    id: section.key + '-en', documentId: section.id + '-en', schemaType: section.type, title: section.title + ' · EN',
+  })),
   ...legal.map(type => defineSingleton({id: type, documentId: type, schemaType: type})),
 ]
 

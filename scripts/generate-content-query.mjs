@@ -11,4 +11,6 @@ function projection(field) {
 }
 const query = `{${sections.map(section => `${JSON.stringify(section.key)}:coalesce(*[_id==${JSON.stringify(section.id)}][0]{${section.fields.map(projection).join(',')}},*[_id=="siteContent"][0].${section.key})`).join(',')}}`;
 await writeFile(fileURLToPath(new URL('sanity/content-query.cjs', root)), `module.exports = ${JSON.stringify(query)};\n`);
+const englishQuery = `{${sections.map(section => `${JSON.stringify(section.key)}:*[_id==${JSON.stringify(section.id + '-en')}][0]{${section.fields.map(projection).join(',')}}`).join(',')}}`;
+await writeFile(new URL('sanity/content-query-en.cjs', root), `module.exports = ${JSON.stringify(englishQuery)};\n`);
 console.log('Generated published section query.');
