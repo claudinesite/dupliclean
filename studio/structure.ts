@@ -18,6 +18,7 @@ export const structure: StructureResolver = S => S.list().title('Modifier DupliC
       S.listItem().title('Politique de confidentialité').singleton('privacyPolicy'),
       S.listItem().title('Conditions d’utilisation').singleton('termsOfUse'),
       S.listItem().title('Suppression des données').singleton('dataDeletion'),
+      S.listItem().title('Licences tierces').singleton('thirdPartyLicenses'),
     ]),
   ),
 ])

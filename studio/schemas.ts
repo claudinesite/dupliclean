@@ -36,6 +36,34 @@ function field(source: FieldSource, fixedLength?: number): FieldDefinition {
 }
 
 const fixedLengths: Record<string, number> = {stats: 3, benefits: 4, steps: 3, sources: 3, data: 3}
+
+const licenseBodies = legalSchemas[0].fields.filter(source => source.type === 'array').map(source => defineField({
+  name: source.name,
+  title: source.title,
+  group: source.group,
+  type: 'array',
+  of: [defineArrayMember({
+    type: 'block',
+    styles: source.of?.[0].styles,
+    lists: source.of?.[0].lists,
+    marks: {
+      decorators: [...(source.of?.[0].marks.decorators || []), {title: 'Code', value: 'code'}],
+      annotations: [defineArrayMember({
+        name: 'link',
+        title: 'Lien / Link',
+        type: 'object',
+        fields: [defineField({
+          name: 'href',
+          title: 'URL',
+          type: 'url',
+          validation: rule => rule.required().uri({allowRelative: true, scheme: ['http', 'https', 'mailto']}),
+        })],
+      })],
+    },
+  })],
+  validation: rule => rule.required().min(1),
+}))
+
 export const schemaTypes: SchemaTypeDefinition[] = [
   ...sections.map(section => defineType({
     name: section.type,
@@ -53,6 +81,12 @@ export const schemaTypes: SchemaTypeDefinition[] = [
     fields: schema.fields.map(source => field(source as FieldSource)),
     preview: {prepare: () => ({title: schema.title})},
   })),
+  defineType({
+    name: 'thirdPartyLicenses', title: 'Licences tierces', type: 'document', icon: DocumentTextIcon,
+    groups: legalSchemas[0].groups,
+    fields: [defineField({name: 'title', title: 'Document', type: 'string', readOnly: true}), ...licenseBodies],
+    preview: {prepare: () => ({title: 'Licences tierces'})},
+  }),
   // Preserve the original document for fallback and migration history.
   defineType({...legacy, type: 'document' as const, title: 'Ancienne fiche du site (archive)', readOnly: true,
     fields: legacy.fields.map(source => field(source as FieldSource)),

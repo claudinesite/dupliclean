@@ -5,7 +5,7 @@ import sections from './sections.json'
 import {schemaTypes} from './schemas'
 import {structure} from './structure'
 
-const legal = ['privacyPolicy', 'termsOfUse', 'dataDeletion']
+const legal = ['privacyPolicy', 'termsOfUse', 'dataDeletion', 'thirdPartyLicenses']
 const singletons = [
   ...sections.map(section => defineSingleton({
     id: section.key, documentId: section.id, schemaType: section.type, title: section.title,

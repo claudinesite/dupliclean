@@ -7,5 +7,6 @@
   "privacyLabel": "Confidentialité",
   "termsLabel": "Conditions d’utilisation",
   "deletionLabel": "Gestion et suppression des données",
-  "mainImage": null
+  "mainImage": null,
+  "licensesLabel": "Licences tierces"
 }

@@ -1,14 +1,11 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import legalContent from '../sanity/legal-content.cjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
-const pages = [
-  ['privacy-policy', 'Politique de confidentialité'],
-  ['terms-of-use', 'Conditions d’utilisation'],
-  ['data-deletion', 'Gestion et suppression des données'],
-];
+const pages = Object.entries(legalContent.LEGAL_PAGES);
 
 function escapeHtml(value) {
   return value
@@ -19,11 +16,21 @@ function escapeHtml(value) {
 }
 
 function inline(value) {
-  return escapeHtml(value)
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, label, url) =>
-      /^(https?:\/\/|mailto:|#)/i.test(url) ? `<a href="${url}">${label}</a>` : label)
-    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\*([^*]+)\*/g, '<em>$1</em>');
+  const token = /`([^`]+)`|\[([^\]]+)\]\(([^)]+)\)|\*\*([^*]+)\*\*|\*([^*]+)\*/g;
+  let output = '';
+  let cursor = 0;
+  for (const match of value.matchAll(token)) {
+    const [raw, code, label, url, bold, italic] = match;
+    output += escapeHtml(value.slice(cursor, match.index));
+    if (code) output += `<code>${escapeHtml(code)}</code>`;
+    else if (label) {
+      const safe = /^(https?:\/\/|mailto:|#|\/(?![\/\\]))/i.test(url) && !/[\s\\]/.test(url);
+      output += safe ? `<a href="${escapeHtml(url)}">${inline(label)}</a>` : inline(label);
+    } else if (bold) output += `<strong>${inline(bold)}</strong>`;
+    else output += `<em>${inline(italic)}</em>`;
+    cursor = match.index + raw.length;
+  }
+  return output + escapeHtml(value.slice(cursor));
 }
 
 function slug(value) {
@@ -108,9 +115,10 @@ export function documentTemplate(name, title, markdown) {
     'privacy-policy': ['Votre vie privée.', 'En toute clarté.'],
     'terms-of-use': ['Les règles du jeu.', 'En toute simplicité.'],
     'data-deletion': ['Vos données.', 'Vos décisions.'],
+    'third-party-licenses': ['Licences tierces.', 'Third-party licenses.'],
   };
   const [headline, accent] = titles[name];
-  const nav = pages.map(([id, label], index) => `<a href="/${id}.html" ${id === name ? 'aria-current="page"' : ''}><span>0${index + 1}</span>${label}<span aria-hidden="true">↗</span></a>`).join('');
+  const nav = pages.map(([id, page], index) => `<a href="/${id}.html" ${id === name ? 'aria-current="page"' : ''}><span>0${index + 1}</span>${page.title}<span aria-hidden="true">↗</span></a>`).join('');
   const date = /(?:Dernière mise à jour : )([^*\r\n]+)/.exec(markdown)?.[1] || '';
   return `<!doctype html>
 <html lang="fr">
@@ -131,7 +139,7 @@ export function documentTemplate(name, title, markdown) {
     <section class="legal-hero" aria-labelledby="page-title">
       <p class="eyebrow"><span aria-hidden="true">✳︎</span> DUPLICLEAN / INFORMATIONS OFFICIELLES</p>
       <h1 id="page-title">${headline}<br><span>${accent}</span></h1>
-      <div class="hero-meta"><p>${title}</p><span>Mis à jour le ${date}</span></div>
+      <div class="hero-meta"><p>${title}</p>${date ? `<span>Mis à jour le ${escapeHtml(date)}</span>` : ''}</div>
       <div class="orbit" aria-hidden="true"></div>
     </section>
     <nav class="document-nav" aria-label="Documents officiels">${nav}</nav>
@@ -148,7 +156,7 @@ export function documentTemplate(name, title, markdown) {
 }
 
 if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
-  for (const [name, title] of pages) {
+  for (const [name, {title}] of pages) {
     const markdown = await readFile(path.join(root, 'legal', `${name}.md`), 'utf8');
     await writeFile(path.join(root, 'dist', `${name}.html`), documentTemplate(name, title, markdown), 'utf8');
   }

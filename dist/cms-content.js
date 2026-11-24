@@ -336,8 +336,9 @@
       setText('.footer-legal a:nth-child(1)', footer.privacyLabel);
       setText('.footer-legal a:nth-child(2)', footer.termsLabel);
       setText('.footer-legal a:nth-child(3)', footer.deletionLabel);
-      setText('.footer-legal a:nth-child(4)', footer.developerLabel);
-      setLink('.footer-legal a:nth-child(4)', footer.developerUrl);
+      setText('.footer-legal [data-legal-licenses]', footer.licensesLabel);
+      setText('.footer-legal [data-developer-contact]', footer.developerLabel);
+      setLink('.footer-legal [data-developer-contact]', footer.developerUrl);
       optionalVisual(select('.site-footer .brand-icon'), footer.mainImage);
     }
   }

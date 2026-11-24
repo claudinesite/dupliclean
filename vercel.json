@@ -27,7 +27,7 @@
       }
     },
     {
-      "src": "/(privacy-policy|terms-of-use|data-deletion)\\.html",
+      "src": "/(privacy-policy|terms-of-use|data-deletion|third-party-licenses)\\.html",
       "dest": "/api/legal?page=$1"
     },
     {

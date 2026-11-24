@@ -11,7 +11,7 @@ Site HTML, CSS, Tailwind et JavaScript natif, hébergé sur Vercel. Le contenu e
 5. Modifier puis cliquer sur **Publier**. Les brouillons restent privés.
 6. Actualiser le site après une à deux minutes, le temps des caches Sanity et Vercel.
 
-Les trois documents juridiques sont regroupés sous **Pages légales**, avec chacun deux onglets Français / English et un éditeur de texte mis en forme. Les URL publiques restent identiques.
+Les quatre documents officiels, dont **Licences tierces**, sont regroupés sous **Pages légales**, avec chacun deux onglets Français / English et un éditeur de texte mis en forme.
 
 Les rubriques sont des singletons : la création de doublons, la suppression et la dépublication sont désactivées dans le Studio. Pour inviter un collaborateur plus tard, ouvrir les membres du projet DupliClean dans Sanity Manage.
 

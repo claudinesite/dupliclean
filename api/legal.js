@@ -2,6 +2,7 @@ const { readFile } = require('node:fs/promises');
 const path = require('node:path');
 const { queryPublished } = require('../sanity/client.cjs');
 const { LEGAL_PAGES, portableToMarkdown } = require('../sanity/legal-content.cjs');
+const legalBlocks = '{_key,_type,style,listItem,children[]{_key,_type,text,marks},markDefs[]{_key,_type,href}}';
 
 module.exports = async function legal(request, response) {
   const slug = request.query?.page;
@@ -16,7 +17,7 @@ module.exports = async function legal(request, response) {
   response.setHeader('X-Content-Type-Options', 'nosniff');
   try {
     const document = await queryPublished(
-      '*[_id == $id][0]{bodyFr[]{_type,style,listItem,children[]{_type,text,marks}},bodyEn[]{_type,style,listItem,children[]{_type,text,marks}}}',
+      `*[_id == $id][0]{bodyFr[]${legalBlocks},bodyEn[]${legalBlocks}}`,
       { id: page.id },
     );
     if (!document?.bodyFr?.length || !document?.bodyEn?.length) throw new Error('Incomplete legal document');

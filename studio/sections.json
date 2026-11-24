@@ -1252,6 +1252,12 @@
         "fieldset": "texts"
       },
       {
+        "name": "licensesLabel",
+        "title": "Lien des licences tierces",
+        "type": "string",
+        "fieldset": "texts"
+      },
+      {
         "name": "mainImage",
         "title": "Logo du pied de page (facultatif)",
         "type": "image",

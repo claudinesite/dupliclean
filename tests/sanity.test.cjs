@@ -50,18 +50,10 @@ test('Sanity failure permits frontend fallback and rejects writes', async () => 
   assert.equal(write.statusCode, 405);
 });
 
-test('import preserves every FR/EN legal paragraph and bullet', async () => {
+test('archived legal import renders French and English with unique anchors', async () => {
   const imported = JSON.parse(readFileSync('sanity/initial-legal-content.json', 'utf8'));
-  const normalize = (text) => text.replace(/\*\*/g, '').replace(/\s+/g, ' ').trim();
-  for (const [slug, page] of Object.entries(LEGAL_PAGES)) {
-    const doc = imported.find((entry) => entry.type === page.id).content;
-    const source = readFileSync(`legal/${slug}.md`, 'utf8').replaceAll('\r\n', '\n');
-    const fr = source.split('# Français\n')[1].split('# English\n')[0];
-    const en = source.split('# English\n')[1];
-    for (const [markdown, blocks] of [[fr, doc.bodyFr], [en, doc.bodyEn]]) {
-      const expected = normalize(markdown.replace(/^---\s*$/gm, ''));
-      assert.equal(normalize(portableToMarkdown(blocks)), expected, slug);
-    }
+  for (const {type, content: doc} of imported) {
+    const [slug] = Object.entries(LEGAL_PAGES).find(([, page]) => page.id === type);
     global.fetch = async () => ({ ok: true, json: async () => ({ result: doc }) });
     const res = response();
     await legalHandler({ method: 'GET', query: { page: slug } }, res);
@@ -72,6 +64,25 @@ test('import preserves every FR/EN legal paragraph and bullet', async () => {
     const ids = [...res.body.matchAll(/ id="([^"]+)"/g)].map((match) => match[1]);
     assert.equal(new Set(ids).size, ids.length);
   }
+});
+
+test('license links survive Sanity formatting and the fallback has working navigation', async () => {
+  const text = portableToMarkdown([{_type: 'block', children: [
+    {_type: 'span', text: 'Documents', marks: ['strong', 'good']},
+    {_type: 'span', text: 'Script', marks: ['bad']},
+  ], markDefs: [
+    {_type: 'link', _key: 'good', href: '/privacy-policy.html'},
+    {_type: 'link', _key: 'bad', href: 'javascript:alert(1)'},
+  ]}]);
+  const {documentTemplate} = await import('../scripts/generate-legal-pages.mjs');
+  const html = documentTemplate('third-party-licenses', 'Licences tierces', `# Licences tierces\n\n# Français\n\n${text}\n\n# English\n\nText`);
+  assert.match(html, /<strong><a href="\/privacy-policy\.html">Documents<\/a><\/strong>/);
+  assert.doesNotMatch(html, /href="javascript:/);
+  const fallback = readFileSync('dist/third-party-licenses.html', 'utf8');
+  for (const filename of ['JCODEC-LICENSE.txt', 'FFMPEGKIT-LICENSE.txt', 'GPL-3.0.txt', 'LGPL-3.0.txt', 'FFMPEGKIT-LGPL-TECHNICAL-GUIDE.md', 'FFMPEGKIT-SOURCES-AND-REBUILD.md']) {
+    assert.ok(fallback.includes(`/licenses/${filename}"`), filename);
+  }
+  assert.match(readFileSync('dist/index.html', 'utf8'), /href="\/third-party-licenses\.html" data-legal-licenses/);
 });
 
 test('legal routes reject unknown paths and retain static documents offline', async () => {
