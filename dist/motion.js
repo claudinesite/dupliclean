@@ -86,6 +86,7 @@
   });
   // Rollups-style arrow reveal: keep the button dimensions and accessible name stable.
   document.querySelectorAll('.reference-cta, .reference-nav-actions a').forEach(button => {
+    if (button.classList.contains('motion-button')) return;
     const label = document.createElement('span');
     label.className = 'motion-button-label';
     while (button.firstChild) label.append(button.firstChild);

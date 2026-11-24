@@ -5,7 +5,10 @@ function createContentRenderer(document, location, interactive = true) {
 
   function setText(selector, value, root = document) {
     const element = select(selector, root);
-    if (element && typeof value === 'string') element.textContent = value;
+    if (element && typeof value === 'string') {
+      const label = element.querySelector(':scope > .motion-button-label');
+      (label || element).textContent = value;
+    }
   }
 
   function safeLink(value) {
