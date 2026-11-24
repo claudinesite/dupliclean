@@ -66,7 +66,7 @@ test('section edits update the spirit text, images, links and buttons together',
 test('unavailable CMS keeps current texts and visual assets without optional image gaps', async () => {
   const {document} = await render(null);
   assert.match(document.querySelector('.reference-about h2').textContent, /garder l’essentiel/);
-  assert.equal(document.querySelector('.reference-hand').getAttribute('src'), 'https://dupliclean.ca/assets/dupliclean-phone-hand-transparent.png');
+  assert.equal(document.querySelector('.reference-hand').getAttribute('src'), 'https://dupliclean.ca/assets/dupliclean-phone-dashboard.png');
   assert.equal(document.querySelectorAll('.cms-section-media').length, 0);
   assert.equal(document.querySelectorAll('.reference-stats > div').length, 3);
 });

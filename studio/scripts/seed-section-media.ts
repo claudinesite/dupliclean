@@ -10,7 +10,7 @@ const existing = await client.fetch<Record<string, unknown>[]>('*[_id in $ids]',
 }, {perspective: 'raw'})
 
 const assets: Record<string, string> = {}
-for (const [key, filename] of [['hero', 'dupliclean-phone-hand-transparent.png'], ['benefits', 'dupliclean-scan-results.jpg']]) {
+for (const [key, filename] of [['hero', 'dupliclean-phone-dashboard.png'], ['benefits', 'dupliclean-scan-results.jpg']]) {
   const found = await client.fetch<{_id: string} | null>(
     '*[_type == "sanity.imageAsset" && originalFilename == $filename][0]{_id}', {filename},
   )
