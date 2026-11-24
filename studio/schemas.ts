@@ -35,7 +35,7 @@ function field(source: FieldSource, fixedLength?: number): FieldDefinition {
   return defineField(converted as unknown as FieldDefinition)
 }
 
-const fixedLengths: Record<string, number> = {stats: 3, benefits: 4, steps: 3, sources: 3, data: 3}
+const fixedLengths: Record<string, number> = {stats: 3, benefits: 4, steps: 3, sources: 4, data: 3}
 
 const licenseBodies = legalSchemas[0].fields.filter(source => source.type === 'array').map(source => defineField({
   name: source.name,

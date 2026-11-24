@@ -801,7 +801,7 @@
             ]
           }
         ],
-        "description": "Gardez exactement 3 éléments.",
+        "description": "Gardez les quatre sources dans cet ordre : téléphone, OneDrive, Dropbox et MEGA.",
         "fieldset": "texts"
       },
       {
