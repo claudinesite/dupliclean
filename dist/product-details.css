@@ -45,9 +45,147 @@
 .scan-category.exact{--category-color:#8B4A28;--category-bg:#F3E1CF}.scan-category.similar{--category-color:#745182}.scan-category.large{--category-color:#42636c}.scan-category.screenshots{--category-color:#287568}
 .visual-results .scan-line{position:absolute;left:24px;right:24px;top:50%;height:1px;background:linear-gradient(90deg,transparent,var(--copper),transparent);box-shadow:0 0 8px #C9854E;pointer-events:none}
 .download .app-languages{font-size:12px;margin-top:18px;color:var(--logo-cream)}
-.site-footer{flex-wrap:wrap;padding-top:28px;padding-bottom:24px}
-.footer-legal{width:100%;display:flex;flex-wrap:wrap;justify-content:center;gap:12px 30px;padding-top:18px;border-top:1px solid var(--line)}
-.footer-legal a{font-size:12px;color:var(--muted)}.footer-legal a:hover{text-decoration:underline}
+body > .site-footer {
+  --footer-gutter: calc((100% - var(--frame-width)) / 2);
+  --footer-inset: clamp(20px, 3vw, 40px);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "brand links"
+    "tagline links"
+    "top copyright";
+  align-items: start;
+  justify-content: stretch;
+  gap: 16px 0;
+  min-height: 430px;
+  padding: clamp(56px, 6vw, 112px) var(--footer-gutter) 40px;
+  font-family: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+}
+.site-footer > * {
+  min-width: 0;
+  margin-inline: var(--footer-inset);
+}
+.site-footer::before,
+.site-footer::after {
+  position: absolute;
+  z-index: -1;
+  pointer-events: none;
+}
+.site-footer::before {
+  content: "";
+  inset-block: 0;
+  left: 50%;
+  width: var(--frame-width);
+  transform: translateX(-50%);
+  background:
+    var(--frame-v) left top / 1px 100% no-repeat,
+    var(--frame-v) 47.62% top / 1px 100% no-repeat,
+    var(--frame-v) right top / 1px 100% no-repeat;
+}
+.site-footer::after {
+  content: "DUPLICLEAN" / "";
+  left: 50%;
+  bottom: -.21em;
+  transform: translateX(-50%);
+  color: #8b4a2808;
+  -webkit-text-stroke: 1px #8b4a2833;
+  font: 900 16.4vw/.86 var(--reference-font);
+  letter-spacing: -.072em;
+  white-space: nowrap;
+}
+.site-footer > .brand {
+  grid-area: brand;
+  width: fit-content;
+  font: 700 clamp(23px, 2vw, 31px)/1.15 ui-monospace, 'Courier New', monospace;
+  letter-spacing: -.045em;
+}
+.site-footer > p {
+  grid-area: tagline;
+  display: block;
+  max-width: 29ch;
+  font-size: 14px;
+  line-height: 1.5;
+}
+.site-footer > a:last-of-type {
+  grid-area: top;
+  justify-self: start;
+  font-size: 12px;
+  color: var(--copper);
+}
+.site-footer > span {
+  grid-area: copyright;
+  justify-self: end;
+  margin-block: 0;
+  font-size: 12px;
+  text-align: right;
+}
+.footer-legal {
+  grid-area: links;
+  display: grid;
+  justify-items: start;
+  gap: 4px;
+  counter-reset: footer-link -1;
+}
+.footer-legal::before {
+  content: "[ " attr(aria-label) " ]" / "";
+  margin-bottom: 14px;
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.footer-legal a {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.45;
+}
+.footer-legal a:not([data-developer-contact]) {
+  display: grid;
+  grid-template-columns: 3ch minmax(0, 1fr);
+  gap: 2ch;
+  counter-increment: footer-link;
+}
+.footer-legal a:not([data-developer-contact])::before {
+  content: "1." counter(footer-link) / "";
+  color: var(--copper);
+}
+.footer-legal [data-developer-contact] {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  padding: 3px 7px;
+  background: var(--copper);
+  color: #fff6eb;
+  font-size: clamp(15px, 1.5vw, 23px);
+}
+.footer-legal [data-developer-contact]::after { content: "↗" / ""; }
+.site-footer a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.site-footer a:focus-visible { outline: 2px solid var(--copper); outline-offset: 4px; }
+@media (max-width: 760px) {
+  body > .site-footer {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-template-areas: "brand" "tagline" "links" "top" "copyright";
+    gap: 12px;
+    min-height: 0;
+    padding-top: 38px;
+    padding-bottom: 24px;
+  }
+  .footer-legal { margin-top: 12px; }
+  .site-footer > span { justify-self: start; text-align: left; }
+  .site-footer::before {
+    background:
+      var(--frame-v) left top / 1px 100% no-repeat,
+      var(--frame-v) right top / 1px 100% no-repeat;
+  }
+  .site-footer::after { font-size: 18vw; }
+}
 #demo-dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain}
 #demo-dialog .app-window{overflow:visible}
 #demo-dialog .demo-close{position:sticky;top:0;float:right;z-index:5;margin-top:-34px;background:var(--paper);width:32px;height:32px;border-radius:50%;line-height:1}
@@ -67,5 +205,5 @@
 .demo-back{margin:20px 0 8px;border:0;background:none;color:var(--copper);font-size:12px;padding:8px 0}.demo-result-heading{font-size:14px!important;margin:10px 0!important}
 #demo-file-list label{display:flex;gap:12px;align-items:center;padding:16px 12px;background:#fff;border:1px solid var(--line);border-radius:10px;margin:9px 0;font-size:13px;cursor:pointer}#demo-file-list input{accent-color:var(--copper);width:18px;height:18px}
 #demo-delete{width:100%;padding:12px;border:0;border-radius:8px;background:var(--copper);color:#FFF6EB;font-size:13px;margin:12px 0}#demo-delete:disabled{opacity:.5;cursor:default}
-@media(max-width:760px){.data-section{grid-template-columns:1fr}.data-heading,.data-actions{padding:35px 24px}.data-actions{background:var(--frame-h) left top/100% 1px no-repeat}.footer-legal{justify-content:flex-start;gap:14px 20px}.scan-screen-preview img{height:410px}.scan-screen-preview{min-height:480px}}
+@media(max-width:760px){.data-section{grid-template-columns:1fr}.data-heading,.data-actions{padding:35px 24px}.data-actions{background:var(--frame-h) left top/100% 1px no-repeat}.scan-screen-preview img{height:410px}.scan-screen-preview{min-height:480px}}
 @media(max-width:540px){#demo-dialog .app-sidebar{display:none}#demo-dialog .app-main{padding:14px;width:100%}#demo-dialog .app-content{min-width:0}#demo-dialog .source-options{gap:6px}#demo-dialog .source-option{min-width:0;flex:1;padding:10px 4px}#demo-dialog .source-option strong{font-size:11px}#demo-dialog .source-option small{font-size:8px}.demo-category{padding:12px 10px;gap:9px}.demo-category-icon{width:35px;height:40px}.demo-scan-complete{padding:16px}.demo-scan-complete strong{font-size:20px}}
