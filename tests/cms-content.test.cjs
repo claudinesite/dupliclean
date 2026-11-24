@@ -31,7 +31,7 @@ test('published section identifiers remain readable without authentication', () 
 });
 
 test('section edits update the spirit text, images, links and buttons together', async () => {
-  const {document, window, opened} = await render({
+  const {document} = await render({
     stats: {presentationLead: 'DupliClean simplifie le tri.', presentationEnd: 'Gardez vos souvenirs.', kicker: 'L’ESPRIT DUPLICLEAN'},
     hero: {mainImage: image, primaryLink: '#sources'},
     benefits: {mainImage: image, resultsButtonLabel: 'Les étapes', items: [{title: 'Ma fonction', menuLabel: 'Mon menu', image}]},
@@ -52,10 +52,12 @@ test('section edits update the spirit text, images, links and buttons together',
   assert.equal(document.querySelector('.step-visual img').alt, image.alt);
   assert.equal(document.querySelectorAll('.faq-list details').length, 1);
   assert.equal(document.querySelector('.faq figcaption').textContent, image.caption);
-  const button = document.querySelector('[data-store]');
+  const button = document.querySelector('.store-button');
   assert.match(button.textContent, /Installer/);
-  button.dispatchEvent(new window.Event('click', {bubbles: true, cancelable: true}));
-  assert.equal(opened[0][0], 'https://play.google.com/store/apps/details?id=test');
+  for (const link of [button, document.querySelector('.reference-nav-actions a:last-child')]) {
+    assert.equal(link.href, 'https://play.google.com/store/apps/details?id=test');
+    assert.equal(link.getAttribute('target'), '_blank');
+  }
   assert.equal(document.querySelector('.footer-legal a:last-child').href, 'https://example.com/contact');
   const legends = document.querySelectorAll('.chart-legend');
   assert.match(legends[0].textContent, /2,4 Go/);
@@ -68,7 +70,24 @@ test('unavailable CMS keeps current texts and visual assets without optional ima
   assert.match(document.querySelector('.reference-about h2').textContent, /garder l’essentiel/);
   assert.equal(document.querySelector('.reference-hand').getAttribute('src'), 'https://dupliclean.ca/assets/dupliclean-phone-dashboard.png');
   assert.equal(document.querySelectorAll('.cms-section-media').length, 0);
-  assert.equal(document.querySelectorAll('.reference-stats > div').length, 3);
+  assert.equal(document.querySelectorAll('.stats-list:not([aria-hidden]) > div').length, 3);
+  for (const link of document.querySelectorAll('[data-google-play]')) {
+    assert.equal(new URL(link.href).searchParams.get('id'), 'com.dupliclean.app');
+  }
+});
+
+test('the scrolling copy follows Sanity edits and the pause control toggles', async () => {
+  const {document, window} = await render({stats: {items: [{value: 'Sources à explorer', label: 'Sur votre téléphone', image}]}});
+  const lists = document.querySelectorAll('.stats-list');
+  assert.equal(lists.length, 2);
+  assert.equal(lists[1].getAttribute('aria-hidden'), 'true');
+  assert.equal(lists[0].innerHTML, lists[1].innerHTML);
+  assert.equal(lists[1].querySelector('strong').textContent, 'Sources à explorer');
+  const toggle = document.querySelector('.stats-toggle');
+  toggle.dispatchEvent(new window.Event('click'));
+  assert.equal(toggle.getAttribute('aria-label'), 'Reprendre le défilement');
+  toggle.dispatchEvent(new window.Event('click'));
+  assert.equal(document.querySelector('.stats-band').classList.contains('is-paused'), false);
 });
 
 test('links and images reject script URLs and untrusted image hosts', async () => {

@@ -28,6 +28,90 @@
   to { opacity: 1; translate: 0 0; }
 }
 @keyframes backdrop-enter { from { opacity: 0; } to { opacity: 1; } }
+
+.stats-band {
+  position: relative;
+  width: min(var(--frame-width), 100%);
+  margin: clamp(36px, 6vw, 75px) auto 0;
+  border-block: 1px solid #ffe4c450;
+}
+.stats-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  row-gap: 1.25rem;
+  padding-block: 1.25rem;
+}
+.stats-list > div {
+  padding-inline: 1.5rem;
+  text-align: center;
+}
+.stats-list strong {
+  display: block;
+  font: 400 clamp(1.75rem, 3vw, 2.625rem)/1.12 var(--display-font);
+}
+.stats-list span {
+  display: block;
+  margin-top: .25rem;
+  font-size: clamp(.875rem, 1.3vw, 1.0625rem);
+}
+.stats-list[aria-hidden], .stats-toggle, .stats-toggle .play-mark { display: none; }
+@keyframes stats-scroll { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: no-preference) {
+  .stats-band.is-ready { display: flex; align-items: center; }
+  .is-ready .stats-window {
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
+  }
+  .is-ready .stats-track {
+    display: flex;
+    width: max-content;
+    min-width: 200%;
+    animation: stats-scroll 38s linear infinite;
+  }
+  .is-ready .stats-list {
+    display: flex;
+    flex: 1 0 auto;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+  .is-ready .stats-list > div {
+    position: relative;
+    padding-inline: clamp(1.75rem, 3vw, 3.5rem);
+    max-width: min(88vw, 32rem);
+    overflow-wrap: anywhere;
+  }
+  .is-ready .stats-list > div::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 5px;
+    height: 5px;
+    background: currentColor;
+    opacity: .65;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  .is-ready .stats-toggle {
+    display: grid;
+    place-items: center;
+    flex: 0 0 40px;
+    height: 40px;
+    margin-inline: 6px;
+    border: 1px solid #ffe4c477;
+    border-radius: 50%;
+    background: #3b1d0f44;
+    color: inherit;
+    cursor: pointer;
+  }
+  .stats-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
+  .is-paused .stats-track { animation-play-state: paused; }
+  .is-paused .pause-mark { display: none; }
+  .is-paused .play-mark { display: block; }
+}
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }

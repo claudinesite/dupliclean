@@ -71,15 +71,7 @@
     img.alt = value.alt || '';
   }
 
-  // Capture lets the configured link override the older store click handler.
-  const storeButton = select('[data-store="Google Play"]');
-  storeButton?.addEventListener('click', (event) => {
-    const url = safeLink(storeButton.dataset.storeUrl);
-    if (!url) return;
-    event.preventDefault();
-    event.stopImmediatePropagation();
-    window.open(url, '_blank', 'noopener,noreferrer');
-  }, true);
+  const storeButton = select('.store-button[data-google-play]');
 
   function setSplitHeading(selector, lead, accent, root = document) {
     const heading = select(selector, root);
@@ -133,6 +125,24 @@
     accent.append(...presentationNodes(stats.presentationEnd));
     heading.replaceChildren(...content, document.createTextNode(' '), accent);
   }
+
+  const band = select('.stats-band');
+  const statsList = select('.stats-list');
+  function syncStatsBand() {
+    if (!band || !statsList) return;
+    const copy = statsList.cloneNode(true);
+    copy.setAttribute('aria-hidden', 'true');
+    select('.stats-list[aria-hidden]', band)?.remove();
+    statsList.after(copy);
+    band.classList.add('is-ready');
+  }
+  syncStatsBand();
+  select('.stats-toggle')?.addEventListener('click', (event) => {
+    const paused = band.classList.toggle('is-paused');
+    const label = paused ? 'Reprendre le défilement' : 'Mettre le bandeau en pause';
+    event.currentTarget.setAttribute('aria-label', label);
+    event.currentTarget.title = label;
+  });
 
   function applyContent(content) {
     const { hero, stats, benefits, steps, sources, data, faq, download, footer } = content;
@@ -198,12 +208,13 @@
 
     setPresentation(stats);
     setText('.reference-about-label', stats?.kicker);
-    optionalMedia(select('.reference-about'), stats?.mainImage, '.reference-stats');
-    applyFixedItems('.reference-stats > div', stats?.items, (element, item) => {
+    optionalMedia(select('.reference-about'), stats?.mainImage, '.stats-band');
+    applyFixedItems('.stats-list:not([aria-hidden]) > div', stats?.items, (element, item) => {
       setText('strong', item.value, element);
       setText('span', item.label, element);
       optionalMedia(element, item.image, 'strong', 'cms-small-media');
     });
+    if (stats?.items) syncStatsBand();
 
     if (benefits) {
       setSplitHeading('.poster-heading h2', benefits.titleLead, benefits.titleAccent);
@@ -324,9 +335,9 @@
           label.replaceChildren(Object.assign(document.createElement('small'), {textContent: download.buttonEyebrow || ''}),
             document.createTextNode(download.buttonLabel));
         }
-        const url = safeLink(download.playStoreUrl);
-        if (url) storeButton.dataset.storeUrl = url;
       }
+      const url = safeLink(download.playStoreUrl);
+      if (url) selectAll('[data-google-play]').forEach(link => { link.href = url; });
     }
 
     if (footer) {

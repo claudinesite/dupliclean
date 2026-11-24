@@ -67,7 +67,7 @@
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -24px 0px' });
   document.querySelectorAll([
-    '.reference-about-label', '.reference-about h2', '.reference-stats > div',
+    '.reference-about-label', '.reference-about h2', '.stats-band',
     '.poster-heading > *', '.poster-grid > article', '.poster-choice', '.section-heading h2', '.section-heading > p', '.section-heading .section-kicker', '.steps > article', '.sources-copy > *', '.integration-list > div',
     '.data-heading > *', '.data-actions article', '.faq > div:first-child > *', '.faq-list > details', '.download > h2',
     '.download > p', '.download-buttons'
