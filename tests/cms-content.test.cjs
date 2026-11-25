@@ -68,7 +68,9 @@ test('section edits update the spirit text, images, links and buttons together',
 test('unavailable CMS keeps current texts and visual assets without optional image gaps', async () => {
   const {document} = await render(null);
   assert.match(document.querySelector('.reference-about h2').textContent, /garder l’essentiel/);
-  assert.equal(document.querySelector('.reference-hand').getAttribute('src'), 'https://dupliclean.ca/assets/dupliclean-phone-dashboard.png');
+  assert.equal(document.querySelector('.reference-hand').getAttribute('src'), 'https://dupliclean.ca/assets/dupliclean-phone-dashboard-fr.png');
+  const english = parseHTML(readFileSync('dist/en/index.html', 'utf8')).document;
+  assert.equal(english.querySelector('.reference-hand').getAttribute('src'), '/assets/dupliclean-phone-dashboard.png');
   assert.equal(document.querySelectorAll('.cms-section-media').length, 0);
   assert.equal(document.querySelectorAll('.stats-list:not([aria-hidden]) > div').length, 3);
   for (const link of document.querySelectorAll('[data-google-play]')) {
