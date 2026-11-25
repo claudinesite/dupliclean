@@ -48,7 +48,7 @@
 body > .site-footer {
   --footer-gutter: calc((100% - var(--frame-width)) / 2);
   --footer-inset: clamp(20px, 3vw, 40px);
-  --footer-wordmark-size: min(15.5vw, 230px);
+  --footer-wordmark-size: 18vw;
   --footer-wordmark-offset: clamp(12px, 1.6vw, 24px);
   position: relative;
   isolation: isolate;
@@ -73,7 +73,7 @@ body > .site-footer {
   margin-inline: var(--footer-inset);
 }
 .site-footer::before,
-.site-footer::after {
+.site-footer > .footer-wordmark {
   position: absolute;
   z-index: -1;
   pointer-events: none;
@@ -89,16 +89,19 @@ body > .site-footer {
     var(--frame-v) 47.62% top / 1px 100% no-repeat,
     var(--frame-v) right top / 1px 100% no-repeat;
 }
-.site-footer::after {
-  content: "DUPLICLEAN" / "";
-  left: 50%;
+.site-footer > .footer-wordmark {
+  left: 0;
   bottom: var(--footer-wordmark-offset);
-  transform: translateX(-50%);
-  color: #8b4a2810;
-  -webkit-text-stroke: 1px #8b4a2847;
-  font: 900 var(--footer-wordmark-size)/1 var(--reference-font);
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+.footer-wordmark text {
+  fill: #8b4a2810;
+  stroke: #8b4a2847;
+  vector-effect: non-scaling-stroke;
+  font: 900 180px var(--reference-font);
   letter-spacing: -.072em;
-  white-space: nowrap;
 }
 .site-footer > .brand {
   grid-area: brand;
