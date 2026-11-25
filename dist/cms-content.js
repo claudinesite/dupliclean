@@ -199,13 +199,6 @@ function createContentRenderer(document, location, interactive = true) {
     band.classList.add('is-ready');
   }
   syncStatsBand();
-  select('.stats-toggle')?.addEventListener('click', (event) => {
-    const paused = band.classList.toggle('is-paused');
-    const label = english ? (paused ? 'Resume scrolling' : 'Pause scrolling')
-      : (paused ? 'Reprendre le défilement' : 'Mettre le bandeau en pause');
-    event.currentTarget.setAttribute('aria-label', label);
-    event.currentTarget.title = label;
-  });
 
   function applyContent(content) {
     const { hero, stats, benefits, steps, sources, data, faq, download, footer } = content;

@@ -1,7 +1,3 @@
-.circuit-toggle{position:absolute;right:20px;top:66px;z-index:6;display:flex;align-items:center;gap:6px;min-height:30px;padding:4px 9px;border:1px solid #b99b7833;border-radius:20px;background:#f6f2e980;color:#887666;font:400 11px var(--reference-font);cursor:pointer}
-.circuit-toggle:hover{color:#995436}.circuit-toggle svg{width:10px;height:10px;fill:currentColor}
-.circuit-toggle:focus-visible{outline:2px solid #995436;outline-offset:3px}
-@media(max-width:899px){.circuit-toggle{top:55px;right:12px;font-size:10px;min-height:24px}}
 /* Copper traces frame the phone. Each current travels on one of the printed paths. */
 .circuit-lines {
   opacity: 1;
@@ -45,6 +41,6 @@
   .board-signal { stroke-width: 3; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .board-signals, .circuit-toggle { display: none; }
+  .board-signals { display: none; }
   .board-signal { animation: none; }
 }

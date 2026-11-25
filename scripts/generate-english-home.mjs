@@ -19,10 +19,9 @@ language.setAttribute('aria-label', 'Voir le site en français');
 for (const [selector, label] of Object.entries({
   '.reference-brand': 'DupliClean home', '.reference-menu-button': 'Open menu',
   '#reference-menu': 'Main navigation', '.reference-charts': 'Illustrative scan results',
-  '.stats-band': 'DupliClean at a glance', '.stats-toggle': 'Pause scrolling',
+  '.stats-band': 'DupliClean at a glance',
   '.benefit-nav': 'DupliClean features', '.footer-legal': 'Official information',
 })) document.querySelector(selector).setAttribute('aria-label', label);
-document.querySelector('.stats-toggle').title = 'Pause scrolling';
 document.querySelector('.reference-bottom-copy > span').textContent = '*  / About /';
 const categories = ['Exact duplicates', 'Similar photos', 'Large files', 'Screenshots'];
 document.querySelectorAll('.scan-category b').forEach((node, i) => { node.textContent = categories[i]; });

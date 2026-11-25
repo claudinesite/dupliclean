@@ -80,13 +80,10 @@
   margin-top: .25rem;
   font-size: clamp(.875rem, 1.3vw, 1.0625rem);
 }
-.stats-list[aria-hidden], .stats-toggle, .stats-toggle .play-mark { display: none; }
+.stats-list[aria-hidden] { display: none; }
 @keyframes stats-scroll { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: no-preference) {
-  .stats-band.is-ready { display: flex; align-items: center; }
   .is-ready .stats-window {
-    flex: 1;
-    min-width: 0;
     overflow: hidden;
     mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
   }
@@ -119,22 +116,6 @@
     opacity: .65;
     transform: translate(-50%, -50%) rotate(45deg);
   }
-  .is-ready .stats-toggle {
-    display: grid;
-    place-items: center;
-    flex: 0 0 40px;
-    height: 40px;
-    margin-inline: 6px;
-    border: 1px solid #ffe4c477;
-    border-radius: 50%;
-    background: #3b1d0f44;
-    color: inherit;
-    cursor: pointer;
-  }
-  .stats-toggle:focus-visible { outline: 2px solid currentColor; outline-offset: 2px; }
-  .is-paused .stats-track { animation-play-state: paused; }
-  .is-paused .pause-mark { display: none; }
-  .is-paused .play-mark { display: block; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

@@ -118,18 +118,15 @@ test('unavailable CMS keeps current texts and visual assets without optional ima
   }
 });
 
-test('the scrolling copy follows Sanity edits and the pause control toggles', async () => {
-  const {document, window} = await render({stats: {items: [{value: 'Sources à explorer', label: 'Sur votre téléphone', image}]}});
+test('the scrolling copy follows Sanity edits without a pause control', async () => {
+  const {document} = await render({stats: {items: [{value: 'Sources à explorer', label: 'Sur votre téléphone', image}]}});
   const lists = document.querySelectorAll('.stats-list');
   assert.equal(lists.length, 2);
   assert.equal(lists[1].getAttribute('aria-hidden'), 'true');
   assert.equal(lists[0].innerHTML, lists[1].innerHTML);
   assert.equal(lists[1].querySelector('strong').textContent, 'Sources à explorer');
-  const toggle = document.querySelector('.stats-toggle');
-  toggle.dispatchEvent(new window.Event('click'));
-  assert.equal(toggle.getAttribute('aria-label'), 'Reprendre le défilement');
-  toggle.dispatchEvent(new window.Event('click'));
-  assert.equal(document.querySelector('.stats-band').classList.contains('is-paused'), false);
+  assert.ok(document.querySelector('.stats-band').classList.contains('is-ready'));
+  assert.equal(document.querySelector('.stats-band button'), null);
 });
 
 test('links and images reject script URLs and untrusted image hosts', async () => {
