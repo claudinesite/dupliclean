@@ -1,14 +1,15 @@
 (() => {
   const section = document.querySelector('#avantages');
-  const links = [...section.querySelectorAll('.benefit-nav a')];
-  const articles = [...section.querySelectorAll('.poster-grid article')];
+  if (!section) return;
+  const nav = section.querySelector('.benefit-nav');
   let frame;
   function update() {
     frame = null;
+    const articles = [...section.querySelectorAll('.poster-grid > article')];
     const line = innerHeight * .45;
     const active = articles.reduce((selected, article) => article.getBoundingClientRect().top <= line ? article : selected, articles[0]);
-    links.forEach(link => {
-      if (link.hash === '#' + active.id) link.setAttribute('aria-current', 'location');
+    nav.querySelectorAll('a').forEach(link => {
+      if (link.hash === '#' + active?.id) link.setAttribute('aria-current', 'location');
       else link.removeAttribute('aria-current');
     });
   }
@@ -18,5 +19,6 @@
     else { removeEventListener('scroll', schedule); }
   });
   observer.observe(section);
+  new MutationObserver(schedule).observe(nav, {childList: true});
   addEventListener('resize', schedule);
 })();

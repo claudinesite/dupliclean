@@ -6,6 +6,7 @@
 .benefit-nav a>span{font-size:11px;letter-spacing:1px;color:var(--copper)}
 .benefit-nav a[aria-current],.benefit-nav a:hover{color:var(--ink)}
 .benefit-nav a[aria-current]{font-weight:600}
+@media(min-width:761px){.benefit-nav{max-height:calc(100dvh - 100px);overflow-y:auto}.benefit-nav a{flex-shrink:0}}
 .benefit-main{min-width:0}
 .poster-heading{text-align:left;padding:84px 36px 60px}
 .poster-heading h2{font-size:clamp(36px,3.5vw,52px);line-height:1.09;margin:23px 0 0;max-width:700px}
@@ -32,6 +33,7 @@
 .benefit-article-content::before{content:'';position:absolute;left:-30px;top:31px;bottom:-24px;width:1px;background:var(--frame-v)}
 .poster-grid article:last-child .benefit-article-content::before{bottom:0}
 .poster-grid .poster-icon{float:right;display:grid;place-items:center;width:32px;height:32px;color:var(--copper);background:#ecd8c1;border-radius:50%;margin:0 0 10px 10px}
+.poster-grid .poster-icon:empty{display:none}
 .poster-icon svg{width:18px;height:18px}
 .poster-grid h3,.poster-choice h3{font-size:23px;line-height:1.25;font-weight:400;margin:0 0 15px}
 .poster-grid p,.poster-choice p{font-size:14px;line-height:1.65;color:var(--muted);margin:0}

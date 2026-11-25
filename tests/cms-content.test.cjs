@@ -5,10 +5,10 @@ const vm = require('node:vm');
 const {parseHTML} = require('linkedom');
 const {resolveImages} = require('../sanity/images.cjs');
 
-async function render(published) {
-  const {window, document} = parseHTML(readFileSync('dist/index.html', 'utf8'));
+async function render(published, language = 'fr') {
+  const {window, document} = parseHTML(readFileSync(language === 'en' ? 'dist/en/index.html' : 'dist/index.html', 'utf8'));
   const opened = [];
-  const fetch = async url => url === '/api/content'
+  const fetch = async url => url.startsWith('/api/content')
     ? {ok: Boolean(published), status: published ? 200 : 503, json: async () => published}
     : {ok: true, json: async () => JSON.parse(readFileSync(`dist${url}`, 'utf8'))};
   vm.runInNewContext(readFileSync('dist/cms-content.js', 'utf8'), {
@@ -63,6 +63,46 @@ test('section edits update the spirit text, images, links and buttons together',
   assert.match(legends[0].textContent, /2,4 Go/);
   assert.match(legends[1].textContent, /Vos fichiers/);
   assert.match(document.querySelector('.visual-source .tile').textContent, /Mon téléphone/);
+});
+
+test('Sanity additions extend the benefits navigation and details in both languages', async () => {
+  for (const language of ['fr', 'en']) {
+    const benefits = language === 'fr'
+      ? require('../dist/content/benefits.json')
+      : require('../dist/content/english.json').benefits;
+    const initial = benefits.items.map((item, index) => ({...item, _key: 'item-' + (index + 1)}));
+    const additions = [
+      {_key: 'files', title: 'Gestion de fichiers', menuLabel: 'Fichiers', summary: 'Gérez vos fichiers.', explanation: 'Triez vos fichiers par catégorie.', image},
+      {_key: 'videos', title: 'Gestion de vidéos', explanation: 'Retrouvez vos vidéos.'},
+      {_key: 'photos', title: 'Gestion de photos', summary: 'Gérez vos photos.'},
+    ];
+    const {document} = await render({benefits: {items: [...initial, ...additions]}}, language);
+    const links = [...document.querySelectorAll('.benefit-nav > a')];
+    const details = [...document.querySelectorAll('.poster-grid > article')];
+    assert.equal(links.length, 7);
+    assert.equal(details.length, 7);
+    assert.equal(details[0].id, 'avantage-detection');
+    assert.ok(details[0].querySelector('.poster-icon svg'));
+    for (const [index, link] of links.entries()) {
+      const number = String(index + 1).padStart(2, '0');
+      assert.equal(link.getAttribute('href'), '#' + details[index].id);
+      assert.equal(link.querySelector('span').textContent, number);
+      assert.equal(details[index].querySelector('.benefit-number').textContent, number);
+      assert.equal(details[index].getAttribute('aria-labelledby'), details[index].querySelector('h3').id);
+    }
+    assert.equal(links[4].textContent, '05Fichiers');
+    assert.equal(details[4].querySelector('h3').textContent, 'Gestion de fichiers');
+    assert.equal(details[4].querySelector('p').textContent, 'Gérez vos fichiers.');
+    assert.equal(details[4].querySelector('.benefit-explanation').textContent, 'Triez vos fichiers par catégorie.');
+    assert.equal(details[4].querySelector('img').alt, image.alt);
+    assert.equal(links[5].textContent, '06Gestion de vidéos');
+    assert.ok(details[5].querySelector('p').hidden);
+    assert.ok(details[6].querySelector('.benefit-explanation').hidden);
+
+    const reordered = await render({benefits: {items: [initial[3], additions[0], initial[0]]}}, language);
+    assert.deepEqual([...reordered.document.querySelectorAll('.poster-grid > article')].map(article => article.id),
+      ['avantage-vos-donnees', 'avantage-element-files', 'avantage-detection']);
+  }
 });
 
 test('unavailable CMS keeps current texts and visual assets without optional image gaps', async () => {

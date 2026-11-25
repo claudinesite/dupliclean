@@ -484,7 +484,7 @@
             ]
           }
         ],
-        "description": "Gardez exactement 4 éléments.",
+        "description": "Ajoutez autant de fonctionnalités que nécessaire. Chaque élément apparaît dans le sommaire et dans la liste des avantages, dans l’ordre choisi ici.",
         "fieldset": "features"
       },
       {

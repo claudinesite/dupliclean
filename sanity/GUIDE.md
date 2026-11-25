@@ -16,13 +16,15 @@ Ouvrez [dupliclean.ca/admin/](https://dupliclean.ca/admin/) et connectez-vous à
 | --- | --- |
 | Le haut de page | Titres, image du téléphone, boutons, navigation et deux encadrés d’exemple |
 | L’ESPRIT DUPLICLEAN | Grand texte de présentation, trois informations et visuels facultatifs |
-| Les fonctionnalités | Textes, catégories, capture des résultats et bouton |
+| Les fonctionnalités | Sommaire, détails, capture des résultats et bouton. Vous pouvez ajouter et réordonner les fonctionnalités. |
 | Les étapes d’utilisation | Textes et illustration de chacune des trois étapes |
 | Les sources de fichiers | Noms, descriptions, icônes, étiquettes LOCAL / CLOUD et types de fichiers |
 | Les données et la confidentialité | Textes, illustrations et lien d’information |
 | Les questions fréquentes | Questions, réponses et illustration facultative; vous pouvez ajouter des questions |
 | Le téléchargement | Textes, visuel, langues et lien Google Play |
 | Le bas de page | Slogan, logo, copyright, libellés des liens et coordonnées du développeur |
+
+Dans **Les fonctionnalités**, cliquez sur **Ajouter un élément**, puis renseignez le titre, le résumé et l’explication détaillée. L’intitulé court s’affiche dans le sommaire. S’il est vide, le titre y est repris. L’ordre choisi dans Sanity s’applique au sommaire et aux détails. Pour la page anglaise, utilisez **Version anglaise → Les fonctionnalités**.
 
 Les listes qui correspondent à un nombre fixe de blocs sur le site sont vérifiées avant la publication. La FAQ permet d’ajouter des questions.
 

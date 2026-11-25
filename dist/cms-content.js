@@ -106,6 +106,64 @@ function createContentRenderer(document, location, interactive = true) {
     items.slice(0, elements.length).forEach((item, index) => callback(elements[index], item));
   }
 
+  const benefitNav = select('.benefit-nav');
+  const benefitGrid = select('.poster-grid');
+  // Keep the original anchors and illustrations attached to their Sanity items.
+  const benefitEntries = new Map(selectAll('.poster-grid > article').map((article, index) => [
+    `item-${index + 1}`, {article, link: select(`.benefit-nav a[href="#${article.id}"]`)},
+  ]));
+
+  function createBenefitEntry(key) {
+    const article = document.createElement('article');
+    article.id = `avantage-element-${key}`;
+    const headingId = `${article.id}-title`;
+    article.setAttribute('aria-labelledby', headingId);
+    article.innerHTML = '<span class="benefit-number"></span><div class="benefit-article-content"><span class="poster-icon"></span><h3></h3><p></p><p class="benefit-explanation"></p></div>';
+    select('h3', article).id = headingId;
+    const link = document.createElement('a');
+    link.setAttribute('href', '#' + article.id);
+    link.append(document.createElement('span'));
+    return {article, link};
+  }
+
+  function renderBenefitItems(items) {
+    if (!benefitNav || !benefitGrid || !Array.isArray(items)) return;
+    const entries = items.flatMap((item, index) => {
+      if (typeof item?.title !== 'string' || !item.title.trim()) return [];
+      const key = typeof item._key === 'string' && /^[a-z\d_-]+$/i.test(item._key) ? item._key : `item-${index + 1}`;
+      if (!benefitEntries.has(key)) benefitEntries.set(key, createBenefitEntry(key));
+      return [{...benefitEntries.get(key), item}];
+    });
+    if (!entries.length) return;
+
+    entries.forEach(({article, link, item}, index) => {
+      const number = String(index + 1).padStart(2, '0');
+      setText('.benefit-number', number, article);
+      setText('h3', item.title, article);
+      const paragraphs = selectAll('.benefit-article-content > p', article);
+      [item.summary, item.explanation].forEach((value, paragraphIndex) => {
+        const paragraph = paragraphs[paragraphIndex];
+        paragraph.textContent = typeof value === 'string' ? value : '';
+        paragraph.hidden = !paragraph.textContent.trim();
+      });
+      optionalVisual(select('.poster-icon', article), item.image);
+      const linkNumber = select('span', link);
+      const menuLabel = typeof item.menuLabel === 'string' && item.menuLabel.trim();
+      linkNumber.textContent = number;
+      link.replaceChildren(linkNumber, document.createTextNode(menuLabel || item.title));
+    });
+
+    const links = entries.map(({link}) => link);
+    const currentLinks = selectAll('.benefit-nav > a');
+    if (links.length !== currentLinks.length || links.some((link, index) => link !== currentLinks[index])) {
+      const focusedLink = document.activeElement;
+      benefitNav.replaceChildren(select('.benefit-nav-label', benefitNav), ...links);
+      benefitGrid.replaceChildren(select('.benefit-timeline-label', benefitGrid), ...entries.map(({article}) => article));
+      if (links.includes(focusedLink)) focusedLink.focus({preventScroll: true});
+    }
+    if (!links.some(link => link.hasAttribute('aria-current'))) links[0].setAttribute('aria-current', 'location');
+  }
+
   function presentationNodes(value) {
     return value.split('\n').flatMap((line, index) => index ? [
       Object.assign(document.createElement('br'), { className: 'desktop-break' }),
@@ -237,18 +295,7 @@ function createContentRenderer(document, location, interactive = true) {
       setLink('.benefit-overview-copy > a', benefits.resultsButtonLink);
       applyImage('.scan-screen-preview img', benefits.mainImage);
       setText('.benefit-demo-caption', benefits.mainImage?.caption);
-      applyFixedItems('.poster-grid article', benefits.items, (element, item) => {
-        setText('h3', item.title, element);
-        const paragraphs = selectAll('.benefit-article-content > p', element);
-        if (paragraphs[0]) paragraphs[0].textContent = item.summary;
-        if (paragraphs[1]) paragraphs[1].textContent = item.explanation;
-        optionalVisual(select('.poster-icon', element), item.image);
-      });
-      applyFixedItems('.benefit-nav a', benefits.items, (element, item) => {
-        const number = select('span', element);
-        const title = item.menuLabel || item.title;
-        if (title && number) element.replaceChildren(number, document.createTextNode(title));
-      });
+      renderBenefitItems(benefits.items);
       setText('.poster-choice h3', benefits.choiceTitle);
       setText('.poster-choice p', benefits.choiceDescription);
     }
@@ -402,6 +449,14 @@ if (typeof module !== 'undefined' && module.exports) {
 
   fallbackContent.then(applyContent).catch((error) => console.warn('[DupliClean CMS]', error.message));
   Promise.all([fallbackContent, publishedContent])
-    .then(([fallback, published]) => { if (published) applyContent(mergeContent(fallback, published)); })
+    .then(([fallback, published]) => {
+      if (!published) return;
+      const content = mergeContent(fallback, published);
+      // The published list defines the order and text of each entry.
+      if (Array.isArray(published.benefits?.items) && published.benefits.items.length) {
+        content.benefits.items = published.benefits.items;
+      }
+      applyContent(content);
+    })
     .catch((error) => console.warn('[DupliClean CMS]', error.message));
 }
