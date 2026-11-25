@@ -48,6 +48,8 @@
 body > .site-footer {
   --footer-gutter: calc((100% - var(--frame-width)) / 2);
   --footer-inset: clamp(20px, 3vw, 40px);
+  --footer-wordmark-size: min(15.5vw, 230px);
+  --footer-wordmark-offset: clamp(12px, 1.6vw, 24px);
   position: relative;
   isolation: isolate;
   overflow: clip;
@@ -62,7 +64,8 @@ body > .site-footer {
   justify-content: stretch;
   gap: 16px 0;
   min-height: 430px;
-  padding: clamp(56px, 6vw, 112px) var(--footer-gutter) 40px;
+  padding: clamp(40px, 4.5vw, 84px) var(--footer-gutter)
+    calc(var(--footer-wordmark-size) + var(--footer-wordmark-offset) + 16px);
   font-family: var(--reference-font);
 }
 .site-footer > * {
@@ -89,11 +92,11 @@ body > .site-footer {
 .site-footer::after {
   content: "DUPLICLEAN" / "";
   left: 50%;
-  bottom: -.21em;
+  bottom: var(--footer-wordmark-offset);
   transform: translateX(-50%);
-  color: #8b4a2808;
-  -webkit-text-stroke: 1px #8b4a2833;
-  font: 900 16.4vw/.86 var(--reference-font);
+  color: #8b4a2810;
+  -webkit-text-stroke: 1px #8b4a2847;
+  font: 900 var(--footer-wordmark-size)/1 var(--reference-font);
   letter-spacing: -.072em;
   white-space: nowrap;
 }
@@ -163,8 +166,7 @@ body > .site-footer {
     grid-template-areas: "brand" "tagline" "links" "top" "copyright";
     gap: 12px;
     min-height: 0;
-    padding-top: 38px;
-    padding-bottom: 24px;
+    padding-top: 30px;
   }
   .footer-legal { margin-top: 12px; }
   .site-footer > span { justify-self: start; text-align: left; }
@@ -173,7 +175,6 @@ body > .site-footer {
       var(--frame-v) left top / 1px 100% no-repeat,
       var(--frame-v) right top / 1px 100% no-repeat;
   }
-  .site-footer::after { font-size: 18vw; }
 }
 #demo-dialog{max-height:calc(100dvh - 32px);overflow-y:auto;overscroll-behavior:contain}
 #demo-dialog .app-window{overflow:visible}
